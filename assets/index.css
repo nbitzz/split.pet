@@ -158,7 +158,6 @@ body {
         }
 
         &:not(.taper):after {
-            width:100%;
             height: 500px;
             background: var(--backgroundColor);
             position: absolute;
