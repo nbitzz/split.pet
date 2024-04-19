@@ -1,0 +1,210 @@
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
+@import "https://rsms.me/inter/inter.css";
+
+:root {
+    --backgroundColor: #222;
+    --backgroundColorTransparent: #222222AA;
+}
+  
+body {
+    background: #FFAA66;
+    margin:0;
+}
+
+#background {
+    & > * {
+        position: fixed;
+        left:0px;
+        top:0px;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+}
+
+#all {
+    position: absolute;
+    left: calc( 100% - 70px );
+    transform: translateX(-100%);
+    width: 390px;
+    color: white;
+    font-family: "Inter";
+    height: 100%;
+    transition-duration: 250ms;
+
+    & a {
+        color: #ddd;
+    }
+
+    & > header > .contain > *, & > *:not(header) {
+        display: inline-block;
+        width: calc( 100% - 40px );
+        padding: 0 20px;
+    }
+
+    /* I'm sorry */
+
+    & > header {
+        width:100%;
+        height: 100%;
+        top: 0;
+        overflow: hidden;
+        position:relative;
+
+        &.high {
+            height: 300px;
+        }
+
+        & > .contain {
+
+            top:100%;
+            transform: translateY(-100%);
+            position: absolute;
+            background: var(--backgroundColor);
+            border-radius: 16px 16px 0 0;
+            width: 100%;
+            padding-bottom: 15px;
+
+            & > .topper {
+                position:absolute;
+                left: 50%;
+                transform: translate(-50%, -100%);
+            }
+
+            & > #whoami {
+                --imgSize: 110px;
+                --borderThickness: 4px;
+                overflow: hidden;
+
+                height: calc( var(--imgSize) / 2 );
+                padding: 10px 20px;
+                
+                & > img {
+                    height: var(--imgSize);
+                    aspect-ratio: 1 / 1;
+                    border-radius: 100%;
+                    border: var(--borderThickness) solid var(--backgroundColor);
+                    position: absolute;
+                    top: calc( 0px - calc(var(--imgSize) / 2) );
+                }
+
+                & > hgroup {
+                    position: relative;
+                    left: calc(var(--imgSize) + calc( calc(var(--borderThickness) * 2) + 10px ));
+                    & > * {
+                        margin: 0;
+                    }
+                    & > h1 {
+                        font-size: x-large;
+                    }
+                    & > h2 {
+                        font-size: medium;
+                        font-weight: 300;
+                        color: #ddd;
+                    }
+                }
+            }
+
+            & > address, & > .headerContent {
+                padding-bottom: 10px;
+                text-align: center;
+            }
+
+            & > .headerContent {
+                padding: 20px;
+                & > h1, & > h2 {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    & h2.sectionDenoter {
+        text-transform: uppercase;
+        text-align: center;
+        color: #ddd;
+        font-size: medium;
+        position: relative;
+        margin: 15px 0;
+        
+        &:first-of-type {
+            margin: 0 0 15px
+        }
+    }
+
+    & > #projects {
+        background: linear-gradient(to bottom, var(--backgroundColor), var(--backgroundColorTransparent));
+
+        & > ul.long {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+    }
+
+    & > #posts {
+        background: var(--backgroundColorTransparent);
+    }
+
+    & > footer {
+        background: var(--backgroundColor);
+        border-radius: 0 0 16px 16px;
+        margin-bottom: 50px;
+
+        &.taper {
+            height: 80px;
+            border-radius: 0;
+            background: linear-gradient(to bottom, var(--backgroundColorTransparent), transparent);
+        }
+    }
+}
+
+ul.socialsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    cursor: default;
+    
+    & a {
+        text-decoration: none;
+        transition-duration: 200ms;
+        color: #ccc !important;
+        &:hover {
+            color: #fff !important;
+        }
+    }
+
+    & li {
+        display: inline;
+        font-size:x-large;
+    }
+}
+
+small {
+    color: #ddd;
+}
+
+@media (prefers-reduced-motion) {
+    .hide_when_reduced_motion {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    #all {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        & > footer {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+        & > #projects, & > #posts {
+            backdrop-filter: blur(4px) brightness(75%);
+        }
+    }
+
+    ul.socialsList > li {
+        font-size: xx-large;
+    }
+}
