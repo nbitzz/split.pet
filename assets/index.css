@@ -156,14 +156,6 @@ body {
             border-radius: 0;
             background: linear-gradient(to bottom, var(--backgroundColorTransparent), transparent);
         }
-
-        &:not(.taper):after {
-            height: 500px;
-            background: var(--backgroundColor);
-            position: absolute;
-            left: 0;
-            top:0
-        }
     }
 }
 
