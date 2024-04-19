@@ -131,7 +131,7 @@ body {
         }
     }
 
-    & > #projects {
+    & > .significant {
         background: linear-gradient(to bottom, var(--backgroundColor), var(--backgroundColorTransparent));
 
         & > ul.long {
@@ -141,7 +141,7 @@ body {
         }
     }
 
-    & > #posts {
+    & > .insignificant {
         background: var(--backgroundColorTransparent);
     }
 
@@ -213,7 +213,7 @@ small {
             margin-bottom: 0;
             border-radius: 0;
         }
-        & > #projects, & > #posts {
+        & > .significant, & > .insignificant {
             backdrop-filter: blur(4px) brightness(75%);
         }
     }

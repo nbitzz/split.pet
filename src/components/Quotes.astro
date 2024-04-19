@@ -1,0 +1,48 @@
+---
+const {quotes, noHeader} = Astro.props
+
+interface Quote {
+    text: string,
+    from: string
+}
+
+interface Props {
+    quotes: Quote[],
+    noHeader?: boolean
+}
+---
+<style lang="scss">
+    .quote {
+        text-align: left;
+        &.alternate {
+            text-align: right;
+        }
+        & > p {
+            margin: 0;
+            &::before {
+                content: "“";
+                color: #ccc;
+            }
+            &::after {
+                content: "”";
+                color: #ccc;
+            }
+        }
+        & > address {
+            color: #ccc;
+            font-size:small;
+        }
+        margin: 10px 0;
+    }
+</style>
+<section id="quotes" class="insignificant">
+    {!noHeader ? <h2 class="sectionDenoter">Quotes</h2> : ""}
+    {
+        quotes.map((quote, x) => 
+            <div class:list={["quote", {alternate: x % 2 == 1}]}>
+                <p>{quote.text}</p>
+                <address>{quote.from}</address>
+            </div>
+        )
+    }
+</section>

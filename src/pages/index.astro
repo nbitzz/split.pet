@@ -11,6 +11,7 @@ import monkeytype from "../icons/monkeytype.svg?raw"
 import steam from "../icons/steam.svg?raw"
 import upptime from "../icons/upptime.svg?raw"
 import pfp from "../images/pfp.png"
+import Quotes from "../components/Quotes.astro";
 ---
 <Page title="split's website" description="hi this is my shitty website">
     <PersonHeader
@@ -27,9 +28,7 @@ import pfp from "../images/pfp.png"
         <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" />
     </PersonHeader>
 
-
-
-    <section id="projects">
+    <section class="significant">
         <h2 class="sectionDenoter">friends</h2>
         <p>
             <a href="https://jack.cab">Jack</a>,
@@ -53,4 +52,21 @@ import pfp from "../images/pfp.png"
             </small>
         </p>
     </section>
+
+    <Quotes quotes={[
+        {text: "fucking hehead [sic] split kill that ni[...]", from: "chapel1337"},
+        {text: "No I just hate split", from: "WaviestBalloon"},
+        {text: "I gotta kill [...] you", from: "StandardizedAnomaly"},
+        {text: "You are a techsis", from: "Jack"},
+        {text: "how the hell do you have 3786 tabs open", from: "turn"},
+        {text: "your [sic] andrew trans", from: "Charlie"},
+        {text: "WHAT THE FUCK", from: "Aurora"},
+        {text: "Nevermind you really are [stupid]", from: "Xzen"},
+        {text: "Gay", from: "Chloe"},
+        {text: "Come the fuck on man", from: "micro"},
+        {text: "Fuck off", from: "AAGaming"},
+        {text: "https://calyouth.org/cycl/", from: "Jade"},
+        {text: "[You are] beyond annoying", from: "python"},
+        {text: "CAN YOU JUST KILL YOURSELF ALREADY", from: "cirro"},
+    ]} />
 </Page>
