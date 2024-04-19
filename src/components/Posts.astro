@@ -1,0 +1,40 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import PostPreview, {type Props as PostPreviewProps} from './PostPreview.astro'
+
+const {postCount, noHeader} = Astro.props
+const posts = 
+    (await Astro.glob("../pages/blog/*.md"))
+        .sort((a,b) => (a.frontmatter.pubDate||0)-(b.frontmatter.pubDate||0))
+
+interface Props {
+    postCount?: number,
+    noHeader?: boolean,
+    extraAttributes?: HTMLAttributes<'section'> // i should kill myself
+}
+
+const extraAttributes = {
+    class: "insignificant",
+    style: "position:relative;",
+    ...Astro.props.extraAttributes
+}
+---
+
+<style lang="scss">
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+</style>
+
+<section id="posts" {...extraAttributes}>
+    {!noHeader ? <h2 class="sectionDenoter">Posts</h2> : ""}
+    <div>  
+        {
+            posts.slice(0,postCount !== null && postCount !== undefined ? postCount-1 : postCount).map(e => <PostPreview url={e.url} frontmatter={e.frontmatter as PostPreviewProps["frontmatter"]} />)
+        }
+    </div>
+    <br>
+</section>

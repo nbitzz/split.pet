@@ -1,0 +1,46 @@
+---
+import GenericHeader from "../components/GenericHeader.astro"
+import Page from "./Page.astro"
+import "../style/markdown.scss"
+
+const { frontmatter } = Astro.props
+
+export interface Props {
+    frontmatter: {
+        title: string,
+        description: string,
+        publicationDate?: number,
+        image?: {
+            isTopper?: boolean,
+            url: string,
+            alt: string
+        }
+    }
+}
+---
+
+<style lang="scss">
+    #frontmatter {
+        p {
+            text-align: center;
+        }
+    }
+</style>
+
+<Page 
+    title={frontmatter.title}
+    description={frontmatter.description}
+>
+    <GenericHeader text={frontmatter.title} styling={{noBottomPad: true}} image={frontmatter.image}/>
+    <section class="significant" id="frontmatter">
+        <p>
+            <em>{frontmatter.description}</em>
+            {frontmatter.publicationDate
+            ? <br><small>Published {new Date(frontmatter.publicationDate).toISOString().split("T")[0]} (UTC)</small>
+            : ""}
+        </p>
+    </section>
+    <section class="insignificant markdown" id="postBody">
+        <slot />
+    </section>
+</Page>

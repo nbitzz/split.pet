@@ -1,0 +1,11 @@
+---
+import GenericHeader from "../../components/GenericHeader.astro";
+import Posts from "../../components/Posts.astro";
+import Page from "../../layouts/Page.astro";
+---
+<Page title="Posts" description="split's blog which she will leave unused">
+
+    <GenericHeader text="Posts" image={{isTopper: true, url: "https://mahiro.oyama.pictures/Hai", alt:"Mahiro Oyama saying hi!"}} />
+    <Posts noHeader={true} extraAttributes={{class: "significant"}}/>
+    
+</Page>

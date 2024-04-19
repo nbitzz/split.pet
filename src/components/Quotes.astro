@@ -1,5 +1,7 @@
 ---
-const {quotes, noHeader} = Astro.props
+import type { HTMLAttributes } from 'astro/types'
+
+const {quotes, noHeader, extraAttributes} = Astro.props
 
 interface Quote {
     text: string,
@@ -8,7 +10,8 @@ interface Quote {
 
 interface Props {
     quotes: Quote[],
-    noHeader?: boolean
+    noHeader?: boolean,
+    extraAttributes?: HTMLAttributes<'section'> // i should kill myself
 }
 ---
 <style lang="scss">
@@ -35,7 +38,7 @@ interface Props {
         margin: 10px 0;
     }
 </style>
-<section id="quotes" class="insignificant">
+<section id="quotes" class="insignificant" {...extraAttributes}>
     {!noHeader ? <h2 class="sectionDenoter">Quotes</h2> : ""}
     {
         quotes.map((quote, x) => 

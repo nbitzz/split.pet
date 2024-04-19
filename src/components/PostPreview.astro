@@ -1,0 +1,100 @@
+---
+import { type Props as PostProps } from "../layouts/Post.astro"
+
+export interface Props extends PostProps {
+    url: string
+}
+
+const { frontmatter, url } = Astro.props
+---
+<style lang="scss">
+    a {
+        all: unset;
+        cursor: pointer;
+        position: relative;
+    }
+
+    * {
+        margin: 0;
+    }
+
+    p, small {
+        color: #bbb;
+        font-style: oblique;
+    }
+
+    p:last-of-type {
+        text-align: right;
+    }
+
+    .post {
+        --hoverThickness {}
+        border-radius: 16px;
+        padding: 10px 15px;
+        background-color: var(--backgroundColor);
+        border-left: 0px solid transparent;
+        border-right: 0px solid transparent;
+        
+        transition-duration: 250ms;
+        transition-property: border-left border-right;
+        position: relative;
+    }
+
+    .post > img {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        border-radius: 16px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-color: var(--backgroundColor);
+        filter: opacity(20%) saturate(25%);
+        z-index: 0;
+        transition-duration: 250ms;
+        transition-property: filter;
+    }
+
+    .post:has(> img) {
+        background: var(--backgroundColorTransparent);
+    }
+
+    a:hover > .post > img, a:focus-visible > .post > img {
+        filter: opacity(25%) saturate(75%);
+    }
+
+    .frontmatter {
+        z-index: 1;
+        position: relative;
+    }
+
+    a:hover > .post, a:focus-visible > .post {
+        border-left: 5px solid #66AAFF;
+        border-right: 5px solid #66AAFF;
+    }
+
+    a:focus-visible > .post {
+        outline: 3px solid #ccc;
+    }
+</style>
+<a href={url}>
+    <div class="post">
+
+        {
+            frontmatter.image && !frontmatter.image.isTopper
+            ? <img src={frontmatter.image.url} alt={frontmatter.image.alt}>
+            : ""
+        }
+
+        <div class="frontmatter">
+            <h3>{frontmatter.title}</h3>
+            <p>
+                {frontmatter.description}
+            </p>
+            <p>
+                <small>{new Date(frontmatter.publicationDate).toISOString().split("T")[0]}</small>
+            </p>
+        </div>
+
+    </div>
+</a>

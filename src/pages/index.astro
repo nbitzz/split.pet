@@ -3,7 +3,7 @@ import pfp from "../images/pfp.png"
 import "../style/index.scss";
 import PersonHeader from "../components/PersonHeader.astro";
 import { Picture } from "astro:assets";
-import Page from "../components/Page.astro";
+import Page from "../layouts/Page.astro";
 import Quotes from "../components/Quotes.astro";
 import { 
     siFirefish,
@@ -13,6 +13,7 @@ import {
     siMonkeytype,
     siUpptime
 } from "simple-icons"
+import Posts from "../components/Posts.astro";
 ---
 <Page title="split's website" description="hi this is my shitty website">
     <PersonHeader
@@ -30,16 +31,16 @@ import {
     </PersonHeader>
 
     <section class="significant">
-        <h2 class="sectionDenoter">friends</h2>
+        <h2 class="sectionDenoter" id="friends">friends</h2>
         <p>
             <a href="https://jack.cab">Jack</a>,
             <a href="https://charlie.downgraded.uk">Charlie</a>,
             <a href="https://aagaming.me">AAGaming</a>,
             <a href="http://cirroskais.xyz/">cirro</a>, uhh... i don't know i don't have many
         </p>
-        <h2 class="sectionDenoter">projects</h2>
+        <h2 class="sectionDenoter" id="projects">projects</h2>
         <p><a href="https://github.com/mollersuite/monofile">monofile</a>, uhh... that's also the only thing I've really made that's notable lol, and even that's a stretch</p>
-        <h2 class="sectionDenoter">not-so-notable stuff</h2>
+        <h2 class="sectionDenoter" id="not-notable-stuff">not-so-notable stuff</h2>
         <p>
             <a href="https://xkcd.uk">xkcd.uk</a>,
             <a href="https://github.com/nbitzz/oyama.pictures">oyama.pictures</a>,
@@ -69,5 +70,8 @@ import {
         {text: "[You are] beyond annoying", from: "python"},
         {text: "https://calyouth.org/cycl", from: "Aubrey"},
         {text: "CAN YOU JUST KILL YOURSELF ALREADY", from: "cirro"},
-    ]} />
+        {text: "Your life is nothing! You serve zero purpose! You should kill yourself NOW!", from: "The voices"},
+    ]} extraAttributes={{id: "quotes"}} />
+
+    <Posts postCount={3} />
 </Page>

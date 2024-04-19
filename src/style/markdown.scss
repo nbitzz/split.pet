@@ -1,0 +1,48 @@
+.markdown {
+    code {
+        font-family: monospace monospace;
+        background-color: #24292E;
+        border-radius: 4px;
+        padding: 2px 5px;
+    }
+
+    .astro-code {
+        padding: 4px 8px;
+        border-radius: 4px;
+        code {
+            padding: 0 !important;
+        }
+    }
+    /*
+    & > ul {
+        padding-left: 0 !important;
+    }
+
+    ul {
+        padding-left: 20px;
+        li {
+            list-style: none;
+            position: relative;
+            line-break: anywhere;
+            &::before {
+                padding-right: 5px;
+                content: "-";
+                color: #AA88FF;
+                font-family: monospace, monospace;
+                position: relative;
+            }
+        }
+    }*/ // I fucking give up
+
+    ul {
+        padding-left: 20px;
+        li {
+            overflow-wrap: break-word;
+            margin: 2px 0;
+            &::marker {
+                content: "-  ";
+                color: #AA88FF;
+            }
+        }
+    }
+}

@@ -1,10 +1,16 @@
 ---
-const { topper, text } = Astro.props
+import type { HTMLAttributes } from 'astro/types'
+
+const { styling, text, image } = Astro.props
 
 interface Props {
-    topper?: {
-        image: string,
+    image?: {
+        isTopper?: boolean
+        url: string
         alt: string
+    },
+    styling?: {
+        noBottomPad?: boolean
     },
     text: string
 }
@@ -12,12 +18,18 @@ interface Props {
 <header class="high">
     <div class="contain">
         {
-        topper ? 
-            <br>
-            <img class="topper" src={topper.image} style="width:200px;top:35px" alt={topper.alt}>
+        image ? 
+            <>
+                {image.isTopper ? <br> : ""}
+                <img
+                    class:list={[{topper: image.isTopper, thumbnail: !image.isTopper}]}
+                    src={image.url}
+                    alt={image.alt}
+                >
+            </>
         : ""
         }
-        <div class="headerContent">
+        <div class:list={["headerContent", styling]}>
             <h2>
                 {text}
             </h2>
