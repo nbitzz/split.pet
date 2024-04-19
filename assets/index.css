@@ -79,7 +79,7 @@ body {
                 height: calc( var(--imgSize) / 2 );
                 padding: 10px 20px;
                 
-                & > img {
+                & > img, & > picture > img {
                     height: var(--imgSize);
                     aspect-ratio: 1 / 1;
                     border-radius: 100%;
