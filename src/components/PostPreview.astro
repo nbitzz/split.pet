@@ -8,10 +8,17 @@ export interface Props extends PostProps {
 const { frontmatter, url } = Astro.props
 ---
 <style lang="scss">
-    a:has(> .post) {
+    .post > a {
         all: unset;
         cursor: pointer;
-        position: relative;
+        position: absolute;
+        left: 0px;
+        top:0px;
+        height: 100%;
+        width: 100%;
+        z-index: 3;
+        opacity: 1;
+        font-size: 0;
     }
 
     * {
@@ -38,29 +45,25 @@ const { frontmatter, url } = Astro.props
         transition-duration: 250ms;
         transition-property: border-left border-right;
         position: relative;
-    }
 
-    .post > img {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        border-radius: 16px;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        background-color: var(--backgroundColor);
-        filter: opacity(20%) saturate(25%);
-        z-index: 0;
-        transition-duration: 250ms;
-        transition-property: filter;
-    }
+        & > img {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            border-radius: 16px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: var(--backgroundColor);
+            filter: opacity(20%) saturate(25%);
+            z-index: 0;
+            transition-duration: 250ms;
+            transition-property: filter;
+        }
 
-    .post:has(> img) {
-        background: var(--backgroundColorTransparent);
-    }
-
-    a:hover > .post > img, a:focus-visible > .post > img {
-        filter: opacity(25%) saturate(75%);
+        &:has(> img) {
+            background: var(--backgroundColorTransparent);
+        }
     }
 
     .frontmatter {
@@ -68,32 +71,36 @@ const { frontmatter, url } = Astro.props
         position: relative;
     }
 
-    a:hover > .post, a:focus-visible > .post {
+    .post:has(a:hover), .post:has(a:focus-visible) {
         border-left: 5px solid #66AAFF;
         border-right: 5px solid #66AAFF;
+
+        & > img {
+            filter: opacity(25%) saturate(75%);
+        }
     }
 
-    a:focus-visible > .post {
+    .post:has(a:focus-visible) {
         outline: 3px solid #ccc;
     }
 </style>
-<a href={url}>
-    <div class="post">
+<div class="post">
+    <a href={url}>{frontmatter.title}: {frontmatter.description}</a>
 
-        {
-            frontmatter.image && !frontmatter.image.isTopper
-            ? <img src={frontmatter.image.url} alt={frontmatter.image.alt}>
-            : ""
-        }
+    {
+        frontmatter.image && !frontmatter.image.isTopper
+        ? <img src={frontmatter.image.url} alt={frontmatter.image.alt}>
+        : ""
+    }
 
-        <div class="frontmatter">
-            <h3>{frontmatter.title}</h3>
-            <p>
-                {frontmatter.description}
-            </p>
-            <p>
-                <small>{new Date(frontmatter.publicationDate).toISOString().split("T")[0]}</small>
-            </p>
-        </div>
-
+    <div class="frontmatter">
+        <h3>{frontmatter.title}</h3>
+        <p>
+            {frontmatter.description}
+        </p>
+        <p>
+            <small>{new Date(frontmatter.publicationDate).toISOString().split("T")[0]}</small>
+        </p>
     </div>
+
+</div>
