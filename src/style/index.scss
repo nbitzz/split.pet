@@ -244,7 +244,7 @@ small {
             backdrop-filter: blur(4px) brightness(75%);
         }
 
-        & {
+        &:has(> header.high) {
             display: flex;
             flex-direction: column;
             height: auto;
