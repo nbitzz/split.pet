@@ -3,6 +3,7 @@
 :root {
     --backgroundColor: #222;
     --backgroundColorTransparent: #222222AA;
+    font-family: InterVariable, Inter, sans-serif;
 }
   
 body {
@@ -27,7 +28,6 @@ body {
     transform: translateX(-100%);
     width: 390px;
     color: white;
-    font-family: InterVariable, Inter, sans-serif;
     height: 100%;
     transition-duration: 250ms;
 
