@@ -158,6 +158,8 @@ body {
 
     & > .significant {
         background: linear-gradient(to bottom, var(--backgroundColor), var(--backgroundColorTransparent));
+        flex-grow: 1;
+        flex-shrink: 0;
 
         & > ul.long {
             list-style: none;
@@ -240,6 +242,13 @@ small {
         }
         & > .significant, & > .insignificant {
             backdrop-filter: blur(4px) brightness(75%);
+        }
+
+        & {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            min-height: 100%;
         }
     }
 
