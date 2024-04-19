@@ -1,0 +1,42 @@
+---
+import "../style/index.scss";
+
+const { title, description, meta } = Astro.props
+
+interface Props {
+    title: string,
+    description: string,
+    meta?: {name: string, content: string}[]
+}
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{title}</title>
+
+        <meta name="title" content={title}>
+        <meta name="description" content={description}>
+        {
+            meta?.map(e => <meta name={e.name} content={e.content}>)
+        }
+    </head>
+    <body style="background-color: #B2B2B2;">
+
+        <div id="background">
+            <video autoplay muted loop playsinline disablepictureinpicture src="/lagtrain.webm" style="filter:brightness(80%);background-color: #B2B2B2;" class="hide_when_reduced_motion" />
+        </div>
+
+        <div id="all">
+
+            <slot />
+
+            <footer>
+                <h3><a href="/">split.pet</a> &mdash; {title}</a></h3>
+                <p><a href="/domainlist">Domain list</a></p>
+            </footer>
+            
+        </div>
+    </body>
+</html>

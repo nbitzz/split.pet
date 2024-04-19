@@ -1,0 +1,39 @@
+---
+const {
+    title,
+    description,
+    socials
+} = Astro.props
+
+interface Props {
+    title: string,
+    description: string,
+    socials: {url: string, icon: string}[]
+}
+---
+<header>
+    <div class="contain">
+        <div id="whoami">
+            <slot /> <!-- Good enough
+                          Time to hang myself -->
+            <hgroup>
+                <h1>{title}</h1>
+                <h2>{description}</h2>
+            </hgroup>
+        </div>
+
+        <address>
+            <ul class="socialsList">
+                {
+                    socials.map(obj => 
+                        <li>
+                            <a href={obj.url} rel="me">
+                                <Fragment set:html={obj.icon} />
+                            </a>
+                        </li>
+                    )
+                }
+            </ul>
+        </address>
+    </div>
+</header>

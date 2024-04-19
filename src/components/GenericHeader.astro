@@ -1,0 +1,26 @@
+---
+const { topper, text } = Astro.props
+
+interface Props {
+    topper?: {
+        image: string,
+        alt: string
+    },
+    text: string
+}
+---
+<header class="high">
+    <div class="contain">
+        {
+        topper ? 
+            <br>
+            <img class="topper" src={topper.image} style="width:200px;top:35px" alt={topper.alt}>
+        : <></>
+        }
+        <div class="headerContent">
+            <h2>
+                {text}
+            </h2>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,19 @@
+{
+  "name": "newnewwebsite",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "astro": "^4.6.3",
+    "sass": "^1.75.0"
+  }
+}

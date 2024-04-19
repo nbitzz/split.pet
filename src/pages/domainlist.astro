@@ -1,0 +1,80 @@
+---
+import GenericHeader from "../components/GenericHeader.astro";
+import Page from "../components/Page.astro";
+---
+<Page title="Domain list" description="A silly domain list with my. stuff">
+
+    <GenericHeader text="Silly domain list" topper={{image: "https://mahiro.oyama.pictures/Hai", alt:"Mahiro Oyama saying hi!"}} />
+
+    <section id="projects" style="line-break: anywhere;">
+        {
+            [
+                {
+                    title: "Single",
+                    domains: [
+                        "pls.can-i.win",
+                        "coolviruses.download",
+                        "haveapieceofthat.nahthatsnotmytype.shespretty.itsjustmytypeis.men",
+                        "whopostedmynudesontwitter.com",
+                        "windows.sucks.win",
+                        "freerobux.win",
+                        "freevbucks.win",
+                        "xkcd.uk",
+                        "ram-ranch.rodeo",
+                        "iwanttobeheldbystronger.men",
+                        "childlabor.company"
+                    ]
+                },
+                {
+                    title: "oyama.pictures",
+                    domains: [
+                        "oyama.pictures",
+                        "mahiro.oyama.pictures",
+                        "mihari.oyama.pictures"
+                    ]
+                },
+                {
+                    title: "fnaf.stream",
+                    domains: [
+                        "/helloeverybodymynameismarkiplierandwelcometofivenightsatfreddys.anindiehorrorgamethatyouguyssuggestedenmasseandisawthatyamimash.playeditandhesaidthatitwasreallyreallygoodsoimveryeagertoseewha.tisupandthatisaterrifyinganimatronicbear.fnaf.stream",
+                        "itsperfect.firstipourthemilk.thenipourthecereal.breakfastmyfriend.fnaf.stream"
+                    ]
+                },
+                {
+                    title: "fyle.uk",
+                    domains: [
+                        "fyle.uk",
+                        "beta.fyle.uk",
+                        "status.fyle.uk",
+                        "ssh.fyle.uk",
+                        "tunnel.fyle.uk"
+                    ]
+                },
+                {
+                    title: "Not really maintained",
+                    domains: [
+                        "jelly.fyle.uk",
+                        "brand.fyle.uk"
+                    ]
+                },
+                {
+                    title: "Unused",
+                    domains: [
+                        "mass.report",
+                        "animatedchristmastreefordesk.top",
+                        "soimmakingacalloutpostonmytwitter.com"
+                    ]
+                }
+            ].map(e =>    
+                <h2 class="sectionDenoter">{e.title}</h2>
+                <ul class="long">
+                    {
+                        e.domains.map(domain => 
+                            <li><a href={`https://${domain}`}>{domain}</a></li>
+                        )
+                    }
+                </ul>
+            )
+        }
+    </section>
+</Page>
