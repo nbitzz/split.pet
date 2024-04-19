@@ -8,7 +8,7 @@ export interface Props extends PostProps {
 const { frontmatter, url } = Astro.props
 ---
 <style lang="scss">
-    a {
+    a:has(> .post) {
         all: unset;
         cursor: pointer;
         position: relative;
