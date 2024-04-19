@@ -157,7 +157,7 @@ body {
             background: linear-gradient(to bottom, var(--backgroundColorTransparent), transparent);
         }
 
-        &:not(.taper):after {
+        &:not(.taper)::after {
             width:100%;
             height: 500px;
             background: var(--backgroundColor);
