@@ -150,6 +150,8 @@ body {
         background: var(--backgroundColor);
         border-radius: 0 0 16px 16px;
         margin-bottom: 50px;
+        position: relative;
+        overflow-y: hidden;
 
         &.taper {
             height: 80px;
@@ -158,12 +160,13 @@ body {
         }
 
         &:not(.taper)::after {
+            content: "";
             width:100%;
-            height: 500px;
+            height: 100vh;
             background: var(--backgroundColor);
             position: absolute;
-            left: 0;
-            top:0
+            left: 0px;
+            top: 100%;
         }
     }
 }
