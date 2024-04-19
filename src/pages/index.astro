@@ -1,29 +1,30 @@
 ---
-import firefish from "../icons/firefish.svg?raw"
-import discord from "../icons/discord.svg?raw"
-import github from "../icons/github.svg?raw"
-import monkeytype from "../icons/monkeytype.svg?raw"
-import steam from "../icons/steam.svg?raw"
-import upptime from "../icons/upptime.svg?raw"
 import pfp from "../images/pfp.png"
-
 import "../style/index.scss";
 import PersonHeader from "../components/PersonHeader.astro";
 import { Picture } from "astro:assets";
 import Page from "../components/Page.astro";
 import Quotes from "../components/Quotes.astro";
+import { 
+    siFirefish,
+    siDiscord,
+    siGithub,
+    siSteam,
+    siMonkeytype,
+    siUpptime
+} from "simple-icons"
 ---
 <Page title="split's website" description="hi this is my shitty website">
     <PersonHeader
         title="hi, i'm split"
         description="she; terrible developer"
         socials={[
-            {url: "https://coolviruses.download/@split", icon: firefish},
-            {url: "https://discord.com/users/312700896343621633", icon: discord},
-            {url: "https://github.com/nbitzz", icon: github},
-            {url: "https://steamcommunity.com/id/haha__yes", icon: steam},
-            {url: "https://monkeytype.com/profile/split1337", icon: monkeytype},
-            {url: "https://status.fyle.uk/", icon: upptime}
+            {url: "https://coolviruses.download/@split", icon: siFirefish.svg},
+            {url: "https://discord.com/users/312700896343621633", icon: siDiscord.svg},
+            {url: "https://github.com/nbitzz", icon: siGithub.svg},
+            {url: "https://steamcommunity.com/id/haha__yes", icon: siSteam.svg},
+            {url: "https://monkeytype.com/profile/split1337", icon: siMonkeytype.svg},
+            {url: "https://status.fyle.uk/", icon: siUpptime.svg}
         ]}>
         <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" />
     </PersonHeader>
@@ -46,7 +47,6 @@ import Quotes from "../components/Quotes.astro";
             I also run, like, <a href="https://coolviruses.download">coolviruses.download</a>,
             and that's about it<br>
             <small>
-                Sorry about being a boring person<br>
                 Oh, right, also, my profile picture is sourced from <a href="https://www.pixiv.net/en/artworks/117551007">here</a><br>
                 video0.mov if the discord link doesn't work for you<br>
             </small>
