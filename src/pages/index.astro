@@ -54,6 +54,8 @@ import Posts from "../components/Posts.astro";
         </p>
     </section>
 
+    <Posts postCount={3} />
+
     <Quotes quotes={[
         {text: "fucking hehead [sic] split kill that ni[...]", from: "chapel1337"},
         {text: "No I just hate split", from: "WaviestBalloon"},
@@ -72,6 +74,4 @@ import Posts from "../components/Posts.astro";
         {text: "CAN YOU JUST KILL YOURSELF ALREADY", from: "cirro"},
         {text: "Your life is nothing! You serve zero purpose! You should kill yourself NOW!", from: "The voices"},
     ]} extraAttributes={{id: "quotes"}} />
-
-    <Posts postCount={3} />
 </Page>

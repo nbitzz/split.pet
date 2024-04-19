@@ -30,6 +30,21 @@ export interface Props {
 <Page 
     title={frontmatter.title}
     description={frontmatter.description}
+    meta={
+        frontmatter.image
+        ? [
+            {
+                name: "og:image",
+                content: frontmatter.image.url
+            },
+            ...(
+                !frontmatter.image.isTopper
+                ? [{name:"twitter:card", content: "summary_large_image"}]
+                : []
+            )
+        ]
+        : []
+    }
 >
     <GenericHeader text={frontmatter.title} styling={{noBottomPad: true}} image={frontmatter.image}/>
     <section class="significant" id="frontmatter">

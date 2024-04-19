@@ -4,7 +4,7 @@ title: Test post
 description: Hello world!
 publicationDate: 1
 image:
-    url: /pfp/pfp.webp
+    url: /thumbtest.webp
     alt: "Hi!"
 ---
 Test test test.
