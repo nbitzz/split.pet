@@ -204,9 +204,10 @@ ul.socialsList {
         text-decoration: none;
         transition-duration: 200ms;
         color: #ccc !important;
+        --iconColor: #fff;
         display: flex; // makes the li height the same as the svg heigh t
         &:hover {
-            color: #fff !important;
+            color: var(--iconColor) !important;
         }
         & > svg {
             width: 1em;

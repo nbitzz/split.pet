@@ -11,7 +11,8 @@ import {
     siGithub,
     siSteam,
     siMonkeytype,
-    siUpptime
+    siUpptime,
+    siSteamdeck
 } from "simple-icons"
 import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
 import Posts from "../components/Posts.astro";
@@ -21,13 +22,13 @@ import Posts from "../components/Posts.astro";
         title="hi, i'm split"
         description="she; terrible developer"
         socials={[
-            {url: "https://coolviruses.download/@split", icon: siFirefish.svg},
-            {url: "https://discord.com/users/312700896343621633", icon: siDiscord.svg},
+            {url: "https://coolviruses.download/@split", icon: siFirefish.svg, color: "#"+siFirefish.hex},
+            {url: "https://discord.com/users/312700896343621633", icon: siDiscord.svg, color: "#"+siDiscord.hex},
             {url: "https://github.com/nbitzz", icon: siGithub.svg},
-            {url: "https://steamcommunity.com/id/haha__yes", icon: siSteam.svg},
-            {url: "https://monkeytype.com/profile/split1337", icon: siMonkeytype.svg},
-            {url: "https://status.fyle.uk/", icon: siUpptime.svg},
-            {url: "/blog/setup", icon: iconLaptop}
+            {url: "https://steamcommunity.com/id/haha__yes", icon: siSteam.svg, color: "#"+siSteamdeck.hex},
+            {url: "https://monkeytype.com/profile/split1337", icon: siMonkeytype.svg, color: "#"+siMonkeytype.hex},
+            {url: "https://status.fyle.uk/", icon: siUpptime.svg, color: "#"+siUpptime.hex},
+            {url: "/blog/setup", icon: iconLaptop, color: "#AA88FF"}
         ]}>
         <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" />
     </PersonHeader>

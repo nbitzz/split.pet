@@ -8,7 +8,7 @@ const {
 interface Props {
     title: string,
     description: string,
-    socials: {url: string, icon: string}[]
+    socials: {url: string, icon: string, color?: string}[]
 }
 ---
 <header>
@@ -27,7 +27,7 @@ interface Props {
                 {
                     socials.map(obj => 
                         <li>
-                            <a href={obj.url} rel="me">
+                            <a href={obj.url} rel="me" style={obj.color ? `--iconColor: ${obj.color};` : ""}>
                                 <Fragment set:html={obj.icon} />
                             </a>
                         </li>
