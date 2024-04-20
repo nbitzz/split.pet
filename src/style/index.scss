@@ -264,6 +264,40 @@ small {
     }
 }
 
+input[type=checkbox] {
+    --size: 1em;
+
+    appearance: none;
+    border-radius: 100px;
+    background: #ccc;
+    height: var(--size);
+    aspect-ratio: 1 / 1;
+    vertical-align: text-top;
+    margin-left: 0;
+    position: relative;
+
+    &::before {
+        content: "○";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-family: InterVariable, Inter, sans-serif;
+        font-weight: 800;
+        font-size: calc( var(--size) - 0.25em );
+        margin: 0;
+        color: #999;
+    }
+
+    &[checked] {
+        background: #AA88FF;
+        &::before {
+            content: "✓";
+            color: #333333aa;
+        }
+    }
+}
+
 svg { fill: currentColor }
 
 *:focus-visible {

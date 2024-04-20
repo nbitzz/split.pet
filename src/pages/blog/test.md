@@ -14,7 +14,7 @@ Test test test.
 ```ts
 const abc = "hi"
 ```
-*Hi* **Hi** ***Hi*** ~~hi~~
+*Hi* **Hi** ***Hi*** ~~Hi~~
 - Hey
     - Hello
         - Haiiiiiiiiiiiiiiiii
@@ -24,3 +24,5 @@ const abc = "hi"
 - [X] Give up
 
 I FUCKING HATE CSS I HATE WEB DEVELOPMENT I AM GOING TO KILL MYSELF
+
+i wonder if anyone would really care if i did
