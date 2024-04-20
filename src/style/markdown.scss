@@ -1,4 +1,5 @@
 .markdown {
+    
     code {
         font-family: monospace monospace;
         background-color: #24292E;
@@ -44,5 +45,21 @@
                 color: #AA88FF;
             }
         }
+    }
+
+    h1, h2, h3 {
+        margin-bottom: 0;
+    }
+
+    p {
+        margin: 0.75em 0;
+    }
+
+    & > ul {
+        margin: 0;
+    }
+
+    & > *:last-child {
+        margin-bottom: 1.5em !important;
     }
 }

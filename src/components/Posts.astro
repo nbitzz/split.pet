@@ -5,7 +5,7 @@ import PostPreview, {type Props as PostPreviewProps} from './PostPreview.astro'
 const {postCount, noHeader} = Astro.props
 const posts = 
     (await Astro.glob("../pages/blog/*.md"))
-        .sort((a,b) => (a.frontmatter.pubDate||0)-(b.frontmatter.pubDate||0))
+        .sort((a,b) => (b.frontmatter.publicationDate||0-(a.frontmatter.publicationDate||0)))
 
 interface Props {
     postCount?: number,

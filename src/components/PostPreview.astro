@@ -23,7 +23,7 @@ const { frontmatter, url } = Astro.props
         font-style: oblique;
     }
 
-    p:last-of-type {
+    p:has(small) {
         text-align: right;
     }
 
@@ -91,9 +91,13 @@ const { frontmatter, url } = Astro.props
             <p>
                 {frontmatter.description}
             </p>
-            <p>
-                <small>{new Date(frontmatter.publicationDate).toISOString().split("T")[0]}</small>
-            </p>
+            {
+                frontmatter.publicationDate
+                ? <p>
+                    <small>{new Date(frontmatter.publicationDate).toISOString().split("T")[0]}</small>
+                </p>
+                : ""
+            }
         </div>
 
     </div>
