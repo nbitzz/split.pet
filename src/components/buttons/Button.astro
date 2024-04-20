@@ -1,0 +1,35 @@
+---
+import { Image, imageConfig, Picture } from 'astro:assets'
+import type { ImportedImage } from './Buttons.astro'
+
+export interface Props {
+    image: ImportedImage
+}
+
+const {image} = Astro.props
+
+const WrapperElement = image.url ? "a" : Fragment
+
+---
+<style lang="scss">
+    .button {
+        transition-duration: 100ms;
+        transition-property: transform;
+    }
+
+    .button:hover {
+        transform: scale(115%);
+    }
+</style>
+<WrapperElement href={image.url}>
+    {
+        ("src" in image)
+            ? <Picture 
+                class="button" 
+                src={image} 
+                alt={image.alt || ""}
+                formats={['avif','webp']}
+            />
+            : <img class="button" src={image.directUrl || `/gifBtns/${image.basename}.gif`} alt={image.alt}>
+    }
+</WrapperElement>

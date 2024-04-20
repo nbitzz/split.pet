@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro:assets"
+import Button from "./Button.astro"
 
 /*
     This right here is what you call pure genius.
@@ -8,7 +8,7 @@ import { Picture } from "astro:assets"
     - map to `[ route, module().default ]`
     - group into an object where the key is what's inbetween `./images/` and `.*` and the value is an array containing the `[ route, module().default ]` arrays
     - convert `module().default` into an `Object.entries()` array
-    - flatMap all of the `Object.entries(module().default)`s
+    - flatMap all of the `Object.entries(module().default)`s along with the basename
     - combine all that into one object
     
     Basically: import everything in ./images,
@@ -25,6 +25,14 @@ let groupBy = Object.groupBy || function<K extends PropertyKey, T>(items: Array<
 
     return newObj
 }
+export interface Metadata {
+    alt?: string,
+    url?: string,
+    order?: number,
+    basename: string
+}
+
+export type ImportedImage = (ImageMetadata & Metadata) | ({directUrl: string} & Metadata)
 
 const images =
     (Object.entries(
@@ -36,9 +44,13 @@ const images =
             ([name, obj]) => name.match(/.\/images\/(.*)\..*/)[1]
         )
     ).map(([k, arrays]) => 
-        Object.fromEntries(arrays.flatMap(array => Object.entries(array[1])))
-    ) as unknown as (ImageMetadata & {alt?: string, url?: string, order?: number})[])
+        Object.fromEntries([
+            ...arrays.flatMap(array => Object.entries(array[1])), 
+            ["basename", k]
+        ])
+    ) as unknown as ImportedImage[])
     .sort((a,b) => (a.order??100)-(b.order??100))
+
 ---
 
 <style lang="scss">
@@ -50,38 +62,13 @@ const images =
         justify-content: center;
         flex-direction: row
     }
-
-    .button {
-        transition-duration: 100ms;
-        transition-property: transform;
-    }
-
-    .button:hover {
-        transform: scale(115%);
-    }
 </style>
 
 <section id="buttons" class="insignificant">
     <h2 class="sectionDenoter">Buttons</h2>
     <div>
         {
-            images.map((image) => 
-                image.url ?
-                    <a href={image.url}>
-                        <Picture 
-                            class="button" 
-                            src={image} 
-                            formats={['avif','webp']} 
-                            alt={image.alt || ""} 
-                        />
-                    </a> : 
-                    <Picture 
-                        class="button" 
-                        src={image} 
-                        formats={['avif','webp']} 
-                        alt={image.alt || ""} 
-                    />
-            )
+            images.map((image) => <Button image={image} />)
         }
     </div>
     <script>
