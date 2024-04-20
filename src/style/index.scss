@@ -209,7 +209,7 @@ ul.socialsList {
         &[href="javascript:void(0)"] {
             cursor:default;
         }
-        &:hover {
+        &:hover, &:focus-visible {
             color: var(--iconColor) !important;
         }
         & > svg {
