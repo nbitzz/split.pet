@@ -9,17 +9,25 @@ export interface Props {
 const {image} = Astro.props
 
 const ButtonElement = image.oneFormat ? Image : Picture
-const WrapperElement = image.url ? "a" : Fragment
+const WrapperElement = image.url ? "a" : "div"
 
 ---
 <style lang="scss">
     .button {
         transition-duration: 100ms;
-        transition-property: transform;
+        margin:0;
+        box-shadow: 0 0 0px var(--backgroundColorTransparent);
+        transition-property: box-shadow, transform;
+
+        &:hover {
+            transform: scale(115%);
+            background: var(--backgroundColorTransparent);
+            box-shadow: 0 0 15px #000;
+        }
     }
 
-    .button:hover {
-        transform: scale(115%);
+    img {
+        display:block;
     }
 </style>
 <WrapperElement href={image.url} target="_blank">
