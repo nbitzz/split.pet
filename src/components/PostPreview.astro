@@ -35,36 +35,40 @@ const { post } = Astro.props
         border-radius: 16px;
         padding: 10px 15px;
         background-color: var(--backgroundColor);
-        border-left: 0px solid transparent;
-        border-right: 0px solid transparent;
+        border: 1px solid transparent;
+
+        overflow: hidden;
         
         transition-duration: 250ms;
         transition-property: border-left border-right;
         position: relative;
-    }
 
-    .post > img {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        border-radius: 16px;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        background-color: var(--backgroundColor);
-        filter: opacity(20%) saturate(25%);
-        z-index: 0;
-        transition-duration: 250ms;
-        transition-property: filter;
+        & > img {
+            position: absolute;
+            border-radius: 16px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: var(--backgroundColor);
+            filter: opacity(20%) saturate(25%);
+            z-index: 0;
+            transition-duration: 250ms;
+            transition-property: filter, transform;
+
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(150%) rotate(-12.5deg);
+
+            @media (prefers-reduced-motion) {
+                display: none;
+            }
+        }
     }
 
     .post:has(> img) {
         background: var(--backgroundColor);
     }
 
-    a:hover > .post > img, a:focus-visible > .post > img {
-        filter: opacity(25%) saturate(75%);
-    }
 
     .frontmatter {
         z-index: 1;
@@ -72,12 +76,29 @@ const { post } = Astro.props
     }
 
     a:hover > .post, a:focus-visible > .post {
-        border-left: 5px solid #66AAFF;
-        border-right: 5px solid #66AAFF;
+        border: 1px solid #66aaff;
+        & > img {
+            filter: opacity(45%) saturate(75%);
+            transform: translate(-50%, -50%) scale(125%) rotate(-5deg);
+        }
+    }
+    
+    a:active > .post {
+        border: 1px solid #66aaff99;
+        & > img {
+            filter: opacity(55%) saturate(100%);
+            transform: translate(-50%, -50%) scale(100%) rotate(0deg);
+        }
     }
 
     a:focus-visible > .post {
         outline: 3px solid #ccc;
+    }
+
+    @media (prefers-reduced-motion) {
+        .post > img {
+            transform: translate(-50%, -50%) scale(100%) !important;
+        }
     }
 </style>
 <a href={post.url}>

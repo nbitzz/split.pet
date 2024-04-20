@@ -74,7 +74,7 @@ const images =
     <script>
         // small amount of js to control the
         // tilt effect
-        if (!window.matchMedia('(hover: none)').matches)
+        if (!window.matchMedia('(hover: none)').matches && !window.matchMedia('(prefers-reduced-motion)').matches)
             Array.from(document
                 .getElementById("buttons")
                 .getElementsByClassName("button"))

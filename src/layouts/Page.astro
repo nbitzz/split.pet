@@ -29,10 +29,10 @@ interface Props {
             meta?.map(e => <meta name={e.name} content={e.content}>)
         }
     </head>
-    <body style="background-color: #B2B2B2;">
+    <body>
 
         <div id="background" aria-hidden>
-            <video aria-hidden autoplay muted loop playsinline disablepictureinpicture src="/lagtrain.webm" style="filter:brightness(80%);background-color: #B2B2B2;" class="hide_when_reduced_motion" />
+            <video aria-hidden autoplay muted loop playsinline disablepictureinpicture src="/lagtrain.webm" style="filter:brightness(80%);background-color: #B2B2B2;" class="hide_when_reduced_motion hide_when_high_contrast" />
         </div>
 
         <div id="all">

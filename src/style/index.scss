@@ -5,7 +5,7 @@
 }
   
 body {
-    background: #FFAA66;
+    background: #B2B2B2;
     margin:0;
 }
 
@@ -295,6 +295,24 @@ input[type=checkbox] {
             content: "✓";
             color: #333333aa;
         }
+    }
+}
+
+@media (prefers-high-contrast) {
+    :root {
+        --backgroundColor: #000;
+        --backgroundColorTransparent: #000;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    .hide_when_high_contrast {
+        display: none;
+    }
+    .insignificant, .significant {
+        background-color: var(--backgroundColor) !important;
     }
 }
 

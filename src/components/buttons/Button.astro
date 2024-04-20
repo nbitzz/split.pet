@@ -21,6 +21,10 @@ const WrapperElement = image.url ? "a" : "div"
             transform: scale(115%);
             background: var(--backgroundColorTransparent);
             box-shadow: 0 0 15px #000;
+
+            @media (prefers-reduced-motion) {
+                transform: none;
+            }
         }
     }
 
