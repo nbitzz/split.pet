@@ -1,0 +1,98 @@
+---
+import { Picture } from "astro:assets"
+
+/*
+    This right here is what you call pure genius.
+
+    - import all in images
+    - map to `[ route, module().default ]`
+    - group into an object where the key is what's inbetween `./images/` and `.*` and the value is an array containing the `[ route, module().default ]` arrays
+    - convert `module().default` into an `Object.entries()` array
+    - flatMap all of the `Object.entries(module().default)`s
+    - combine all that into one object
+    
+    Basically: import everything in ./images,
+    and combine everything with the same basename into one object
+*/
+
+const images =
+    Object.entries(
+        Object.groupBy(
+            (await Promise.all(
+                Object.entries(import.meta.glob("./images/*"))
+                    .map(async ([key, prom]) => [key, (await prom() as any)?.default])
+            )),
+            ([name, obj]) => name.match(/.\/images\/(.*)\..*/)[1]
+        )
+    ).map(([k, arrays]) => 
+        Object.fromEntries(arrays.flatMap(array => Object.entries(array[1])))
+    ) as unknown as (ImageMetadata & {alt?: string, url?: string})[]
+---
+
+<style lang="scss">
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: row
+    }
+
+    .button {
+        transition-duration: 100ms;
+        transition-property: transform;
+    }
+
+    .button:hover {
+        transform: scale(115%);
+    }
+</style>
+
+<section id="buttons" class="insignificant">
+    <h2 class="sectionDenoter">Buttons</h2>
+    <div>
+        {
+            images.map((image) => 
+                image.url ?
+                    <a href={image.url}>
+                        <Picture 
+                            class="button" 
+                            src={image} 
+                            formats={['avif','webp']} 
+                            alt={image.alt || ""} 
+                        />
+                    </a> : 
+                    <Picture 
+                        class="button" 
+                        src={image} 
+                        formats={['avif','webp']} 
+                        alt={image.alt || ""} 
+                    />
+            )
+        }
+    </div>
+    <script>
+        // small amount of js to control the
+        // tilt effect
+        Array.from(document
+            .getElementById("buttons")
+            .getElementsByClassName("button"))
+            .forEach((e: HTMLElement) => {
+                let startEffect = (ev: MouseEvent) => {
+                    let yP = 1-(ev.offsetY/31*2)
+                    let xP = -1+(ev.offsetX/88*2)
+                    e.style.transform =
+                        "scale(115%)"
+                        + ` rotate3d(${yP.toFixed(2)}, ${xP.toFixed(2)},0,20deg)`
+                        + ` translate(${3*xP}px,${-5*yP}px)`
+                }
+                e.addEventListener('mouseover', startEffect)
+                e.addEventListener('mousemove', startEffect)
+                e.addEventListener('mouseleave', () => {
+                    e.style.transform = ""
+                })
+            })
+    </script>
+    <br>
+</section>

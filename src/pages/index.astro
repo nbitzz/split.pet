@@ -23,6 +23,7 @@ import {
 import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
 import Posts from "../components/Posts.astro";
 import SocialList from "../components/SocialList.astro";
+import Buttons from "../components/buttons/Buttons.astro";
 ---
 <Page title="split's website" description="hi this is my shitty website">
     <PersonHeader
@@ -78,6 +79,8 @@ import SocialList from "../components/SocialList.astro";
     </section>
 
     <Posts display={["postCount", 3]} />
+
+    <Buttons />
 
     <Quotes quotes={[
         {text: "fucking hehead [sic] split kill that ni[...]", from: "chapel1337"},
