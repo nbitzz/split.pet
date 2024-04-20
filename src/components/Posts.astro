@@ -34,7 +34,7 @@ const extraAttributes = {
     <div>
         {
             display?.[0] != "postList"
-            ? posts.slice(0,display?.[1] !== null && display?.[1] !== undefined ? display?.[1]-1 : undefined)
+            ? posts.slice(0,display?.[1])
                 .map(e => <PostPreview post={e as unknown as PostPreviewProps["post"]} />)
             : posts.filter(e => display[1].includes(e.file))
         }
