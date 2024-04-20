@@ -13,6 +13,7 @@ import {
     siMonkeytype,
     siUpptime
 } from "simple-icons"
+import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
 import Posts from "../components/Posts.astro";
 ---
 <Page title="split's website" description="hi this is my shitty website">
@@ -25,7 +26,8 @@ import Posts from "../components/Posts.astro";
             {url: "https://github.com/nbitzz", icon: siGithub.svg},
             {url: "https://steamcommunity.com/id/haha__yes", icon: siSteam.svg},
             {url: "https://monkeytype.com/profile/split1337", icon: siMonkeytype.svg},
-            {url: "https://status.fyle.uk/", icon: siUpptime.svg}
+            {url: "https://status.fyle.uk/", icon: siUpptime.svg},
+            {url: "/blog/setup", icon: iconLaptop}
         ]}>
         <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" />
     </PersonHeader>
@@ -54,7 +56,7 @@ import Posts from "../components/Posts.astro";
         </p>
     </section>
 
-    <Posts postCount={3} />
+    <Posts display={["postCount", 3]} />
 
     <Quotes quotes={[
         {text: "fucking hehead [sic] split kill that ni[...]", from: "chapel1337"},

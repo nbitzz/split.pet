@@ -1,11 +1,14 @@
 ---
 import { type Props as PostProps } from "../layouts/Post.astro"
 
-export interface Props extends PostProps {
-    url: string
+export interface Props {
+    post: {
+        url: string,
+        frontmatter: PostProps["frontmatter"]
+    }
 }
 
-const { frontmatter, url } = Astro.props
+const { post } = Astro.props
 ---
 <style lang="scss">
     a:has(> .post) {
@@ -77,24 +80,24 @@ const { frontmatter, url } = Astro.props
         outline: 3px solid #ccc;
     }
 </style>
-<a href={url}>
+<a href={post.url}>
     <div class="post">
 
         {
-            frontmatter.image && !frontmatter.image.isTopper
-            ? <img src={frontmatter.image.url} alt={frontmatter.image.alt}>
+            post.frontmatter.image && !post.frontmatter.image.isTopper
+            ? <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt}>
             : ""
         }
 
         <div class="frontmatter">
-            <h3>{frontmatter.title}</h3>
+            <h3>{post.frontmatter.title}</h3>
             <p>
-                {frontmatter.description}
+                {post.frontmatter.description}
             </p>
             {
-                frontmatter.publicationDate
+                post.frontmatter.publicationDate
                 ? <p>
-                    <small>{new Date(frontmatter.publicationDate).toISOString().split("T")[0]}</small>
+                    <small>{new Date(post.frontmatter.publicationDate).toISOString().split("T")[0]}</small>
                 </p>
                 : ""
             }

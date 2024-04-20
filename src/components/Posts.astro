@@ -2,13 +2,13 @@
 import type { HTMLAttributes } from 'astro/types'
 import PostPreview, {type Props as PostPreviewProps} from './PostPreview.astro'
 
-const {postCount, noHeader} = Astro.props
+const {display, noHeader} = Astro.props
 const posts = 
     (await Astro.glob("../pages/blog/*.md"))
         .sort((a,b) => (b.frontmatter.publicationDate||0-(a.frontmatter.publicationDate||0)))
 
 interface Props {
-    postCount?: number,
+    display?: ["postCount", number] | ["postList", string[]],
     noHeader?: boolean,
     extraAttributes?: HTMLAttributes<'section'> // i should kill myself
 }
@@ -31,9 +31,12 @@ const extraAttributes = {
 
 <section id="posts" {...extraAttributes}>
     {!noHeader ? <h2 class="sectionDenoter">Posts</h2> : ""}
-    <div>  
+    <div>
         {
-            posts.slice(0,postCount !== null && postCount !== undefined ? postCount-1 : postCount).map(e => <PostPreview url={e.url} frontmatter={e.frontmatter as PostPreviewProps["frontmatter"]} />)
+            display?.[0] != "postList"
+            ? posts.slice(0,display?.[1] !== null && display?.[1] !== undefined ? display?.[1]-1 : undefined)
+                .map(e => <PostPreview post={e as unknown as PostPreviewProps["post"]} />)
+            : posts.filter(e => display[1].includes(e.file))
         }
     </div>
     <br>
