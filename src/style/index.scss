@@ -29,6 +29,11 @@ body {
     height: 100%;
     transition-duration: 250ms;
 
+    & svg {
+        height: 1em;
+        vertical-align:middle;
+    }
+
     & a {
         color: #ddd;
     }

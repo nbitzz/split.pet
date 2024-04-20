@@ -1,5 +1,10 @@
 ---
 import "../style/index.scss";
+import {
+    siAstro,
+    siGithub,
+    siCloudflarepages
+} from "simple-icons"
 
 const { title, description, meta } = Astro.props
 
@@ -39,7 +44,15 @@ interface Props {
                 <p>
                     <a href="/domainlist">Domain list</a><br>
                     <a href="/blog">Blog</a><br>
-                    <a href="https://github.com/nbitzz/newnewwebsite">Website source</a>
+                    Built with 
+                    <a href="https://astro.build" style={"color:#"+siAstro.hex}>
+                        <Fragment set:html={siAstro.svg} />&thinsp;Astro</a>
+                    on
+                    <a href="https://github.com/nbitzz/newnewwebsite">
+                        <Fragment set:html={siGithub.svg} />&thinsp;GitHub</a>
+                    and hosted with
+                    <a href="https://pages.cloudflare.com/" style={"color:#"+siCloudflarepages.hex}>
+                        <Fragment set:html={siCloudflarepages.svg} />&thinsp;Cloudflare Pages</a>
                 </p>
             </footer>
             
