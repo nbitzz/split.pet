@@ -27,7 +27,7 @@ let groupBy = Object.groupBy || function<K extends PropertyKey, T>(items: Array<
 }
 
 const images =
-    Object.entries(
+    (Object.entries(
         groupBy(
             (await Promise.all(
                 Object.entries(import.meta.glob("./images/*"))
@@ -37,7 +37,8 @@ const images =
         )
     ).map(([k, arrays]) => 
         Object.fromEntries(arrays.flatMap(array => Object.entries(array[1])))
-    ) as unknown as (ImageMetadata & {alt?: string, url?: string})[]
+    ) as unknown as (ImageMetadata & {alt?: string, url?: string, order?: number})[])
+    .sort((a,b) => (a.order??100)-(b.order??100))
 ---
 
 <style lang="scss">
