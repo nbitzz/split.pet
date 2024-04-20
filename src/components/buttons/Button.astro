@@ -1,5 +1,4 @@
 ---
-import { Image, Picture } from 'astro:assets'
 import type { ImportedImage } from './Buttons.astro'
 
 export interface Props {
@@ -8,7 +7,6 @@ export interface Props {
 
 const {image} = Astro.props
 
-const ButtonElement = image.oneFormat ? Image : Picture
 const WrapperElement = image.url ? "a" : "div"
 
 ---
@@ -31,17 +29,15 @@ const WrapperElement = image.url ? "a" : "div"
     }
 </style>
 <WrapperElement href={image.url} target="_blank">
-    {
-        ("src" in image)
-            ? <ButtonElement 
-                class="button" 
-                src={image} 
-                alt={image.alt || ""}
-                {...(image.oneFormat ? {} : {formats:['avif','webp']})}
-                width="88"
-                height="31"
-                quality="max"
-            />
-            : <img class="button" src={image.directUrl || `/gifBtns/${image.basename}.gif`} alt={image.alt} width="88" height="31">
-    }
+    <img 
+        class="button"
+        src={
+            ('directUrl' in image 
+            ? image.directUrl 
+            : image.src) 
+            || `/gifBtns/${image.basename}.gif`
+        }
+        alt={image.alt}
+        width="88" height="31"
+    >
 </WrapperElement>
