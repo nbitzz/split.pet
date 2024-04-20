@@ -1,4 +1,5 @@
 ---
+import SocialList, { type Props as SocialListProps } from './SocialList.astro'
 const {
     title,
     description,
@@ -8,7 +9,7 @@ const {
 interface Props {
     title: string,
     description: string,
-    socials: {url: string, icon: string, color?: string}[]
+    socials: SocialListProps["socials"]
 }
 ---
 <header>
@@ -23,17 +24,7 @@ interface Props {
         </div>
 
         <address>
-            <ul class="socialsList">
-                {
-                    socials.map(obj => 
-                        <li>
-                            <a href={obj.url} rel="me" style={obj.color ? `--iconColor: ${obj.color};` : ""}>
-                                <Fragment set:html={obj.icon} />
-                            </a>
-                        </li>
-                    )
-                }
-            </ul>
+            <SocialList socials={socials} />
         </address>
     </div>
 </header>

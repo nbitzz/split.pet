@@ -1,0 +1,19 @@
+---
+
+export interface Props {
+    socials: {url?: string, icon: string, color?: string}[]
+}
+
+const {socials} = Astro.props
+---
+<ul class="socialsList">
+    {
+        socials.map(obj => 
+            <li>
+                <a href={obj.url} rel="me" style={obj.color ? `--iconColor: ${obj.color};` : ""}>
+                    <Fragment set:html={obj.icon} />
+                </a>
+            </li>
+        )
+    }
+</ul>

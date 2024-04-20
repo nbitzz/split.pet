@@ -12,10 +12,17 @@ import {
     siSteam,
     siMonkeytype,
     siUpptime,
-    siSteamdeck
+    siSteamdeck,
+    siJavascript,
+    siSvelte,
+    siAstro,
+    siLua,
+    siFramework,
+    siArchlinux
 } from "simple-icons"
 import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
 import Posts from "../components/Posts.astro";
+import SocialList from "../components/SocialList.astro";
 ---
 <Page title="split's website" description="hi this is my shitty website">
     <PersonHeader
@@ -43,6 +50,19 @@ import Posts from "../components/Posts.astro";
         </p>
         <h2 class="sectionDenoter" id="projects">projects</h2>
         <p><a href="https://github.com/mollersuite/monofile">monofile</a>, uhh... that's also the only thing I've really made that's notable lol, and even that's a stretch</p>
+        <h2 class="sectionDenoter" id="stuffiknow">stuff i use (or atleast know)</h2>
+        <SocialList socials={[
+            { url: "https://archlinux.org", icon:siArchlinux.svg, color: "#"+siArchlinux.hex },
+            { url: "https://frame.work", icon:siFramework.svg },
+            { url: "https://steamdeck.com", icon:siSteamdeck.svg, color: "#"+siSteamdeck.hex },
+        ]} />
+        <br style="display:block;content:'';margin-top:10px;">
+        <SocialList socials={[
+            { url: "javascript:void(0)", icon:siJavascript.svg, color: "#"+siJavascript.hex },
+            { url: "https://lua.org", icon:siLua.svg },
+            { url: "https://svelte.dev", icon:siSvelte.svg, color: "#"+siSvelte.hex },
+            { url: "https://astro.build", icon:siAstro.svg, color: "#"+siAstro.hex },
+        ]} />
         <h2 class="sectionDenoter" id="not-notable-stuff">not-so-notable stuff</h2>
         <p>
             <a href="https://xkcd.uk">xkcd.uk</a>,

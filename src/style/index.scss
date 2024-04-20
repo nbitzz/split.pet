@@ -206,6 +206,9 @@ ul.socialsList {
         color: #ccc !important;
         --iconColor: #fff;
         display: flex; // makes the li height the same as the svg heigh t
+        &[href="javascript:void(0)"] {
+            cursor:default;
+        }
         &:hover {
             color: var(--iconColor) !important;
         }
