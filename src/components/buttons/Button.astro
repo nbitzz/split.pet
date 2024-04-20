@@ -22,7 +22,7 @@ const WrapperElement = image.url ? "a" : Fragment
         transform: scale(115%);
     }
 </style>
-<WrapperElement href={image.url}>
+<WrapperElement href={image.url} target="_blank">
     {
         ("src" in image)
             ? <ButtonElement 

@@ -10,7 +10,7 @@ const {socials} = Astro.props
     {
         socials.map(obj => 
             <li>
-                <a href={obj.url} rel="me" style={obj.color ? `--iconColor: ${obj.color};` : ""}>
+                <a href={obj.url} rel="me" style={obj.color ? `--iconColor: ${obj.color};` : ""} target="_blank">
                     <Fragment set:html={obj.icon} />
                 </a>
             </li>
