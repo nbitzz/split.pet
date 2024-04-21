@@ -3,6 +3,9 @@ import GenericHeader from "../components/GenericHeader.astro"
 import Page from "./Page.astro"
 import "../style/markdown.scss"
 
+import extend from "@fluentui/svg-icons/icons/table_resize_column_24_filled.svg?raw";
+import home from "@fluentui/svg-icons/icons/home_24_filled.svg?raw";
+
 const { frontmatter } = Astro.props
 
 export interface Props {
@@ -35,8 +38,54 @@ const notes = [
 
 <style lang="scss">
     #frontmatter {
-        p {
+        > p {
             text-align: center;
+        }
+
+        .postControls {
+            display: flex;
+            padding: 0 10px;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            align-items: center;
+
+            p {
+                margin: 0;
+                color: #aaa;
+            }
+
+            .controls {
+                font-size: 1.5em;
+                display: flex;
+                label {
+                    display: none;
+                }
+                >*,>div>* {
+                    vertical-align: middle;
+                }
+                input[type=checkbox] {
+                    --size: 1.25em;
+                }
+                a {
+                    display: block;
+                    transition-duration: 250ms;
+                    transition-property: color;
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+                .divider {
+                    font-size: 1em;
+                }
+                @media screen and (max-width: 640px) {
+                    .postExtend {
+                        display: none;
+                    }
+                }
+                @media screen and (max-width: 530px) {
+                    font-size: xx-large;
+                }
+            }
         }
     }
 </style>
@@ -68,6 +117,17 @@ const notes = [
             ? <br><small>{notes.join(` — `)}</small>
             : ""}
         </p>
+        <div class="postControls">
+            <p>Controls</p>
+            <div class="controls">
+                <a href="/blog"><Fragment set:html={home} /></a>
+                <div class="postExtend">
+                <span class="divider" aria-hidden>&nbsp;|&nbsp;</span>
+                    <label for="extendPost">Extend post</label>
+                    <Fragment set:html={extend} />&thinsp;<input type="checkbox" name="extendPost" class="extendPost">
+                </div>
+            </div>
+        </div>
     </section>
     <section class="insignificant markdown" id="postBody">
         <slot />

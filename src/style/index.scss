@@ -194,6 +194,10 @@ body {
             }
         }
     }
+
+    &:has(.extendPost:checked) {
+        width: 500px;
+    }
 }
 
 ul.socialsList {
@@ -273,7 +277,7 @@ input[type=checkbox] {
     height: var(--size);
     aspect-ratio: 1 / 1;
     vertical-align: text-top;
-    margin-left: 0;
+    margin: 3px 0;
     position: relative;
 
     &::before {
@@ -289,12 +293,16 @@ input[type=checkbox] {
         color: #999;
     }
 
-    &[checked] {
+    &:checked {
         background: #AA88FF;
         &::before {
             content: "✓";
             color: #333333aa;
         }
+    }
+
+    &:not([disabled]) {
+        cursor: pointer;
     }
 }
 

@@ -18,6 +18,7 @@ Aaaaaand that about sums up the development process of my site. <small>Can you t
 
 - [ ] Add a limit to how far to the right the body can be placed <small>(for people with ultrawide)</small>
 - [ ] Replace blog `<img>`s with Astro `<Picture>`s
+- [ ] Fix little circle inside of checkbox being misaligned
 
 ...but aside from that, I think it's mostly good enough! It's kind of messy behind the scenes as well, but at least it looks kinda nice! <small>Just don't remove the CSS.</small> 
 
