@@ -195,8 +195,10 @@ body {
         }
     }
 
-    &:has(.extendPost:checked) {
-        width: 500px;
+    @media screen and (min-width: 640px) {
+        &:has(.extendPost:checked) {
+            width: 500px;
+        }
     }
 }
 
@@ -288,7 +290,7 @@ input[type=checkbox] {
         transform: translate(-50%, -50%);
         font-family: InterVariable, Inter, sans-serif;
         font-weight: 800;
-        font-size: calc( var(--size) - 0.25em );
+        font-size: calc( calc(var(--size) / 4) * 3 );
         margin: 0;
         color: #999;
     }
