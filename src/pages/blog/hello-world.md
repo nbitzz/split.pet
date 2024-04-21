@@ -12,7 +12,7 @@ I started with just pure HTML, but then realized that pure HTML and CSS *really*
 
 Originally I was thinking to just have my socials be a little footnote in the corner while all of my projects would be in the background, but eventually decided against it <small>once my dumbass couldn't get it to work properly</small>. Then I thought about having a neat little background to stare at while having my socials just be a little footnote in the corner (until you scrolled, of course). [Too lazy to find one of these proper backgrounds, I just used the Lagtrain MV.](https://5320c414.splitsnewnewwebsite.pages.dev)
 
-Then I thought to [add quotes <small>and Astro</small>...](https://77c727ca.splitsnewnewwebsite.pages.dev/) and then I thought to [add a blog...](https://3b2aa096.splitsnewnewwebsite.pages.dev/) and then, finally, [buttons.](https://65f271c7.splitsnewnewwebsite.pages.dev/) <small>Speaking of buttons, if you have any, <a href="https://coolviruses.download/@split">please @ me with them on Fedi</a> and I'll add them if they're funny / if I think you're cool!</small>
+Then I thought to [add quotes <small>and Astro</small>...](https://77c727ca.splitsnewnewwebsite.pages.dev/#quotes) and then I thought to [add a blog...](https://3b2aa096.splitsnewnewwebsite.pages.dev/blog) and then, finally, [buttons.](https://65f271c7.splitsnewnewwebsite.pages.dev/#buttons) <small>Speaking of buttons, if you have any, <a href="https://coolviruses.download/@split">please @ me with them on Fedi</a> and I'll add them if they're funny / if I think you're cool!</small>
 
 Aaaaaand that about sums up the development process of my site. <small>Can you tell I can't write a blog post?</small> I still have a few things I should probably do:
 
