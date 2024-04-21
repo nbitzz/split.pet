@@ -3,6 +3,7 @@ layout: "../../layouts/Post.astro"
 title: Test post
 description: Hello world!
 publicationDate: 1
+unlisted: true
 image:
     url: /thumbtest.webp
     alt: "Hi!"

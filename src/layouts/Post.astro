@@ -10,6 +10,7 @@ export interface Props {
         title: string,
         description: string,
         publicationDate?: number,
+        unlisted?: boolean,
         image?: {
             isTopper?: boolean,
             url: string,
@@ -17,6 +18,19 @@ export interface Props {
         }
     }
 }
+
+const notes = [
+    ...(
+        frontmatter.publicationDate 
+        ? [`Published ${new Date(frontmatter.publicationDate).toISOString().split("T")[0]} (UTC)`]
+        : []
+    ),
+    ...(
+        frontmatter.unlisted
+        ? [`Unlisted`]
+        : []
+    )
+]
 ---
 
 <style lang="scss">
@@ -50,8 +64,8 @@ export interface Props {
     <section class="significant" id="frontmatter">
         <p>
             <em>{frontmatter.description}</em>
-            {frontmatter.publicationDate
-            ? <br><small>Published {new Date(frontmatter.publicationDate).toISOString().split("T")[0]} (UTC)</small>
+            {notes.length
+            ? <br><small>{notes.join(` — `)}</small>
             : ""}
         </p>
     </section>
