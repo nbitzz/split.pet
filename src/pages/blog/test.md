@@ -22,7 +22,17 @@ const abc = "hi"
             - Hallooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 - [ ] Style this better
 - [ ] Do homework
-- [X] Give up
+- [X] Give up :simple.Discord:
+
+:fluent.add:
+
+Powered by :simple.Cloudflare: Cloudflare :simple.Cloudflarepages: Pages
+
+:thisemojidoesntexist: :fakelocator.fakeemoji: :::::: :hi: hi hi :hi:
+
+:wavesmiley: :tired: :mahirolog: :verygood: :URETHRA: Woah Woaaah :aaa: :aaaa: :aaaaa: :aaaa: :aaaa: :verygood: Cool
+
+This is a true :URETHRA: moment. AAaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa
 
 I FUCKING HATE CSS I HATE WEB DEVELOPMENT I AM GOING TO KILL MYSELF
 

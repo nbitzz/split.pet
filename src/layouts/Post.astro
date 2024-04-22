@@ -123,9 +123,9 @@ const notes = [
         <div class="postControls">
             <p>{frontmatter.readTime.words} words ({frontmatter.readTime.text.match(/(.*) read/)[1]})</p>
             <div class="controls">
-                <a href="/blog"><Fragment set:html={home} /></a>
+                <a href="/blog" title="View posts"><Fragment set:html={home} /></a>
                 <div class="postExtend">
-                <span class="divider" aria-hidden>&nbsp;|&nbsp;</span>
+                    <span class="divider" aria-hidden>&nbsp;|&nbsp;</span>
                     <label for="extendPost">Extend post</label>
                     <Fragment set:html={extend} />&thinsp;<input type="checkbox" name="extendPost" class="extendPost">
                 </div>

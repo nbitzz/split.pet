@@ -41,7 +41,7 @@ const images =
                 Object.entries(import.meta.glob("./images/*"))
                     .map(async ([key, prom]) => [key, (await prom() as any)?.default])
             )),
-            ([name, obj]) => name.match(/.\/images\/(.*)\..*/)[1]
+            ([name, obj]) => name.match(/\.\/images\/(.*)\..*/)[1]
         )
     ).map(([k, arrays]) => 
         Object.fromEntries([

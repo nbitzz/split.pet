@@ -19,6 +19,7 @@
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
     "sass": "^1.75.0",
-    "simple-icons": "^11.12.0"
+    "simple-icons": "^11.12.0",
+    "unist-util-visit": "^5.0.0"
   }
 }

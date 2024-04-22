@@ -62,4 +62,16 @@
     & > *:last-child {
         margin-bottom: 1.5em !important;
     }
+
+    .customEmoji {
+        height: 1.5em;
+        width: auto;
+        vertical-align: middle;
+        transition-duration: 150ms;
+        transition-property: transform;
+
+        &:hover {
+            transform: scale(150%);
+        }
+    }
 }
