@@ -16,6 +16,8 @@
     "@astrojs/rss": "^4.0.5",
     "@fluentui/svg-icons": "^1.1.236",
     "astro": "^4.6.3",
+    "mdast-util-to-string": "^4.0.0",
+    "reading-time": "^1.5.0",
     "sass": "^1.75.0",
     "simple-icons": "^11.12.0"
   }

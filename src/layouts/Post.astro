@@ -2,6 +2,7 @@
 import GenericHeader from "../components/GenericHeader.astro"
 import Page from "./Page.astro"
 import "../style/markdown.scss"
+import type getReadingTime from 'reading-time';
 
 import extend from "@fluentui/svg-icons/icons/table_resize_column_24_filled.svg?raw";
 import home from "@fluentui/svg-icons/icons/home_24_filled.svg?raw";
@@ -18,7 +19,8 @@ export interface Props {
             isTopper?: boolean,
             url: string,
             alt: string
-        }
+        },
+        readTime: ReturnType<typeof getReadingTime>
     }
 }
 
@@ -118,7 +120,7 @@ const notes = [
             : ""}
         </p>
         <div class="postControls">
-            <p>Controls</p>
+            <p>{frontmatter.readTime.words} words ({frontmatter.readTime.text.match(/(.*) read/)[1]})</p>
             <div class="controls">
                 <a href="/blog"><Fragment set:html={home} /></a>
                 <div class="postExtend">
