@@ -5,6 +5,7 @@ description: Welcome to my new site!
 publicationDate: 1713686158000
 image:
     url: /thumbtest.webp
+    alt: Screenshot of a VS Code window for this website, split.pet
 ---
 :wavesmiley: Welcome to my new little site! I didn't feel like the `neofetch` would really cut it anymore, and the fact that it was hosted on my PC meant that it kinda... died if my PC did. [Which it did.](https://github.com/nbitzz/status/issues/686) So, I decided to make a new one from scratch!
 
