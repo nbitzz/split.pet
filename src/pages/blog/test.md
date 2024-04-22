@@ -41,8 +41,12 @@ Wait can you :wavesmiley: in a code block
 > Block quote
 >> Block block quote
 
-<video src="https://pfile.glitch.me/file/Rqx7n" controls /><br>
+<video src="https://pfile.glitch.me/file/Rqx7n" controls></video><br>
 
+![dream with his dogs out](https://fyle.uk/dream)
+![dream with his dogs out in button form](https://fyle.uk/fgBjB)
+
+> <video src="https://pfile.glitch.me/file/Rqx7n" controls></video><br>
 ![dream with his dogs out](https://fyle.uk/dream)
 ![dream with his dogs out in button form](https://fyle.uk/fgBjB)
 
