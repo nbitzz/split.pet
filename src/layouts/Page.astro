@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import "../style/index.scss";
 import {
     siAstro,
@@ -15,13 +16,15 @@ interface Props {
 }
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" transition:animate="none">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
         <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
         <title>{title}</title>
+
+        <ViewTransitions />
 
         <meta name="title" content={title}>
         <meta name="description" content={description}>
@@ -32,11 +35,11 @@ interface Props {
     </head>
     <body>
 
-        <div id="background" aria-hidden>
+        <div id="background" aria-hidden transition:persist>
             <video aria-hidden autoplay muted loop playsinline disablepictureinpicture src="/lagtrain.webm" style="filter:brightness(80%);background-color: #B2B2B2;" class="hide_when_reduced_motion hide_when_high_contrast" />
         </div>
 
-        <div id="all">
+        <div id="all" transition:name="main">
 
             <slot />
 
