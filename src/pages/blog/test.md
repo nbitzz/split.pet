@@ -9,7 +9,7 @@ image:
     alt: "Hi!"
 ---
 Test test test.
-# Hello world!
+# :wavesmiley: Hello world!
 ## Hello hello!
 `Oops`
 ```ts
@@ -33,6 +33,13 @@ Powered by :simple.Cloudflare: Cloudflare :simple.Cloudflarepages: Pages
 :wavesmiley: :tired: :mahirolog: :verygood: :URETHRA: Woah Woaaah :aaa: :aaaa: :aaaaa: :aaaa: :aaaa: :verygood: Cool
 
 This is a true :URETHRA: moment. AAaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa
+
+```
+Wait can you :wavesmiley: in a code block
+```
+
+> Block quote
+>> Block block quote
 
 I FUCKING HATE CSS I HATE WEB DEVELOPMENT I AM GOING TO KILL MYSELF
 
