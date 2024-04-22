@@ -59,4 +59,23 @@ interface Props {
             
         </div>
     </body>
+
+    <script lang="js">
+        // simple script to keep state persistent
+        // i mean i could probably do something stupid
+        // like a cookie with pages functions or some shit
+        // but not now go fuck yourself
+
+        /**
+         * @type HTMLInputElement
+         */
+        let btn = document.getElementsByClassName("extendPost")[0];
+        if (btn && btn.disabled !== undefined) {
+            btn.checked = localStorage.getItem("pagesExtended") == 'yes'
+
+            btn.addEventListener("change", () => {
+                localStorage.setItem("pagesExtended", btn.checked ? "yes" : "no")
+            })
+        }
+    </script>
 </html>
