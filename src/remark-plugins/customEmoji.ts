@@ -52,7 +52,7 @@ export function remarkCustomEmoji() {
       toAwait.push((async () => 
         parent.children.splice(index, 1, ...(await Promise.all(Array.from(node.value
           .matchAll(/:([^\s:]+?):|([^:]+)|(:)/g))
-          .flatMap(async ([match, emojiName, text, colon]) => {
+          .map(async ([match, emojiName, text, colon]) => {
             if (text || colon) return { type: "text", value: match }
             else {
               let [_, locator, name] = emojiName.match(/(?:(.*)\.)?(.*)/)!
