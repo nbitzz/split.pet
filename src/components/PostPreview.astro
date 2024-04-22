@@ -35,7 +35,7 @@ const { post } = Astro.props
         border-radius: 16px;
         padding: 10px 15px;
         background-color: var(--backgroundColor);
-        border: 1px solid transparent;
+        outline: 1px solid transparent;
 
         overflow: hidden;
         
@@ -44,6 +44,8 @@ const { post } = Astro.props
         position: relative;
 
         & > img {
+            transition-duration: 250ms;
+            transition-property: filter, transform;
             position: absolute;
             border-radius: 16px;
             width: 100%;
@@ -52,8 +54,6 @@ const { post } = Astro.props
             background-color: var(--backgroundColor);
             filter: opacity(20%) saturate(25%);
             z-index: 0;
-            transition-duration: 250ms;
-            transition-property: filter, transform;
 
             left: 50%;
             top: 50%;
@@ -62,13 +62,28 @@ const { post } = Astro.props
             @media (prefers-reduced-motion) {
                 display: none;
             }
+
+            &.topper {
+                object-fit: fill;
+                filter: blur(30px) opacity(40%);
+                transform: translate(-50%, -50%) scale(150%);
+                aspect-ratio: 1 / 1;
+                height: auto;
+            }
         }
+        /*
+        &:has(.topper) {
+            display: flex;
+            gap: 15px;
+        }*/
     }
-
-    .post:has(> img) {
-        background: var(--backgroundColor);
-    }
-
+    /*
+    .topper {
+        flex: 0 0 80px;
+        height: auto;
+        min-width: 0;
+        object-fit: contain;
+    }*/
 
     .frontmatter {
         z-index: 1;
@@ -76,18 +91,27 @@ const { post } = Astro.props
     }
 
     a:hover > .post, a:focus-visible > .post {
-        border: 1px solid #66aaff;
-        & > img {
+        outline: 1px solid #66aaff;
+        & > img:not(.topper) {
             filter: opacity(45%) saturate(75%);
             transform: translate(-50%, -50%) scale(125%) rotate(-5deg);
+        }/*
+        & > .topper {
+            transform: scale(110%);
+        }*/
+        & > .topper {
+            filter: blur(50px) opacity(60%);
         }
     }
     
     a:active > .post {
-        border: 1px solid #66aaff99;
-        & > img {
+        outline: 1px solid #66aaff99;
+        & > img:not(.topper) {
             filter: opacity(55%) saturate(100%);
             transform: translate(-50%, -50%) scale(100%) rotate(0deg);
+        }
+        & > .topper {
+            filter: blur(40px) opacity(50%);
         }
     }
 
@@ -105,8 +129,8 @@ const { post } = Astro.props
     <div class="post">
 
         {
-            post.frontmatter.image && !post.frontmatter.image.isTopper
-            ? <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt}>
+            post.frontmatter.image
+            ? <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt} class:list={[{topper: post.frontmatter.image.isTopper}]}>
             : ""
         }
 

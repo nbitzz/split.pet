@@ -6,7 +6,7 @@ const {display, noHeader} = Astro.props
 const posts = 
     (await Astro.glob("../pages/blog/*.md"))
         .filter(e => !e.frontmatter.unlisted)
-        .sort((a,b) => (b.frontmatter.publicationDate||0-(a.frontmatter.publicationDate||0)))
+        .sort((a,b) => (b.frontmatter.publicationDate||0)-(a.frontmatter.publicationDate||0))
 
 interface Props {
     display?: ["postCount", number] | ["postList", string[]],
