@@ -89,4 +89,10 @@
             margin-bottom: 0;
         }
     }
+
+    p > img:not(.customEmoji), p > video {
+        display: block;
+        margin: auto;
+        max-width: 100%;
+    }
 }

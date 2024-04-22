@@ -41,6 +41,11 @@ Wait can you :wavesmiley: in a code block
 > Block quote
 >> Block block quote
 
+<video src="https://pfile.glitch.me/file/Rqx7n" controls /><br>
+
+![dream with his dogs out](https://fyle.uk/dream)
+![dream with his dogs out in button form](https://fyle.uk/fgBjB)
+
 I FUCKING HATE CSS I HATE WEB DEVELOPMENT I AM GOING TO KILL MYSELF
 
 i wonder if anyone would really care if i did
