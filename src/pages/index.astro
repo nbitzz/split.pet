@@ -19,7 +19,16 @@ import {
     siLua,
     siFramework,
     siArchlinux,
-siTypescript
+siTypescript,
+siRust,
+siMarko,
+siZig,
+siBun,
+siNodedotjs,
+siVuedotjs,
+siReact,
+siC,
+siCloudflareworkers
 } from "simple-icons"
 import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
 import Posts from "../components/Posts.astro";
@@ -62,9 +71,24 @@ import Buttons from "../components/buttons/Buttons.astro";
         <SocialList socials={[
             { url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", icon:siJavascript.svg, color: "#"+siJavascript.hex },
             { url: "https://typescriptlang.org", icon:siTypescript.svg, color: "#"+siTypescript.hex },
+            { url: "https://nodejs.org", icon:siNodedotjs.svg, color: "#"+siNodedotjs.hex },
+            { url: "https://bun.sh", icon:siBun.svg },
+            // i'll put this here when i actually use it more
+            /*{ url: "https://workers.cloudflare.com", icon:siCloudflareworkers.svg, color: "#"+siCloudflareworkers.hex },*/
             { url: "https://svelte.dev", icon:siSvelte.svg, color: "#"+siSvelte.hex },
-            { url: "https://astro.build", icon:siAstro.svg, color: "#"+siAstro.hex },
+            { url: "https://astro.build", icon:siAstro.svg, color: "#"+siAstro.hex }
         ]} />
+        <div style="height:10px;" />
+        <h2 class="sectionDenoter" id="stuffidontknow">stuff i want to learn<br /><small style="color: #aaa; font-weight: 500; text-transform: none;">(or am learning)</small></h2>
+        <SocialList socials={[
+            { url: "https://rust-lang.org", icon:siRust.svg },
+            { url: "https://ziglang.org", icon:siZig.svg, color: "#"+siZig.hex },
+            { url: "https://en.wikipedia.org/wiki/C_(programming_language)", icon:siC.svg, color: "#"+siC.hex },
+            { url: "https://markojs.com", icon:siMarko.svg, color: "#"+siMarko.hex },
+            { url: "https://react.dev", icon:siReact.svg, color: "#"+siReact.hex },
+            { url: "https://vuejs.org", icon:siVuedotjs.svg, color: "#"+siVuedotjs.hex }
+        ]} />
+        <div style="height:10px;" />
         <h2 class="sectionDenoter" id="not-notable-stuff">not-so-notable stuff</h2>
         <p>
             <a href="https://xkcd.uk">xkcd.uk</a>,
