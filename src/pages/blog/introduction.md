@@ -26,3 +26,10 @@ I primarily do my work off my [:simple.Framework:&#x202f;Framework 13](/blog/set
 ![My laptop's temperature sensor showing 100.2 degrees C](/blog/introduction/Screenshot_20240422_121736.png)
 <p align="center"><small>Send help my lap is burning</small></p>
 
+Uh, other small stuff about me: 
+- I'm kinda stupid
+- I don't have a great memory; don't expect me to remember stuff you tell me
+- I don't really have any hobbies outside of programming
+- I hate myself and you probably should too, honestly
+
+...and that's about it, I guess. I don't have much else to add, so I guess I'll be ending this article here!

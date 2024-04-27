@@ -1,0 +1,13 @@
+---
+import GenericHeader from "../components/GenericHeader.astro";
+import Posts from "../components/Posts.astro";
+import Page from "../layouts/Page.astro";
+---
+<Page title="404" description="Page not found">
+
+    <GenericHeader text="404" image={{isTopper: true, url: "https://mahiro.oyama.pictures/Sad", alt:"Sad Mahiro Oyama"}} />
+    <div class="significant">
+        <p>Nothing was found here. Maybe check out <a href="/">the homepage</a>? There's other links in the footer if you need those, too...</p>
+    </div>
+    
+</Page>
