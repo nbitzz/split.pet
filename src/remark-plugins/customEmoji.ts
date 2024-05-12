@@ -57,14 +57,10 @@ let locators: Record<string, (name: string) => Promise<(string|undefined|void)> 
 export function remarkCustomEmoji() {
   return function (tree) {
     let toAwait = []
-    visit(tree, null, (node: Record<string, any> & { value: string }, index, parent) => {
-      console.log(node.type)
-      if (node.type !== "text") return CONTINUE // Manual filtering done here because
-                                            // unist-util-visit's `index` is actually
-                                            // its index in parent.children.filter(e => e.type == "text")
-                                            // so accurate splicing can't be done
-      toAwait.push((async () => 
-        parent.children.splice(index, 1, ...(await Promise.all(Array.from(node.value
+    visit(tree, "text", (node: Record<string, any> & { value: string }, index, parent) => {
+
+      toAwait.push((async () => {
+        let objs = Array.from(node.value
           .matchAll(/:([^\s:]+?):|([^:]+)|(:)/g))
           .map(async ([match, emojiName, text, colon]) => {
             if (text || colon) return { type: "text", value: match }
@@ -79,8 +75,20 @@ export function remarkCustomEmoji() {
                 ? {type: "html", value: element} 
                 : { type: "text", value: match }
             }
-          }))))
-      )())
+          })
+          
+        if (parent.idxOffset === undefined) parent.idxOffset = 0
+
+        let fn = (await Promise.all(objs))
+
+        parent.children.splice(
+          index+parent.idxOffset,
+          1,
+          ...fn
+        )
+        
+        parent.idxOffset += objs.length-1
+      })())
     })
     return Promise.all(toAwait).then(() => undefined)
   };
