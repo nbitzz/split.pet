@@ -50,6 +50,15 @@ Wait can you :wavesmiley: in a code block
 ![dream with his dogs out](https://fyle.uk/dream)
 ![dream with his dogs out in button form](https://fyle.uk/fgBjB)
 
+:3 :3 Please dont vaporize my :3!
+im AAAHHHHHHh
+
+Ah :3
+
+Look at htis :3<br />
+This :3<br />
+This :3
+
 I FUCKING HATE CSS I HATE WEB DEVELOPMENT I AM GOING TO KILL MYSELF
 
 i wonder if anyone would really care if i did

@@ -1,6 +1,6 @@
 // i should not be allowed to write ts
 // ever again
-import { visit } from "unist-util-visit"
+import { SKIP, visit } from "unist-util-visit"
 import * as simple from "simple-icons"
 
 const cache = {
@@ -57,7 +57,11 @@ let locators: Record<string, (name: string) => Promise<(string|undefined|void)> 
 export function remarkCustomEmoji() {
   return function (tree) {
     let toAwait = []
-    visit(tree, "text", (node: Record<string, any> & { value: string }, index, parent) => {
+    visit(tree, null, (node: Record<string, any> & { value: string }, index, parent) => {
+      if (node.type !== "text") return SKIP // Manual filtering done here because
+                                            // unist-util-visit's `index` is actually
+                                            // its index in parent.children.filter(e => e.type == "text")
+                                            // so accurate splicing can't be done
       toAwait.push((async () => 
         parent.children.splice(index, 1, ...(await Promise.all(Array.from(node.value
           .matchAll(/:([^\s:]+?):|([^:]+)|(:)/g))
@@ -77,6 +81,6 @@ export function remarkCustomEmoji() {
           }))))
       )())
     })
-    return Promise.all(toAwait).then(() => undefined)
+    return Promise.all(toAwait).then((e) => console.log(JSON.stringify(tree,null,3)))
   };
 }
