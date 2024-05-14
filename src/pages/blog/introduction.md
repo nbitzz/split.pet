@@ -2,8 +2,7 @@
 layout: "../../layouts/Post.astro"
 title: Hi, I'm split!
 description: I guess I should probably introduce myself
-publicationDate: 1713786042000 # replace on actual publish
-unlisted: true
+publicationDate: 1715657727000
 image:
     isTopper: true
     url: https://mahiro.oyama.pictures/Hai
@@ -19,17 +18,16 @@ I don't really have many projects. The only notable ones that I've actually real
 
 I primarily do my work off my [:simple.Framework:&#x202f;Framework 13](/blog/setup#laptop). I also procrastinate a lot on both my online work and schoolwork (thanks, ADHD!) Oh, and if you're wondering why I have 64GB of RAM, I just really like tabs:
 
-![2184 tabs open in Firefox](/blog/introduction/Screenshot_20240422_121458.png)
+![2184 tabs open in Firefox](../../images/blog/introduction/Screenshot_20240422_121458.png)
 
-![Firefox using 31.7GiB of memory](/blog/introduction/Screenshot_20240422_121630.png)
+![Firefox using 31.7GiB of memory](../../images/blog/introduction/Screenshot_20240422_121630.png)
 
-![My laptop's temperature sensor showing 100.2 degrees C](/blog/introduction/Screenshot_20240422_121736.png)
-<p align="center"><small>Send help my lap is burning</small></p>
+![My laptop's temperature sensor showing 100.2 degrees C](../../images/blog/introduction/Screenshot_20240422_121736.png)
+<p align="center"><small>Send help my lap is burning<br />Editor's note: it's actually 3019 tabs now.</small></p>
 
 Uh, other small stuff about me: 
 - I'm kinda stupid
 - I don't have a great memory; don't expect me to remember stuff you tell me
 - I don't really have any hobbies outside of programming
-- I hate myself and you probably should too, honestly
 
-...and that's about it, I guess. I don't have much else to add, so I guess I'll be ending this article here!
+...and that's about it, I guess. I don't have much else to add, so I guess I'll be ending this post here...?
