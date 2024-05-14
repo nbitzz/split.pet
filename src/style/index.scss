@@ -117,6 +117,7 @@ body {
                     border: var(--borderThickness) solid var(--backgroundColor);
                     position: absolute;
                     top: calc( 0px - calc(var(--imgSize) / 2) );
+                    background: #444444;
                 }
 
                 & > hgroup {
