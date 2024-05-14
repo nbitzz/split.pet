@@ -3,7 +3,7 @@ layout: "../../layouts/Post.astro"
 title: Hi, I'm split!
 description: I guess I should probably introduce myself
 publicationDate: 1713786042000 # replace on actual publish
-unlisted: false
+unlisted: true
 image:
     isTopper: true
     url: https://mahiro.oyama.pictures/Hai
