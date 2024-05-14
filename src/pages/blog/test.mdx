@@ -8,6 +8,8 @@ image:
     url: /thumbtest.webp
     alt: "Hi!"
 ---
+import Posts from "../../components/Posts.astro";
+
 Test test test.
 # :wavesmiley: Hello world!
 ## Hello hello!
@@ -41,14 +43,13 @@ Wait can you :wavesmiley: in a code block
 > Block quote
 >> Block block quote
 
-<video src="https://pfile.glitch.me/file/Rqx7n" controls></video><br>
+<p><video src="https://pfile.glitch.me/file/Rqx7n" controls /></p>
 
 ![dream with his dogs out](https://fyle.uk/dream)
 ![dream with his dogs out in button form](https://fyle.uk/fgBjB)
 
-> <video src="https://pfile.glitch.me/file/Rqx7n" controls></video><br>
-![dream with his dogs out](https://fyle.uk/dream)
-![dream with his dogs out in button form](https://fyle.uk/fgBjB)
+> <p><video src="https://pfile.glitch.me/file/Rqx7n" controls /><br />![dream with his dogs out](https://fyle.uk/dream)
+![dream with his dogs out in button form](https://fyle.uk/fgBjB)</p>
 
 :3 :3 Please dont vaporize my :3!
 im AAAHHHHHHh
@@ -62,3 +63,5 @@ This :3
 I FUCKING HATE CSS I HATE WEB DEVELOPMENT I AM GOING TO KILL MYSELF
 
 i wonder if anyone would really care if i did
+
+<Posts display={["postList", ["test"]]} />

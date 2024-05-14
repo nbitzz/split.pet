@@ -4,8 +4,8 @@ import PostPreview, {type Props as PostPreviewProps} from './PostPreview.astro'
 
 const {display} = Astro.props
 const posts = 
-    (await Astro.glob("../pages/blog/*.md"))
-        .filter(e => !e.frontmatter.unlisted)
+    (await Astro.glob("../pages/blog/*.{md,mdx}"))
+        .filter(e => display?.[0] == "postList" || !e.frontmatter.unlisted)
         .sort((a,b) => (b.frontmatter.publicationDate||0)-(a.frontmatter.publicationDate||0))
 
 interface Props {
