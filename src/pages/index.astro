@@ -102,8 +102,18 @@ import Buttons from "../components/buttons/Buttons.astro";
             </small>
         </p>
     </section>
-
-    <Posts display={["postCount", 3]} />
+<!--
+    <section class="insignificant">
+        <h2 class="sectionDenoter">More about me</h2>
+        <Posts display={["postList", ["introduction"]]} />
+        <br>
+    </section>
+-->
+    <section id="posts" class="insignificant">
+        <h2 class="sectionDenoter">Posts</h2>
+        <Posts display={["postCount", 3]} />
+        <p style="text-align: right;"><a href="/blog">See all posts</a></p>
+    </section>
 
     <Buttons />
 

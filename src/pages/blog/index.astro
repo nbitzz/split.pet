@@ -6,6 +6,10 @@ import Page from "../../layouts/Page.astro";
 <Page title="Posts" description="split's blog which she will leave unused">
 
     <GenericHeader text="Posts" image={{isTopper: true, url: "https://mahiro.oyama.pictures/Solemn", alt:"Mahiro Oyama w/ a solemn expression"}} />
-    <Posts noHeader={true} extraAttributes={{class: "significant"}}/>
+
+    <section id="posts" class="significant">
+        <Posts />
+        <br>
+    </section>
     
 </Page>
