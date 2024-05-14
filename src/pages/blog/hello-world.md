@@ -4,7 +4,7 @@ title: Hello, world
 description: Welcome to my new site!
 publicationDate: 1713686158000
 image:
-    url: /thumbtest.webp
+    path: blog/hello-world.png
     alt: Screenshot of a VS Code window for this website, split.pet
 ---
 :wavesmiley: Welcome to my new little site! I didn't feel like the `neofetch` would really cut it anymore, and the fact that it was hosted on my PC meant that it kinda... died if my PC did. [Which it did.](https://github.com/nbitzz/status/issues/686) So, I decided to make a new one from scratch!
@@ -18,8 +18,9 @@ Then I thought to [add quotes <small>and Astro</small>...](https://77c727ca.spli
 Aaaaaand that about sums up the development process of my site. <small>Can you tell I can't write a blog post?</small> I still have a few things I should probably do:
 
 - [ ] Add a limit to how far to the right the body can be placed <small>(for people with ultrawide)</small>
-- [ ] Replace blog `<img>`s with Astro `<Picture>`s
+- [X] Replace blog `<img>`s with Astro `<Picture>`s
 - [ ] Fix little ~~circle~~ square inside of checkbox being misaligned
+- [ ] Fix issues regarding lack of support for very new CSS features in FxESR leading to broken rendering (oops)
 
 ...but aside from that, I think it's mostly good enough! It's kind of messy behind the scenes as well, but at least it looks kinda nice! <small>Just don't remove the CSS.</small> 
 

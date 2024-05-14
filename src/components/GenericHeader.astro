@@ -1,14 +1,16 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import { Picture } from 'astro:assets'
 
 const { styling, text, image } = Astro.props
 
-interface Props {
-    image?: {
-        isTopper?: boolean
-        url: string
-        alt: string
-    },
+type BaseHeadImg = {
+    isTopper?: boolean,
+    alt: string
+}
+
+export interface Props {
+    image?: BaseHeadImg & {url:string} | BaseHeadImg & {path:string},
     styling?: {
         noBottomPad?: boolean
     },
@@ -21,11 +23,20 @@ interface Props {
         image ? 
             <>
                 {image.isTopper ? <br> : ""}
-                <img
-                    class:list={[{topper: image.isTopper, thumbnail: !image.isTopper}]}
-                    src={image.url}
-                    alt={image.alt}
-                >
+                {
+                    "path" in image
+                    ? <Picture
+                        src={import(/* @vite-ignore */ `../images/${image.path}`)}
+                        alt={image.alt}
+                        class:list={[{topper: image.isTopper, thumbnail: !image.isTopper}]}
+                        formats={["avif", "webp"]}
+                    />
+                    : <img
+                        src={image.url}
+                        alt={image.alt}
+                        class:list={[{topper: image.isTopper, thumbnail: !image.isTopper}]}
+                    >
+                }
             </>
         : ""
         }

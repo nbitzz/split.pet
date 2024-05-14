@@ -3,7 +3,7 @@ layout: "../../layouts/Post.astro"
 title: Setup
 description: Oh my devices
 image:
-  url: /blog/setup.png
+  path: blog/setup.png
   alt: Screenshot of a neofetch on my laptop
 ---
 

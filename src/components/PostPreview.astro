@@ -1,4 +1,5 @@
 ---
+import { Picture } from "astro:assets"
 import { type Props as PostProps } from "../layouts/Post.astro"
 
 export interface Props {
@@ -9,6 +10,7 @@ export interface Props {
 }
 
 const { post } = Astro.props
+
 ---
 <style lang="scss">
     a:has(> .post) {
@@ -43,7 +45,7 @@ const { post } = Astro.props
         transition-property: border-left border-right;
         position: relative;
 
-        & > img {
+        & img {
             transition-duration: 250ms;
             transition-property: filter, transform;
             position: absolute;
@@ -92,7 +94,7 @@ const { post } = Astro.props
 
     a:hover > .post, a:focus-visible > .post {
         outline: 1px solid #66aaff;
-        & > img:not(.topper) {
+        & img:not(.topper) {
             filter: opacity(45%) saturate(75%);
             transform: translate(-50%, -50%) scale(125%) rotate(-5deg);
         }/*
@@ -106,7 +108,7 @@ const { post } = Astro.props
     
     a:active > .post {
         outline: 1px solid #66aaff99;
-        & > img:not(.topper) {
+        & img:not(.topper) {
             filter: opacity(55%) saturate(100%);
             transform: translate(-50%, -50%) scale(100%) rotate(0deg);
         }
@@ -120,7 +122,7 @@ const { post } = Astro.props
     }
 
     @media (prefers-reduced-motion) {
-        .post > img {
+        .post img {
             transform: translate(-50%, -50%) scale(100%) !important;
         }
     }
@@ -130,7 +132,20 @@ const { post } = Astro.props
 
         {
             post.frontmatter.image
-            ? <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt} class:list={[{topper: post.frontmatter.image.isTopper}]}>
+            ? (
+                "path" in post.frontmatter.image
+                ? <Picture
+                    src={import(/* @vite-ignore */ `../images/${post.frontmatter.image.path}`)}
+                    alt={post.frontmatter.image.alt}
+                    class:list={[{topper: post.frontmatter.image.isTopper}]}
+                    formats={["avif", "webp"]}
+                />
+                : <img
+                    src={post.frontmatter.image.url}
+                    alt={post.frontmatter.image.alt}
+                    class:list={[{topper: post.frontmatter.image.isTopper}]}
+                >
+            )
             : ""
         }
 

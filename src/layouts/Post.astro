@@ -1,11 +1,12 @@
 ---
-import GenericHeader from "../components/GenericHeader.astro"
+import GenericHeader, { type Props as HeadProps } from "../components/GenericHeader.astro"
 import Page from "./Page.astro"
 import "../style/markdown.scss"
 import type getReadingTime from 'reading-time';
 
 import extend from "@fluentui/svg-icons/icons/table_resize_column_24_filled.svg?raw";
 import home from "@fluentui/svg-icons/icons/home_24_filled.svg?raw";
+import { getImage } from "astro:assets";
 
 const { frontmatter } = Astro.props
 
@@ -15,11 +16,7 @@ export interface Props {
         description: string,
         publicationDate?: number,
         unlisted?: boolean,
-        image?: {
-            isTopper?: boolean,
-            url: string,
-            alt: string
-        },
+        image?: HeadProps["image"],
         readTime: ReturnType<typeof getReadingTime>
     }
 }
@@ -36,6 +33,10 @@ const notes = [
         : []
     )
 ]
+
+const imgUrl = "url" in frontmatter.image 
+                    ? frontmatter.image.url 
+                    : (await getImage({src: (await import(/* @vite-ignore */ `../images/${frontmatter.image.path}`)).default, format: 'webp'})).src
 ---
 
 <style lang="scss">
@@ -101,7 +102,7 @@ const notes = [
         ? [
             {
                 name: "og:image",
-                content: frontmatter.image.url
+                content: imgUrl
             },
             ...(
                 !frontmatter.image.isTopper
