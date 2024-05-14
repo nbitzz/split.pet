@@ -1,0 +1,54 @@
+---
+
+export interface Props {
+    list: {url?: string, icon: string, color?: string}[],
+    forSocials?: boolean
+}
+
+const {list, forSocials} = Astro.props
+---
+<style lang="scss">
+    ul.iconList {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        cursor: default;
+        display: flex;
+        justify-content: center;
+        gap: 0.5em;
+        
+        & a {
+            text-decoration: none;
+            transition-duration: 200ms;
+            color: #ccc !important;
+            --iconColor: #fff;
+            display: flex; // makes the li height the same as the svg heigh t
+            &[href="javascript:void(0)"] {
+                cursor:default;
+            }
+            &:hover, &:focus-visible {
+                color: var(--iconColor) !important;
+            }
+            & > svg {
+                width: 1em;
+                aspect-ratio: 1 / 1;
+            }
+        }
+
+        & li {
+            font-size: x-large;
+        }
+    }
+</style>
+
+<ul class="iconList">
+    {
+        list.map(obj => 
+            <li>
+                <a href={obj.url} {...(forSocials ? {rel:"me"} : {})} style={obj.color ? `--iconColor: ${obj.color};` : ""} target="_blank">
+                    <Fragment set:html={obj.icon} />
+                </a>
+            </li>
+        )
+    }
+</ul>

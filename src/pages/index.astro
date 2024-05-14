@@ -32,7 +32,7 @@ import {
 } from "simple-icons"
 import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
 import Posts from "../components/Posts.astro";
-import SocialList from "../components/SocialList.astro";
+import IconList from "../components/IconList.astro";
 import Buttons from "../components/buttons/Buttons.astro";
 ---
 <Page title="split's website" description="hi this is my shitty website" meta={[{name: "og:image", content: "/pfp/mahiropfp_butwithart.png"}]}>
@@ -62,13 +62,13 @@ import Buttons from "../components/buttons/Buttons.astro";
         <h2 class="sectionDenoter" id="projects">projects</h2>
         <p><a href="https://github.com/mollersuite/monofile">monofile</a>, uhh... that's also the only thing I've really made that's notable lol, and even that's a stretch</p>
         <h2 class="sectionDenoter" id="stuffiknow">stuff i use</h2>
-        <SocialList socials={[
+        <IconList list={[
             { url: "https://archlinux.org", icon:siArchlinux.svg, color: "#"+siArchlinux.hex },
             { url: "https://frame.work", icon:siFramework.svg },
             { url: "https://steamdeck.com", icon:siSteamdeck.svg, color: "#"+siSteamdeck.hex },
         ]} />
         <div style="height:10px;" />
-        <SocialList socials={[
+        <IconList list={[
             { url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", icon:siJavascript.svg, color: "#"+siJavascript.hex },
             { url: "https://typescriptlang.org", icon:siTypescript.svg, color: "#"+siTypescript.hex },
             { url: "https://nodejs.org", icon:siNodedotjs.svg, color: "#"+siNodedotjs.hex },
@@ -80,7 +80,7 @@ import Buttons from "../components/buttons/Buttons.astro";
         ]} />
         <div style="height:10px;" />
         <h2 class="sectionDenoter" id="stuffidontknow">stuff i want to learn<br /><small style="color: #aaa; font-weight: 500; text-transform: none;">(or am learning)</small></h2>
-        <SocialList socials={[
+        <IconList list={[
             { url: "https://rust-lang.org", icon:siRust.svg },
             { url: "https://ziglang.org", icon:siZig.svg, color: "#"+siZig.hex },
             { url: "https://en.wikipedia.org/wiki/C_(programming_language)", icon:siC.svg, color: "#"+siC.hex },

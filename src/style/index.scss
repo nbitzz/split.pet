@@ -1,7 +1,7 @@
 :root {
     --backgroundColor: #222;
     --backgroundColorTransparent: #222222AA;
-    font-family: InterVariable, Inter, sans-serif;
+    font-family: "Inter Variable", InterVariable, Inter, sans-serif;
 }
   
 body {
@@ -209,38 +209,6 @@ body {
     }
 }
 
-ul.socialsList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    cursor: default;
-    display: flex;
-    justify-content: center;
-    gap: 0.5em;
-    
-    & a {
-        text-decoration: none;
-        transition-duration: 200ms;
-        color: #ccc !important;
-        --iconColor: #fff;
-        display: flex; // makes the li height the same as the svg heigh t
-        &[href="javascript:void(0)"] {
-            cursor:default;
-        }
-        &:hover, &:focus-visible {
-            color: var(--iconColor) !important;
-        }
-        & > svg {
-            width: 1em;
-            aspect-ratio: 1 / 1;
-        }
-    }
-
-    & li {
-        font-size: x-large;
-    }
-}
-
 small {
     color: #ddd;
 }
@@ -270,10 +238,6 @@ small {
             height: auto;
             min-height: 100%;
         }
-    }
-
-    ul.socialsList > li {
-        font-size:x-large;
     }
 }
 
@@ -313,7 +277,7 @@ input[type=checkbox] {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        font-family: InterVariable, Inter, sans-serif;
+        font-family: "Inter Variable", InterVariable, Inter, sans-serif;
         font-weight: 800;
         font-size: calc( calc(var(--size) / 4) * 3 );
         margin: 0;

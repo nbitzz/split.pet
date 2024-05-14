@@ -15,7 +15,8 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.5",
     "@fluentui/svg-icons": "^1.1.236",
-    "astro": "^4.6.3",
+    "@fontsource-variable/inter": "^5.0.18",
+    "astro": "^4.8.3",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
     "sass": "^1.75.0",

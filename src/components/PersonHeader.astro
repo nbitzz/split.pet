@@ -1,5 +1,5 @@
 ---
-import SocialList, { type Props as SocialListProps } from './SocialList.astro'
+import IconList, { type Props as IconListProps } from './IconList.astro'
 const {
     title,
     description,
@@ -9,7 +9,7 @@ const {
 interface Props {
     title: string,
     description: string,
-    socials: SocialListProps["socials"]
+    socials: IconListProps["list"]
 }
 ---
 <header>
@@ -24,7 +24,7 @@ interface Props {
         </div>
 
         <address>
-            <SocialList socials={socials} />
+            <IconList list={socials} forSocials={true} />
         </address>
     </div>
 </header>
