@@ -48,7 +48,7 @@ import Buttons from "../components/buttons/Buttons.astro";
             {url: "https://status.fyle.uk/", icon: siUpptime.svg, color: "#"+siUpptime.hex},
             {url: "/blog/setup", icon: iconLaptop, color: "#AA88FF"}
         ]}>
-        <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" />
+        <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" loading="eager" />
     </PersonHeader>
 
     <section class="significant">
