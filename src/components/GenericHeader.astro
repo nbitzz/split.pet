@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 import { Picture } from 'astro:assets'
+import dynImportImg from '../util/ohgodpleasehelpme'
 
 const { styling, text, image } = Astro.props
 
@@ -26,7 +27,7 @@ export interface Props {
                 {
                     "path" in image
                     ? <Picture
-                        src={import(/* @vite-ignore */ `../images/${image.path}`)}
+                        src={dynImportImg(image.path)}
                         alt={image.alt}
                         class:list={[{topper: image.isTopper, thumbnail: !image.isTopper}]}
                         formats={["avif", "webp"]}

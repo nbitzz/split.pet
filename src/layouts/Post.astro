@@ -7,6 +7,7 @@ import type getReadingTime from 'reading-time';
 import extend from "@fluentui/svg-icons/icons/table_resize_column_24_filled.svg?raw";
 import home from "@fluentui/svg-icons/icons/home_24_filled.svg?raw";
 import { getImage } from "astro:assets";
+import dynImportImg from "../util/ohgodpleasehelpme";
 
 const { frontmatter } = Astro.props
 
@@ -36,7 +37,12 @@ const notes = [
 
 const imgUrl = "url" in frontmatter.image 
                     ? frontmatter.image.url 
-                    : (await getImage({src: (await import(/* @vite-ignore */ `../images/${frontmatter.image.path}`)).default, format: 'webp'})).src
+                    : (
+                        await getImage({
+                            src: (await dynImportImg(frontmatter.image.path)).default,
+                            format: "webp"
+                        })
+                    ).src
 ---
 
 <style lang="scss">

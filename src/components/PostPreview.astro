@@ -1,6 +1,7 @@
 ---
 import { Picture } from "astro:assets"
 import { type Props as PostProps } from "../layouts/Post.astro"
+import dynImportImg from "../util/ohgodpleasehelpme"
 
 export interface Props {
     post: {
@@ -135,7 +136,7 @@ const { post } = Astro.props
             ? (
                 "path" in post.frontmatter.image
                 ? <Picture
-                    src={import(/* @vite-ignore */ `../images/${post.frontmatter.image.path}`)}
+                    src={dynImportImg(post.frontmatter.image.path)}
                     alt={post.frontmatter.image.alt}
                     class:list={[{topper: post.frontmatter.image.isTopper}]}
                     formats={["avif", "webp"]}
