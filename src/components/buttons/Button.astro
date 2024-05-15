@@ -11,14 +11,14 @@ const WrapperElement = image.url ? "a" : "div"
 
 ---
 <style lang="scss">
-    .button {
+    ._88x31 {
         transition-duration: 100ms;
         margin:0;
         box-shadow: 0 0 0px var(--backgroundColorTransparent);
         transition-property: box-shadow, transform;
     }
 
-    button:hover, a:focus-visible > .button {
+    button:hover, a:focus-visible > ._88x31 {
         transform: scale(115%);
         background: var(--backgroundColorTransparent);
         box-shadow: 0 0 10px #999;
@@ -40,7 +40,7 @@ const WrapperElement = image.url ? "a" : "div"
 </style>
 <WrapperElement href={image.url} target="_blank">
     <img 
-        class="button"
+        class="_88x31"
         src={
             ('directUrl' in image 
             ? image.directUrl 

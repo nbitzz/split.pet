@@ -29,27 +29,57 @@ export interface Metadata {
     alt?: string,
     url?: string,
     order?: number,
-    basename: string
+    basename: string,
+    group?: string,
+    hidden?: boolean
 }
 
 export type ImportedImage = (ImageMetadata & Metadata) | ({directUrl: string} & Metadata)
 
-const images =
+const images_scopeDefaultsUnapplied =
     (Object.entries(
         groupBy(
             (await Promise.all(
-                Object.entries(import.meta.glob("./images/*"))
-                    .map(async ([key, prom]) => [key, (await prom() as any)?.default])
+                Object.entries(import.meta.glob("./images/**/*"))
+                    .map(async ([key, prom]) => [key.match(/\.\/images\/(?:(.*)\/)?(.*)\..*/).slice(1), (await prom() as any)?.default])
             )),
-            ([name, obj]) => name.match(/\.\/images\/(.*)\..*/)[1]
+            ([name, obj]) => `${name[0]||""}/${name[1]}`
         )
     ).map(([k, arrays]) => 
         Object.fromEntries([
             ...arrays.flatMap(array => Object.entries(array[1])), 
-            ["basename", k]
+            ["basename", arrays[0][0]?.[1] || k],
+            ["group", arrays[0][0]?.[0]]
         ])
     ) as unknown as ImportedImage[])
-    .sort((a,b) => (a.order??100)-(b.order??100))
+
+const images_scopeDefaults =
+    Object.fromEntries(images_scopeDefaultsUnapplied
+        .filter(e => e.basename == "__scope__")
+        .map(e => [e.group,e]))
+
+const images =
+    images_scopeDefaultsUnapplied
+        .filter(e => e.basename != "__scope__")
+        .map(e => 
+            Object.assign(
+                images_scopeDefaults[e.group] 
+                ? Object.assign(
+                    {},
+                    images_scopeDefaults[e.group]
+                )
+                : {}, 
+                e
+            )
+        )
+        .sort((a,b) => (a.order??100)-(b.order??100))
+
+
+const { filter = (button) => !button.hidden } = Astro.props
+
+export interface Props {
+    filter?: Parameters<typeof images.filter>[0]
+}
 
 ---
 
@@ -64,37 +94,10 @@ const images =
     }
 </style>
 
-<section id="buttons" class="insignificant">
-    <h2 class="sectionDenoter">Buttons</h2>
-    <div>
-        {
-            images.map((image) => <Button image={image} />)
-        }
-    </div>
-    <script>
-        // small amount of js to control the
-        // tilt effect
-        if (!window.matchMedia('(hover: none)').matches && !window.matchMedia('(prefers-reduced-motion)').matches)
-            Array.from(document
-                .getElementById("buttons")
-                .getElementsByClassName("button"))
-                .forEach((e: HTMLElement) => {
-                    let startEffect = (ev: MouseEvent) => {
-                        let yP = 1-(ev.offsetY/31*2)
-                        let xP = -1+(ev.offsetX/88*2)
-                        e.style.transform =
-                            "scale(115%)"
-                            + ` rotate3d(${yP.toFixed(2)}, ${xP.toFixed(2)},0,20deg)`
-                            + ` translate(${3*xP}px,${-5*yP}px)`;
-                        e.style.boxShadow = `${(-3*xP).toFixed(2)}px ${(5*yP).toFixed(2)}px 5px #999`
-                    }
-                    e.addEventListener('mouseover', startEffect)
-                    e.addEventListener('mousemove', startEffect)
-                    e.addEventListener('mouseleave', () => {
-                        e.style.transform = ""
-                        e.style.boxShadow = ""
-                    })
-                })
-    </script>
-    <br>
-</section>
+<div>
+    {
+        images
+            .filter(filter)
+            .map((image) => <Button image={image} />)
+    }
+</div>

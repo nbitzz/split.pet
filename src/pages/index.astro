@@ -34,6 +34,7 @@ import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
 import Posts from "../components/Posts.astro";
 import IconList from "../components/IconList.astro";
 import Buttons from "../components/buttons/Buttons.astro";
+import TiltController from "../components/buttons/TiltController.astro";
 ---
 <Page title="split's website" description="hi this is my shitty website" meta={[{name: "og:image", content: "/pfp/mahiropfp_butwithart.png"}]}>
     <PersonHeader
@@ -115,7 +116,13 @@ import Buttons from "../components/buttons/Buttons.astro";
         <p style="text-align: right;"><a href="/blog">See all posts</a></p>
     </section>
 
-    <Buttons />
+    
+    <section id="buttons" class="insignificant">
+        <h2 class="sectionDenoter">Buttons</h2>
+        <Buttons />
+        <TiltController />
+        <br>
+    </section>
 
     <Quotes quotes={[
         {text: "fucking hehead [sic] split kill that ni[...]", from: "chapel1337"},
