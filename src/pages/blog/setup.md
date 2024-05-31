@@ -25,8 +25,23 @@ image:
 - **GPU**: NVIDIA RTX 2070 SUPER
 - **RAM**: 32GB
 
-## Other stuff
+## Phone
 
-My phone's an :simple.Apple:&thinsp;iPhone 15 Pro Max.
+Just an :simple.Apple:&thinsp;iPhone 15 Pro Max.
 
-I have an old Surface Pro from my mom that I might use eventually for... something. A Raspberry Pi 3B+ hosts my Home Assistant. A Raspberry Pi 4 with 8GB of RAM hosted my Jellyfin, while it was still up (but I've been too lazy to bring it back online. Maybe eventually.)
+## Other hardware
+
+<h3 style="margin-bottom: 0;">Surver</h3>
+<p style="margin-top: 0;"><small>Surface Pro 4 (Core i5, 8GB RAM)</small></p>
+
+Unused for the most part; but a Docker container on it is being borrowed by a friend
+
+<h3 style="margin-bottom: 0;">Sakuya</h3>
+<p style="margin-top: 0;"><small>Raspberry Pi 3B+</small></p>
+
+Runs my :simple.Homeassistant: Home Assistant.
+
+<h3 style="margin-bottom: 0;">Matsuri</h3>
+<p style="margin-top: 0;"><small>Raspberry Pi 4B 8GB &mdash; Currently unused</small></p>
+
+Ran my :simple.Jellyfin:&nbsp;Jellyfin, while it was still online.
