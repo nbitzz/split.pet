@@ -42,6 +42,6 @@ Unused for the most part; but a Docker container on it is being borrowed by a fr
 Runs my :simple.Homeassistant: Home Assistant.
 
 <h3 style="margin-bottom: 0;">Matsuri</h3>
-<p style="margin-top: 0;"><small>Raspberry Pi 4B 8GB &mdash; Currently unused</small></p>
+<p style="margin-top: 0;"><small>Raspberry Pi 4B 8GB</small></p>
 
-Ran my :simple.Jellyfin:&nbsp;Jellyfin, while it was still online.
+Runs my :simple.Jellyfin:&nbsp;Jellyfin, shared between a few of my friends.
