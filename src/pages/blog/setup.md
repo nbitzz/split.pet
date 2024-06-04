@@ -25,6 +25,9 @@ image:
 - **GPU**: NVIDIA RTX 2070 SUPER
 - **RAM**: 32GB
 
+Also operates as a transcode server for my :simple.Jellyfin: Jellyfin over [rffmpeg](https://github.com/joshuaboniface/rffmpeg).
+Host to a Docker container borrowed by [aubrey](https://dmpstr.top) as a build server.
+
 ## Phone
 
 Just an :simple.Apple:&thinsp;iPhone 15 Pro Max.
@@ -34,7 +37,8 @@ Just an :simple.Apple:&thinsp;iPhone 15 Pro Max.
 <h3 style="margin-bottom: 0;">Surver</h3>
 <p style="margin-top: 0;"><small>Surface Pro 4 (Core i5, 8GB RAM)</small></p>
 
-Unused for the most part; but a Docker container on it is being borrowed by a friend
+Runs :simple.Archlinux: Arch Linux, because I didn't feel like installing something more proper that day.
+Unused for the most part. Host to another Docker container borrowed by [aubrey](https://dmpstr.top) as a build server.
 
 <h3 style="margin-bottom: 0;">Sakuya</h3>
 <p style="margin-top: 0;"><small>Raspberry Pi 3B+</small></p>
