@@ -15,7 +15,7 @@ To begin with, the official public :monofile: monofile test instance has been [b
 
 The most likely cause is probably a DMCA request. Another potential cause is monofile being essentially DDoS'ed due to the posting of a monofile link on the Fediverse. I've heard of projects getting suspended for reasons like this in the past.
 
-In the future, monofile's might be moved to a new host in order to hopefully avoid this in the future. 🙃
+In the future, monofile's beta might be moved to a new host in order to hopefully avoid this in the future. 🙃
 
 ## Jellyfin comes back online
 
