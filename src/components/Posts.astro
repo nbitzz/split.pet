@@ -1,16 +1,30 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 import PostPreview, {type Props as PostPreviewProps} from './PostPreview.astro'
+import { getCollection } from 'astro:content'
 
-const {display} = Astro.props
+const {display, collection = "posts", group} = Astro.props
 const posts = 
-    (await Astro.glob("../pages/blog/*.{md,mdx}"))
-        .filter(e => display?.[0] == "postList" || !e.frontmatter.unlisted)
-        .sort((a,b) => (b.frontmatter.publicationDate||0)-(a.frontmatter.publicationDate||0))
+    (await getCollection(collection))
+        .filter(e => display?.[0] == "postList" || !e.data["unlisted"])
+        .sort(
+            collection == "posts"
+            ? (a,b) => (b.data.pubDate||0)-(a.data.pubDate||0)
+            //@ts-ignore
+            : (a,b) => (a.data.order||0)-(b.data.order||0)
+        )
 
 interface Props {
-    display?: ["postCount", number] | ["postList", string[]]
+    display?: ["postCount", number] | ["postList", string[]],
+    collection?: Parameters<typeof getCollection>[0],
+    group?: {
+        titleMap?: Record<string, string> | ((k:string,c:any) => string),
+        by: (k: any, i:number) => string,
+        sort?: Parameters<typeof Array.prototype.sort>[0]|string[]
+    }
 }
+
+export const UNCATEGORIZED = "__UNCATEGORIZED__"//Symbol("Uncategorized")
 
 ---
 
@@ -25,9 +39,26 @@ interface Props {
 
 <div>
     {
-        (display?.[0] != "postList"
-        ? posts.slice(0,display?.[1])
-        : posts.filter(e => display[1].includes(e.file.match(/blog\/(.*).(?:md|mdx)/)[1])))
-            .map(e => <PostPreview post={e as unknown as PostPreviewProps["post"]} />)
+        Object.entries(Object.groupBy(
+            display?.[0] != "postList"
+                ? posts.slice(0,display?.[1])
+                : posts.filter(e => display[1].includes(e.slug)),
+            // "The callback function should return a string or symbol"
+            // but it doesn't work if i use a symbol. OK
+            group?.by || (_ => UNCATEGORIZED)
+        ))
+            .sort(
+                Array.isArray(group?.sort) 
+                    // probably could be better but like who cares
+                    ? ([groupA], [groupB]) => (group!.sort as string[]).indexOf(groupA)-(group!.sort as string[]).indexOf(groupB)
+                    : group?.sort || (_ => 0))
+            .map(([groupName, children]) => <>
+                {groupName as unknown as string|symbol !== UNCATEGORIZED ? <h2 class="sectionDenoter">{
+                    (!group?.titleMap || typeof group.titleMap == "object")
+                        ? group?.titleMap && groupName in group?.titleMap ? group?.titleMap[groupName] : groupName
+                        : group?.titleMap(groupName, children)
+                }</h2> : <></>}
+                {children!.map(e => <PostPreview post={e} />)}
+            </>)
     }
 </div>

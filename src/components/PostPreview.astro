@@ -1,13 +1,10 @@
 ---
 import { Picture } from "astro:assets"
-import { type Props as PostProps } from "../layouts/Post.astro"
 import dynImportImg from "../util/ohgodpleasehelpme"
+import type { CollectionEntry } from "astro:content"
 
 export interface Props {
-    post: {
-        url: string,
-        frontmatter: PostProps["frontmatter"]
-    }
+    post: CollectionEntry<"posts" | "docs">
 }
 
 const { post } = Astro.props
@@ -52,8 +49,9 @@ const { post } = Astro.props
             position: absolute;
             border-radius: 16px;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            /*height: 100%;
+            object-fit:cover;*/
+            object-fit:contain;
             background-color: var(--backgroundColor);
             filter: opacity(20%) saturate(25%);
             z-index: 0;
@@ -128,37 +126,38 @@ const { post } = Astro.props
         }
     }
 </style>
-<a href={post.url}>
+<a href={`/${post.collection == "posts" ? "blog" : post.collection}/${post.slug}`}>
     <div class="post">
 
         {
-            post.frontmatter.image
+            post.data.image
             ? (
-                "path" in post.frontmatter.image
+                "path" in post.data.image
                 ? <Picture
-                    src={dynImportImg(post.frontmatter.image.path)}
-                    alt={post.frontmatter.image.alt}
-                    class:list={[{topper: post.frontmatter.image.isTopper}]}
+                    src={dynImportImg(post.data.image.path)}
+                    alt={post.data.image.alt}
+                    class:list={[{topper: post.data.image.isTopper}]}
                     formats={["avif", "webp"]}
                 />
+                // need to repeat myself here otherwise astro dies
                 : <img
-                    src={post.frontmatter.image.url}
-                    alt={post.frontmatter.image.alt}
-                    class:list={[{topper: post.frontmatter.image.isTopper}]}
+                    src={"url" in post.data.image ? post.data.image.url : ""}
+                    alt={post.data.image.alt}
+                    class:list={[{topper: post.data.image.isTopper}]}
                 >
             )
             : ""
         }
 
         <div class="frontmatter">
-            <h3>{post.frontmatter.title}</h3>
+            <h3>{post.data.title}</h3>
             <p>
-                {post.frontmatter.description}
+                {post.data.description}
             </p>
             {
-                post.frontmatter.publicationDate
+                post.data.pubDate
                 ? <p>
-                    <small>{new Date(post.frontmatter.publicationDate).toISOString().split("T")[0]}</small>
+                    <small>{new Date(post.data.pubDate).toISOString().split("T")[0]}</small>
                 </p>
                 : ""
             }

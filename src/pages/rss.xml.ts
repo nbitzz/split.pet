@@ -1,24 +1,27 @@
 import rss, {pagesGlobToRssItems} from '@astrojs/rss';
 import type { MarkdownInstance, MDXInstance } from 'astro';
 import type { Props as PostProps } from "../layouts/Post.astro"
+import { getCollection } from 'astro:content';
+import astroConfig from '../../astro.config.mjs';
 
 export async function GET(context) {
+  const posts = await getCollection("posts");
   return rss({
     title: 'split.pet blog',
     description: 'blog hosted on split.pet by split!',
     site: context.site,
     items: 
-      (await Promise.all(Object.entries(import.meta.glob<MarkdownInstance<PostProps["frontmatter"]>|MDXInstance<PostProps["frontmatter"]>>("./blog/*.{md,mdx}"))
-        .map(([_, get]) => get())))
-        .filter(e => e.frontmatter.publicationDate && !e.frontmatter.unlisted)
+      (posts
+        .filter(e => e.data.pubDate && !e.data.unlisted)
         .map(e => {
           return {
-            title: e.frontmatter.title,
-            description: e.frontmatter.description,
-            pubDate: new Date(e.frontmatter.publicationDate),
-            content: "compiledContent" in e ? e.compiledContent() : `This content can't be rendered here. See the full post at <a href="${e.url}">${e.url}</a>.`,
-            link: e.url
+            title: e.data.title,
+            description: e.data.description,
+            pubDate: e.data.pubDate ? new Date(e.data.pubDate) : undefined,
+            content: "compiledContent" in e ? (e.compiledContent as () => string)() : `This content can't be rendered here. See the full post at <a href="/blog/${e.slug}">${astroConfig.site}/blog/${e.slug}</a>.`,
+            link: `/blog/${e.slug}`
           }
         })
+      )
   });
 }

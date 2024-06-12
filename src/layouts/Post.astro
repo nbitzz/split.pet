@@ -8,8 +8,9 @@ import extend from "@fluentui/svg-icons/icons/table_resize_column_24_filled.svg?
 import home from "@fluentui/svg-icons/icons/home_24_filled.svg?raw";
 import { getImage } from "astro:assets";
 import dynImportImg from "../util/ohgodpleasehelpme";
+import type { collections } from "../content/config";
 
-const { frontmatter } = Astro.props
+const { frontmatter, pageType } = Astro.props
 
 export interface Props {
     frontmatter: {
@@ -19,7 +20,8 @@ export interface Props {
         unlisted?: boolean,
         image?: HeadProps["image"],
         readTime: ReturnType<typeof getReadingTime>
-    }
+    },
+    pageType: keyof typeof collections
 }
 
 const notes = [
@@ -35,14 +37,14 @@ const notes = [
     )
 ]
 
-const imgUrl = "url" in frontmatter.image 
+const imgUrl = frontmatter.image ? "url" in frontmatter.image 
                     ? frontmatter.image.url 
                     : (
                         await getImage({
                             src: (await dynImportImg(frontmatter.image.path)).default,
                             format: "webp"
                         })
-                    ).src
+                    ).src : ""
 ---
 
 <style lang="scss">
@@ -128,9 +130,13 @@ const imgUrl = "url" in frontmatter.image
             : ""}
         </p>
         <div class="postControls">
-            <p>{frontmatter.readTime.words} words ({frontmatter.readTime.text.match(/(.*) read/)[1]})</p>
+            <p>{frontmatter.readTime.words} words ({(frontmatter.readTime.text.match(/(.*) read/)||[])[1]})</p>
             <div class="controls">
-                <a href="/blog" title="View posts"><Fragment set:html={home} /></a>
+                <a {...(
+                    pageType == "posts"
+                    ? {href:"/blog",title:"View posts"}
+                    : {href:"/docs",title:"Go back to docs homepage"}
+                )}><Fragment set:html={home} /></a>
                 <div class="postExtend">
                     <span class="divider" aria-hidden>&nbsp;|&nbsp;</span>
                     <label for="extendPost">Extend post</label>

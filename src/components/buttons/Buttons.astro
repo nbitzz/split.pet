@@ -41,12 +41,12 @@ const images_scopeDefaultsUnapplied =
         groupBy(
             (await Promise.all(
                 Object.entries(import.meta.glob("./images/**/*"))
-                    .map(async ([key, prom]) => [key.match(/\.\/images\/(?:(.*)\/)?(.*)\..*/).slice(1), (await prom() as any)?.default])
+                    .map(async ([key, prom]) => [(key.match(/\.\/images\/(?:(.*)\/)?(.*)\..*/)||[]).slice(1), (await prom() as any)?.default])
             )),
             ([name, obj]) => `${name[0]||""}/${name[1]}`
         )
     ).map(([k, arrays]) => 
-        Object.fromEntries([
+        arrays&&Object.fromEntries([
             ...arrays.flatMap(array => Object.entries(array[1])), 
             ["basename", arrays[0][0]?.[1] || k],
             ["group", arrays[0][0]?.[0]]
@@ -63,10 +63,10 @@ const images =
         .filter(e => e.basename != "__scope__")
         .map(e => 
             Object.assign(
-                images_scopeDefaults[e.group] 
+                e.group || "" in images_scopeDefaults 
                 ? Object.assign(
                     {},
-                    images_scopeDefaults[e.group]
+                    images_scopeDefaults[e.group || ""]
                 )
                 : {}, 
                 e

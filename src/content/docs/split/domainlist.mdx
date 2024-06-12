@@ -1,0 +1,79 @@
+---
+title: Domain list
+description: A bunch of domains I own
+image:
+  isTopper: true
+  url: https://mahiro.oyama.pictures/Watermelon
+  alt: Screenshot of a neofetch on my laptop
+---
+
+<p><small>Do note that this is not a complete list: a few domains are not listed here for... various reasons.</small></p>
+<br />
+{
+    [
+        {
+            title: "Single",
+            domains: [
+                "pls.can-i.win",
+                "coolviruses.download",
+                "haveapieceofthat.nahthatsnotmytype.shespretty.itsjustmytypeis.men",
+                "whopostedmynudesontwitter.com",
+                "windows.sucks.win",
+                "freerobux.win",
+                "freevbucks.win",
+                "xkcd.uk",
+                "ram-ranch.rodeo",
+                "iwanttobeheldbystronger.men",
+                "childlabor.company"
+            ]
+        },
+        {
+            title: "oyama.pictures",
+            domains: [
+                "oyama.pictures",
+                "mahiro.oyama.pictures",
+                "mihari.oyama.pictures"
+            ]
+        },
+        {
+            title: "fnaf.stream",
+            domains: [
+                "helloeverybodymynameismarkiplierandwelcometofivenightsatfreddys.anindiehorrorgamethatyouguyssuggestedenmasseandisawthatyamimash.playeditandhesaidthatitwasreallyreallygoodsoimveryeagertoseewha.tisupandthatisaterrifyinganimatronicbear.fnaf.stream",
+                "itsperfect.firstipourthemilk.thenipourthecereal.breakfastmyfriend.fnaf.stream"
+            ]
+        },
+        {
+            title: "fyle.uk",
+            domains: [
+                "fyle.uk",
+                "jelly.fyle.uk",
+                "status.fyle.uk",
+                "ssh.fyle.uk",
+                "tunnel.fyle.uk"
+            ]
+        },
+        {
+            title: "Not really maintained",
+            domains: [
+                "brand.fyle.uk"
+            ]
+        },
+        {
+            title: "Unused",
+            domains: [
+                "mass.report",
+                "animatedchristmastreefordesk.top",
+                "soimmakingacalloutpostonmytwitter.com"
+            ]
+        }
+    ].map(e => <> 
+        <h2 class="sectionDenoter">{e.title}</h2>
+        <ul class="long">
+            {
+                e.domains.map(domain => 
+                    <li><a href={`https://${domain}`}>{domain}</a></li>
+                )
+            }
+        </ul>
+    </>)
+}

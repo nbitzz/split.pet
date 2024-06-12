@@ -34,7 +34,7 @@
         }
     }*/ // I fucking give up
 
-    ul {
+    ul:not(.long) {
         padding-left: 20px;
         li {
             overflow-wrap: break-word;
@@ -43,6 +43,15 @@
                 content: "-  ";
                 color: #AA88FF;
             }
+        }
+    }
+
+    ul.long {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+        li {
+            overflow-wrap: break-word;
         }
     }
 

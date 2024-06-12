@@ -1,8 +1,7 @@
 ---
-layout: "../../layouts/Post.astro"
 title: Hi, I'm split!
 description: I guess I should probably introduce myself
-publicationDate: 1715657727000
+pubDate: 1715657727000
 image:
     isTopper: true
     url: https://mahiro.oyama.pictures/Hai

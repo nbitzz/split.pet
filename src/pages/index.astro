@@ -34,7 +34,7 @@ import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
 import Posts from "../components/Posts.astro";
 import IconList from "../components/IconList.astro";
 import Buttons from "../components/buttons/Buttons.astro";
-import TiltController from "../components/buttons/TiltController.astro";
+import BtnFx from "../components/buttons/BtnFx.astro";
 ---
 <Page title="split's website" description="hi this is my shitty website" meta={[{name: "og:image", content: "/pfp/mahiropfp_butwithart.png"}]}>
     <PersonHeader
@@ -47,7 +47,7 @@ import TiltController from "../components/buttons/TiltController.astro";
             {url: "https://steamcommunity.com/id/haha__yes", icon: siSteam.svg, color: "#"+siSteamdeck.hex},
             {url: "https://monkeytype.com/profile/split1337", icon: siMonkeytype.svg, color: "#"+siMonkeytype.hex},
             {url: "https://status.fyle.uk/", icon: siUpptime.svg, color: "#"+siUpptime.hex},
-            {url: "/blog/setup", icon: iconLaptop, color: "#AA88FF"}
+            {url: "/docs/split/setup", icon: iconLaptop, color: "#AA88FF"}
         ]}>
         <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" loading="eager" />
     </PersonHeader>
@@ -120,7 +120,7 @@ import TiltController from "../components/buttons/TiltController.astro";
     <section id="buttons" class="insignificant">
         <h2 class="sectionDenoter">Buttons</h2>
         <Buttons />
-        <TiltController />
+        <BtnFx />
         <br>
     </section>
 

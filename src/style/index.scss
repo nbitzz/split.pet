@@ -171,12 +171,6 @@ body {
         background: linear-gradient(to bottom, var(--backgroundColor), var(--backgroundColorTransparent));
         flex-grow: 1;
         flex-shrink: 0;
-
-        & > ul.long {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-        }
     }
 
     & > .insignificant {

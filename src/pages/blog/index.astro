@@ -8,7 +8,12 @@ import Page from "../../layouts/Page.astro";
     <GenericHeader text="Posts" image={{isTopper: true, url: "https://mahiro.oyama.pictures/Solemn", alt:"Mahiro Oyama w/ a solemn expression"}} />
 
     <section id="posts" class="significant">
-        <Posts />
+        <Posts group={{
+            by(k, i) {
+                let pdate = new Date(k.data.pubDate)
+                return `${pdate.getUTCFullYear()}-${(pdate.getUTCMonth()+1).toString().padStart(2, "0")}`
+            },
+        }}/>
         <br>
     </section>
     

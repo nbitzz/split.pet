@@ -1,10 +1,10 @@
 ---
-layout: "../../layouts/Post.astro"
 title: Setup
 description: Oh my devices
 image:
   path: blog/setup.png
   alt: Screenshot of a neofetch on my laptop
+order: -1
 ---
 
 <h2 style="margin-bottom: 0;">Laptop</h2>
@@ -49,3 +49,13 @@ Runs my :simple.Homeassistant: Home Assistant.
 <p style="margin-top: 0;"><small>Raspberry Pi 4B 8GB</small></p>
 
 Runs my :simple.Jellyfin:&nbsp;Jellyfin, shared between a few of my friends.
+
+<h3 style="margin-bottom: 0;">Mihari</h3>
+<p style="margin-top: 0;"><small>Raspberry Pi 5 4GB</small></p>
+
+Runs my :simple.Authentik: Authentik and :simple.Vaultwarden: Vaultwarden.
+
+<h3 style="margin-bottom: 0;">Kaede</h3>
+<p style="margin-top: 0;"><small>Raspberry Pi 5 4GB</small></p>
+
+Drives a Samsung external SSD for select stuff to be backed up to. <small>Might run a Forgejo or something if I feel like it?</small>
