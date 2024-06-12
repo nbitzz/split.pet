@@ -17,11 +17,11 @@ I don't really have many projects. The only notable ones that I've actually real
 
 I primarily do my work off my [:simple.Framework:&#x202f;Framework 13](/blog/setup#laptop). I also procrastinate a lot on both my online work and schoolwork (thanks, ADHD!) Oh, and if you're wondering why I have 64GB of RAM, I just really like tabs:
 
-![2184 tabs open in Firefox](../../images/blog/introduction/Screenshot_20240422_121458.png)
+![2184 tabs open in Firefox](../../../../images/blog/introduction/Screenshot_20240422_121458.png)
 
-![Firefox using 31.7GiB of memory](../../images/blog/introduction/Screenshot_20240422_121630.png)
+![Firefox using 31.7GiB of memory](../../../../images/blog/introduction/Screenshot_20240422_121630.png)
 
-![My laptop's temperature sensor showing 100.2 degrees C](../../images/blog/introduction/Screenshot_20240422_121736.png)
+![My laptop's temperature sensor showing 100.2 degrees C](../../../../images/blog/introduction/Screenshot_20240422_121736.png)
 <p align="center"><small>Send help my lap is burning<br />Editor's note: it's actually 3019 tabs now.</small></p>
 
 Uh, other small stuff about me: 
