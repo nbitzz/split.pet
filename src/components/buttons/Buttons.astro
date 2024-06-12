@@ -15,16 +15,8 @@ import Button from "./Button.astro"
     and combine everything with the same basename into one object
 */
 
-let groupBy = Object.groupBy || function<K extends PropertyKey, T>(items: Array<T>, keySelector: (item: T, index: number) => K): Partial<Record<K, T[]>> {
-    let newObj = {} as Record<K, T[]>
+import { groupBy } from "../../util/polyfills"
 
-    items.forEach((v, x) => {
-        let key = keySelector(v,x)
-        newObj[key] = [...(newObj[key] || [] as T[]), v]
-    })
-
-    return newObj
-}
 export interface Metadata {
     alt?: string,
     url?: string,

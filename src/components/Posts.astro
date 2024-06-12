@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'astro/types'
 import PostPreview, {type Props as PostPreviewProps} from './PostPreview.astro'
 import { getCollection } from 'astro:content'
+import { groupBy } from '../util/polyfills'
 
 const {display, collection = "posts", group} = Astro.props
 const posts = 
@@ -39,7 +40,7 @@ export const UNCATEGORIZED = "__UNCATEGORIZED__"//Symbol("Uncategorized")
 
 <div>
     {
-        Object.entries(Object.groupBy(
+        Object.entries(groupBy(
             display?.[0] != "postList"
                 ? posts.slice(0,display?.[1])
                 : posts.filter(e => display[1].includes(e.slug)),
