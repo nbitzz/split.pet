@@ -53,7 +53,7 @@ Runs my :simple.Jellyfin:&nbsp;Jellyfin, shared between a few of my friends.
 <h3 style="margin-bottom: 0;">Mihari</h3>
 <p style="margin-top: 0;"><small>Raspberry Pi 5 4GB</small></p>
 
-Runs my :simple.Authentik: Authentik and :simple.Vaultwarden: Vaultwarden.
+Runs my :simple.Authentik: Authentik and :simple.Vaultwarden:&thinsp;Vaultwarden.
 
 <h3 style="margin-bottom: 0;">Kaede</h3>
 <p style="margin-top: 0;"><small>Raspberry Pi 5 4GB</small></p>
