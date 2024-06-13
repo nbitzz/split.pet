@@ -43,10 +43,14 @@ interface Props {
             <slot />
 
             <footer>
-                <h3><a href="/">split.pet</a> &mdash; {title}</a></h3>
+                <h3>
+                    <a href="/">split.pet</a>
+                    <a href="/docs" class="subroute">/docs</a>
+                    <a href="/blog" class="subroute">/blog</a>
+                    <br>
+                    {title}
+                </h3>
                 <p>
-                    <a href="/domainlist">Domain list</a><br>
-                    <a href="/blog">Blog</a><br>
                     Built with 
                     <a href="https://astro.build" style={"color:#"+siAstro.hex}>
                         <Fragment set:html={siAstro.svg} />&thinsp;Astro</a>

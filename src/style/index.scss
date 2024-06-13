@@ -181,13 +181,20 @@ body {
         background: var(--backgroundColor);
         border-radius: 0 0 16px 16px;
         margin-bottom: 50px;
-        color: #bbb;
+        color: #888;
 
         & > h3 {
             margin-bottom: 0;
-            text-transform: uppercase;
             font-size: medium;
-            & > a {text-decoration: none;}
+            text-transform: uppercase;
+            & > a:not(.subroute) {
+                text-decoration: none;
+            }
+            & > a.subroute {
+                color: #777;
+                font-weight: 400;
+                text-transform: none;
+            }
         }
         & > p {
             margin-top: 0;
