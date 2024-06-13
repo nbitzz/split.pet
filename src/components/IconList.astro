@@ -1,7 +1,8 @@
 ---
+import { injectTitleIntoSvg } from '../util/ohgodpleasehelpme'
 
 export interface Props {
-    list: {url?: string, icon: string, color?: string}[],
+    list: {url?: string, icon: string, color?: string, title?: string}[],
     forSocials?: boolean
 }
 
@@ -46,7 +47,7 @@ const {list, forSocials} = Astro.props
         list.map(obj => 
             <li>
                 <a href={obj.url} {...(forSocials ? {rel:"me"} : {})} style={obj.color ? `--iconColor: ${obj.color};` : ""} target="_blank">
-                    <Fragment set:html={obj.icon} />
+                    <Fragment set:html={obj.title?injectTitleIntoSvg(obj.icon, obj.title):obj.icon} />
                 </a>
             </li>
         )

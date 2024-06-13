@@ -35,6 +35,7 @@ import Posts from "../components/Posts.astro";
 import IconList from "../components/IconList.astro";
 import Buttons from "../components/buttons/Buttons.astro";
 import BtnFx from "../components/buttons/BtnFx.astro";
+import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme";
 ---
 <Page title="split's website" description="hi this is my shitty website" meta={[{name: "og:image", content: "/pfp/mahiropfp_butwithart.png"}]}>
     <PersonHeader
@@ -46,8 +47,8 @@ import BtnFx from "../components/buttons/BtnFx.astro";
             {url: "https://github.com/nbitzz", icon: siGithub.svg},
             {url: "https://steamcommunity.com/id/haha__yes", icon: siSteam.svg, color: "#"+siSteamdeck.hex},
             {url: "https://monkeytype.com/profile/split1337", icon: siMonkeytype.svg, color: "#"+siMonkeytype.hex},
-            {url: "https://status.fyle.uk/", icon: siUpptime.svg, color: "#"+siUpptime.hex},
-            {url: "/docs/split/setup", icon: iconLaptop, color: "#AA88FF"}
+            {url: "https://status.fyle.uk/", icon: siUpptime.svg, color: "#"+siUpptime.hex, title: "hi"},
+            {url: "/docs/split/setup", icon: iconLaptop, color: "#AA88FF", title: "Setup"}
         ]}>
         <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" loading="eager" />
     </PersonHeader>
