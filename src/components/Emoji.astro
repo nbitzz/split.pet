@@ -1,0 +1,6 @@
+---
+import {getEmoji} from "../util/emojicore"
+const renderedEmoji = getEmoji(await Astro.slots.render('default'))
+---
+
+<Fragment set:html={renderedEmoji}>

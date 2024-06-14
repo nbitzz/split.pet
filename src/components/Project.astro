@@ -1,0 +1,128 @@
+---
+import {siGit} from "simple-icons"
+import server from "@fluentui/svg-icons/icons/live_24_filled.svg?raw"
+import website from "@fluentui/svg-icons/icons/window_24_filled.svg?raw"
+import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme"
+const availButtons = {
+    git: {
+        icon: siGit.svg,
+        defaultTitle: "Source"
+    },
+    instance: {
+        icon: injectTitleIntoSvg(server, "Instance"),
+        defaultTitle: "Live instance"
+    },
+    website: {
+        icon: injectTitleIntoSvg(website, "Website"),
+        defaultTitle: "Site"
+    }
+} satisfies Record<string, {icon: string, defaultTitle: string}>
+
+export interface Chip {
+    icon: keyof typeof availButtons,
+    href: string,
+    title?: string,
+    sub?: string
+}
+
+export interface Props {
+    name: string,
+    chips: Chip[]
+}
+
+const { name, chips } = Astro.props
+---
+<style lang="scss">
+    .project {
+        > .head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            > h2 {
+                margin: 0;
+            }
+            > .chips {
+                display: flex;
+                align-items: center;
+                overflow-x: auto;
+                overflow-y: hidden;
+                > a {
+                    display: flex;
+                    gap: 5px;
+                    font-size: medium;
+                    align-items: center;
+                    > .chipIconContainer {
+                        aspect-ratio: 1 / 1;
+                        height: 1em;
+                        width: 1em;
+                        svg {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .project {
+    > .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        > h2 {
+            margin: 0;
+        }
+        > .chips {
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            gap: 5px;
+            > a {
+                display: flex;
+                gap: 5px;
+                font-size: medium;
+                align-items: center;
+                padding: 3px 6px;
+                border: 1px solid gray;
+                border-radius: 8px;
+                text-decoration: none;
+                white-space: nowrap;
+                > .chipIconContainer {
+                    display: flex;
+                    aspect-ratio: 1 / 1;
+                    height: 1em;
+                    width: 1em;
+                }
+            }
+        }
+    }
+}
+</style>
+<style is:global>
+    .chipIconContainer > svg {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<div class="project">
+  <div class="head">
+    <h2>{name}</h2>
+    <div class="chips">
+        {
+            chips.map(
+                chip =>
+                    <a href={chip.href}>
+                        <div class="chipIconContainer">
+                            <Fragment set:html={availButtons[chip.icon].icon} />
+                        </div>
+                        <span>{chip.title || availButtons[chip.icon].defaultTitle}</span>
+                    </a>
+            )
+        }
+    </div>
+  </div>
+  <slot />
+</div>
