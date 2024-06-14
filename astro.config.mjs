@@ -26,6 +26,10 @@ export default defineConfig({
     "/blog/hello-world": {
       status: 301,
       destination: "/blog/2024/04/hello-world"
+    },
+    "/tabs": {
+      status: 301,
+      destination: "https://tabs.split.pet/"
     }
   }
 });
