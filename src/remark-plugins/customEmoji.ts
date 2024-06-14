@@ -14,7 +14,7 @@ export function remarkCustomEmoji() {
           .map(async ([match, emojiName, text, colon]) => {
             if (text || colon) return { type: "text", value: match }
             else {
-              let element = getEmoji(emojiName)
+              let element = await getEmoji(emojiName)
 
               return element 
                 ? {type: "html", value: element} 
