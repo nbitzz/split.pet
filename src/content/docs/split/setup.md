@@ -59,3 +59,9 @@ Runs my :simple.Authentik: Authentik and :simple.Vaultwarden:&thinsp;Vaultwarden
 <p style="margin-top: 0;"><small>Raspberry Pi 5 4GB</small></p>
 
 Drives a Samsung external SSD for select stuff to be backed up to. <small>Might run a Forgejo or something if I feel like it?</small>
+
+
+<h3 style="margin-bottom: 0;">Miyo</h3>
+<p style="margin-top: 0;"><small>Raspberry Pi Zero 2 W</small></p>
+
+Runs the split Live Tab Counter at [tabs.split.pet](https://tabs.split.pet).
