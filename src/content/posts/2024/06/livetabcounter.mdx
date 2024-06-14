@@ -1,0 +1,30 @@
+---
+title: The live tab counter returns
+description: ""
+pubDate: 1718357607000
+image:
+    path: blog/2024/06/tabs.split.pet.png
+    alt: Screenshot of tabs.split.pet tiled diagonally
+---
+import Buttons from "../../../..//components/buttons/Buttons.astro"
+import BtnFx from "../../../../components/buttons/BtnFx.astro"
+
+The live tab counter is (finally) back, now available at [tabs.split.pet](https://tabs.split.pet).
+
+The customized fork of the tab-counter extension I use now uses a WebSocket for new tabs instead of sending a new HTTP request for every tab. Originally, I was planning to rewrite the tab-counter extension for this; but I got lazy, so it's still just a sloppy fork. Too bad, I guess.
+
+Using a WebSocket also means that devices can have online/offline states. The potential for the tab count to be inaccurate is now reflected in the form of a gray question mark appended to the tab count which is displayed when any device is offline.
+
+As for hosting: it's been moved from my PC to [Miyo](/docs/split/setup), a Raspberry Pi Zero 2 W, where it runs in a Docker container and is tunneled via Cloudflare. Why not just use Durable Objects? 1. I'm lazy, and 2. I didn't feel like paying for Workers.
+
+Oh, and finally: it has a button now, if you'd like to add it.
+
+<Buttons filter={(btn) => btn.group == "split" && btn.basename == "tabs"} />
+<BtnFx />
+
+Do note that it _is_ an SVG (for obvious reasons). For most people, I don't think this matters, but it is something to take into account if you do decide to add it to your site for.. some reason.
+Also, hotlink the image so that it'll autoupdate! 🙃
+
+If you'd like, feel free to also just link this button to my site. I don't really care that much.
+
+This is probably a good point to wrap up this post. It's 03:00 (05:00 since I'm traveling, actually), so I should probably sleep. Good night. Or good morning. I don't fucking know

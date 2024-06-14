@@ -38,8 +38,8 @@ interface Props {
         margin: 10px 0;
     }
 </style>
-<section id="quotes" class="insignificant" {...extraAttributes}>
-    {!noHeader ? <h2 class="sectionDenoter">Quotes</h2> : ""}
+<section id="testimonials" class="insignificant" {...extraAttributes}>
+    {!noHeader ? <h2 class="sectionDenoter">Testimonials</h2> : ""}
     {
         quotes.map((quote, x) => 
             <div class:list={["quote", {alternate: x % 2 == 1}]}>
