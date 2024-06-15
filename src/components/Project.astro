@@ -1,5 +1,11 @@
 ---
-import {siGit} from "simple-icons"
+import {
+    siGit,
+    siAstro,
+    siBun,
+    siNodedotjs,
+    siSvelte
+} from "simple-icons"
 import server from "@fluentui/svg-icons/icons/live_24_filled.svg?raw"
 import website from "@fluentui/svg-icons/icons/window_24_filled.svg?raw"
 import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme"
@@ -17,6 +23,28 @@ const availButtons = {
         defaultTitle: "Site"
     }
 } satisfies Record<string, {icon: string, defaultTitle: string}>
+const availTech = {
+    astro: {
+        icon: siAstro.svg,
+        name: "Astro",
+        href: "https://astro.build/"
+    },
+    bun: {
+        icon: siBun.svg,
+        name: "Bun",
+        href: "https://bun.sh"
+    },
+    node: {
+        icon: siNodedotjs.svg,
+        name: "Node.js",
+        href: "https://nodejs.org"
+    },
+    svelte: {
+        icon: siSvelte.svg,
+        name: "Svelte",
+        href: "https://svelte.dev"
+    }
+} satisfies Record<string, {icon: string, name: string, href: string}>
 
 export interface Chip {
     icon: keyof typeof availButtons,
@@ -25,12 +53,15 @@ export interface Chip {
     sub?: string
 }
 
+export type Tech = keyof typeof availTech
+
 export interface Props {
-    name: string,
+    name: string
+    tech: Tech[]
     chips: Chip[]
 }
 
-const { name, chips } = Astro.props
+const { name, chips, tech } = Astro.props
 ---
 <style lang="scss">
     .project {
@@ -69,16 +100,19 @@ const { name, chips } = Astro.props
     > .head {
         display: flex;
         align-items: center;
-        justify-content: space-between;
         flex-wrap: wrap;
-        > h2 {
-            margin: 0;
+        gap: 5px;
+        > hgroup {
+            > * {
+                margin: 0;
+            }
         }
         > .chips {
             display: flex;
+            justify-content: right;
+            flex-grow: 1;
+            flex-wrap: wrap;
             align-items: center;
-            overflow-x: auto;
-            overflow-y: hidden;
             gap: 5px;
             > a {
                 display: flex;
@@ -109,7 +143,27 @@ const { name, chips } = Astro.props
 </style>
 <div class="project">
   <div class="head">
-    <h2>{name}</h2>
+    <hgroup>
+        <h2>{name}</h2>   
+        <p class="tech">
+            {
+                tech.map(
+                    techName => {
+                        let technology = availTech[techName];
+                        return <a href={technology.href}><Fragment set:html={technology.icon} /></a>
+                    }
+                ).flatMap((v,i,a) => a.length-1 == i ? v : [ v, <>&thinsp;</> ])
+            }
+            {
+                tech.map(
+                    techName => {
+                        let technology = availTech[techName];
+                        return <a href={technology.href}>{technology.name}</a>
+                    }
+                ).flatMap((v,i,a) => a.length-1 == i ? v : [ v, ", " ])
+            }
+        </p>
+    </hgroup>
     <div class="chips">
         {
             chips.map(

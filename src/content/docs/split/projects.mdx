@@ -11,38 +11,53 @@ import Emoji from "../../../components/Emoji.astro"
 
 <h2 class="sectionDenoter">Individual</h2>
 
-<Project name="split.pet" chips={[
-  { icon: "website", href: "https://split.pet/" },
-  { icon: "git", href: "https://github.com/nbitzz/split.pet" }
-]}>
+<Project name="split.pet"
+  chips={[
+    { icon: "website", href: "https://split.pet/" },
+    { icon: "git", href: "https://github.com/nbitzz/split.pet" }
+  ]}
+  tech={["astro"]}
+>
   This website.
 </Project>
 
-<Project name="tabs.split.pet" chips={[
-  { icon: "website", href: "https://tabs.split.pet/" },
-  { icon: "git", href: "https://github.com/nbitzz/tabs.split.pet" }
-]}>
+<Project name="tabs.split.pet"
+  chips={[
+    { icon: "website", href: "https://tabs.split.pet/" },
+    { icon: "git", href: "https://github.com/nbitzz/tabs.split.pet" }
+  ]}
+  tech={["bun"]}
+>
   Live tab counter.
 </Project>
 
-<Project name="oyama.pictures" chips={[
-  { icon: "website", href: "https://oyama.pictures/" },
-  { icon: "git", href: "https://github.com/nbitzz/oyama.pictures" }
-]}>
+<Project name="oyama.pictures"
+  chips={[
+    { icon: "website", href: "https://oyama.pictures/" },
+    { icon: "git", href: "https://github.com/nbitzz/oyama.pictures" }
+  ]}
+  tech={["bun"]}
+>
   Serves pictures of Mahiro and Mihari Oyama. Also, you can `curl mahiro.oyama.pictures` and the other subdomains.
 </Project>
 
-<Project name="freerobux.win" chips={[
-  { icon: "website", href: "https://freerobux.win/" }
-]}>
+<Project name="freerobux.win" 
+  chips={[
+    { icon: "website", href: "https://freerobux.win/" }
+  ]}
+  tech={["bun"]}
+>
   Lazy little quick-and-dirty server thing. Want free robux? `curl freerobux.win` :mahirolog:
 </Project>
 
 <h2 class="sectionDenoter">under Etcetera</h2>
 
-<Project name="monofile" chips={[
-  { icon: "git", href: "https://github.com/mollersuite/monofile" },
-  { icon: "instance", href: "https://fyle.uk/" }
-]}>
+<Project name="monofile"
+  chips={[
+    { icon: "git", href: "https://github.com/mollersuite/monofile" },
+    { icon: "instance", href: "https://fyle.uk/" }
+  ]}
+  tech={["node", "svelte"]}
+>
   Discord-based file sharing.
 </Project>
