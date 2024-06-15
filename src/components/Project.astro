@@ -44,7 +44,7 @@ const availTech = {
         name: "Svelte",
         href: "https://svelte.dev"
     }
-} satisfies Record<string, {icon: string, name: string, href: string}>
+} satisfies Record<string, Tech>
 
 export interface Chip {
     icon: keyof typeof availButtons,
@@ -53,15 +53,19 @@ export interface Chip {
     sub?: string
 }
 
-export type Tech = keyof typeof availTech
+export interface Tech {icon: string, name: string, href: string}
+
+export type TechResolvable = keyof typeof availTech
 
 export interface Props {
     name: string
-    tech: Tech[]
+    tech: TechResolvable[]
     chips: Chip[]
 }
 
 const { name, chips, tech } = Astro.props
+
+const resolvedTech = tech.map(e => typeof e == "string" ? availTech[e] : e) as Tech[]
 ---
 <style lang="scss">
     .project {
@@ -147,19 +151,15 @@ const { name, chips, tech } = Astro.props
         <h2>{name}</h2>   
         <p class="tech">
             {
-                tech.map(
-                    techName => {
-                        let technology = availTech[techName];
-                        return <a href={technology.href}><Fragment set:html={technology.icon} /></a>
-                    }
+                resolvedTech.map(
+                    technology =>
+                        <a href={technology.href}><Fragment set:html={technology.icon} /></a>
                 ).flatMap((v,i,a) => a.length-1 == i ? v : [ v, <>&thinsp;</> ])
             }
             {
-                tech.map(
-                    techName => {
-                        let technology = availTech[techName];
-                        return <a href={technology.href}>{technology.name}</a>
-                    }
+                resolvedTech.map(
+                    technology => 
+                        <a href={technology.href}>{technology.name}</a>
                 ).flatMap((v,i,a) => a.length-1 == i ? v : [ v, ", " ])
             }
         </p>
