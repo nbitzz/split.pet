@@ -8,6 +8,7 @@ import {
 } from "simple-icons"
 import server from "@fluentui/svg-icons/icons/live_24_filled.svg?raw"
 import website from "@fluentui/svg-icons/icons/window_24_filled.svg?raw"
+import launch from "@fluentui/svg-icons/icons/open_24_filled.svg?raw"
 import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme"
 const availButtons = {
     git: {
@@ -21,6 +22,10 @@ const availButtons = {
     website: {
         icon: injectTitleIntoSvg(website, "Website"),
         defaultTitle: "Site"
+    },
+    launch: {
+        icon: injectTitleIntoSvg(launch, "Launch"),
+        defaultTitle: "Go"
     }
 } satisfies Record<string, {icon: string, defaultTitle: string}>
 const availTech = {
@@ -153,13 +158,13 @@ const resolvedTech = tech.map(e => typeof e == "string" ? availTech[e] : e) as T
             {
                 resolvedTech.map(
                     technology =>
-                        <a href={technology.href}><Fragment set:html={technology.icon} /></a>
+                        <a href={technology.href} target="_blank"><Fragment set:html={technology.icon} /></a>
                 ).flatMap((v,i,a) => a.length-1 == i ? v : [ v, <>&thinsp;</> ])
             }
             {
                 resolvedTech.map(
                     technology => 
-                        <a href={technology.href}>{technology.name}</a>
+                        <a href={technology.href} target="_blank">{technology.name}</a>
                 ).flatMap((v,i,a) => a.length-1 == i ? v : [ v, ", " ])
             }
         </p>
@@ -168,7 +173,7 @@ const resolvedTech = tech.map(e => typeof e == "string" ? availTech[e] : e) as T
         {
             chips.map(
                 chip =>
-                    <a href={chip.href}>
+                    <a href={chip.href} target="_blank">
                         <div class="chipIconContainer">
                             <Fragment set:html={availButtons[chip.icon].icon} />
                         </div>

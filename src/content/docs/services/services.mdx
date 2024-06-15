@@ -1,0 +1,74 @@
+---
+title: Services
+description: Stuff I host
+order: 1
+image:
+  url: https://mihari.oyama.pictures/Happy
+  alt: Happy Mihari Oyama
+  isTopper: true
+---
+import Project from "../../../components/Project.astro"
+import Emoji from "../../../components/Emoji.astro"
+import { siFirefish, siMisskey, siJellyfin, siAuthentik, siVaultwarden, siHomeassistant } from "simple-icons"
+
+<h2 class="sectionDenoter">Public</h2>
+
+<p style="text-align: center">Coming soon, probably<br/><small>*I have like 3 Raspberry Pi 5s laying around, so I might as well do something with them, right?*</small></p>
+
+<h2 class="sectionDenoter">Friends-only</h2>
+
+<Project name="coolviruses.download"
+  chips={[
+    { icon: "launch", href: "https://coolviruses.download/" }
+  ]}
+  tech={[{icon: siFirefish.svg, name: "Firefish", href: "https://joinfirefish.org"}]}
+>
+  Private :simple.Firefish: Firefish server for me and friends. Virtually unmaintained, but still used by me regardless.
+</Project>
+
+<Project name="fedi.fnaf.stream"
+  chips={[
+    { icon: "launch", href: "https://fedi.fnaf.stream/" }
+  ]}
+  tech={[{icon: siMisskey.svg, name: "Misskey", href: "https://misskey-hub.net/en/"}]}
+>
+  My stupid :simple.Misskey: Misskey instance. Honestly: I have no idea how and why this is still running. It scares me.
+</Project>
+
+<Project name="id.split.pet"
+  chips={[
+    { icon: "launch", href: "https://id.split.pet/" }
+  ]}
+  tech={[{icon: siAuthentik.svg, name: "Authentik", href: "https://goauthentik.io"}]}
+>
+  Private :simple.Authentik: Authentik server for gatekeeping select services (in the future).
+</Project>
+
+<Project name="Jellyfin"
+  chips={[
+    { icon: "website", href: "https://jellyfin.org/" }
+  ]}
+  tech={[]}
+>
+  Private :simple.Jellyfin: Jellyfin server for me and friends.
+</Project>
+
+<Project name="Vaultwarden"
+  chips={[
+    { icon: "website", href: "https://vaultwarden.org/" }
+  ]}
+  tech={[]}
+>
+  :simple.Vaultwarden: Vaultwarden server for me and friends who are stupid enough to trust me to not lose their vaults to some inevitable database corruption (I'm a terrible sysadmin).
+</Project>
+
+<h2 class="sectionDenoter">Personal</h2>
+
+<Project name="Home Assistant"
+  chips={[
+    { icon: "website", href: "https://home-assistant.io/" }
+  ]}
+  tech={[]}
+>
+  I literally only run this so that I can turn the lights back on from my laptop.
+</Project>

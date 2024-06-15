@@ -4,7 +4,7 @@ description: Oh my devices
 image:
   path: blog/setup.png
   alt: Screenshot of a neofetch on my laptop
-order: -1
+order: 0
 ---
 
 <h2 style="margin-bottom: 0;">Laptop</h2>
@@ -34,34 +34,4 @@ Just an :simple.Apple:&thinsp;iPhone 15 Pro Max.
 
 ## Other hardware
 
-<h3 style="margin-bottom: 0;">Surver</h3>
-<p style="margin-top: 0;"><small>Surface Pro 4 (Core i5, 8GB RAM)</small></p>
-
-Runs :simple.Archlinux: Arch Linux, because I didn't feel like installing something more proper that day.
-Unused for the most part. Host to another Docker container borrowed by [aubrey](https://dmpstr.top) as a build server.
-
-<h3 style="margin-bottom: 0;">Sakuya</h3>
-<p style="margin-top: 0;"><small>Raspberry Pi 3B+</small></p>
-
-Runs my :simple.Homeassistant: Home Assistant.
-
-<h3 style="margin-bottom: 0;">Matsuri</h3>
-<p style="margin-top: 0;"><small>Raspberry Pi 4B 8GB</small></p>
-
-Runs my :simple.Jellyfin:&nbsp;Jellyfin, shared between a few of my friends.
-
-<h3 style="margin-bottom: 0;">Mihari</h3>
-<p style="margin-top: 0;"><small>Raspberry Pi 5 4GB</small></p>
-
-Runs my :simple.Authentik: Authentik and :simple.Vaultwarden:&thinsp;Vaultwarden.
-
-<h3 style="margin-bottom: 0;">Kaede</h3>
-<p style="margin-top: 0;"><small>Raspberry Pi 5 4GB</small></p>
-
-Drives a Samsung external SSD for select stuff to be backed up to. <small>Might run a Forgejo or something if I feel like it?</small>
-
-
-<h3 style="margin-bottom: 0;">Miyo</h3>
-<p style="margin-top: 0;"><small>Raspberry Pi Zero 2 W</small></p>
-
-Runs the split Live Tab Counter at [tabs.split.pet](https://tabs.split.pet).
+See [Hosts](/docs/services/hosts) for information about the hosts of the services I run.
