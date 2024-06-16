@@ -10,6 +10,8 @@ import {
 import server from "@fluentui/svg-icons/icons/live_24_filled.svg?raw"
 import website from "@fluentui/svg-icons/icons/window_24_filled.svg?raw"
 import launch from "@fluentui/svg-icons/icons/open_24_filled.svg?raw"
+import files from "@fluentui/svg-icons/icons/folder_24_filled.svg?raw"
+import download from "@fluentui/svg-icons/icons/arrow_download_24_filled.svg?raw"
 import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme"
 
 interface Icon {
@@ -33,6 +35,14 @@ const availButtons = {
     launch: {
         icon: injectTitleIntoSvg(launch, "Launch"),
         defaultTitle: "Go"
+    },
+    download: {
+        icon: injectTitleIntoSvg(download, "Download"),
+        defaultTitle: "Releases"
+    },
+    files: {
+        icon: injectTitleIntoSvg(files, "Folder"),
+        defaultTitle: "Source"
     },
     fedi: {
         icon: siActivitypub.svg,

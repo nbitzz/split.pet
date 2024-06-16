@@ -9,6 +9,8 @@ image:
 ---
 import Project from "../../../components/Project.astro"
 import Emoji from "../../../components/Emoji.astro"
+import Buttons from "../../../components/buttons/Buttons.astro"
+import BtnFx from "../../../components/buttons/BtnFx.astro"
 
 <h2 class="sectionDenoter">Individual</h2>
 
@@ -30,7 +32,10 @@ import Emoji from "../../../components/Emoji.astro"
   ]}
   tech={["bun"]}
 >
-  Live tab counter.
+  <p>
+    Live tab counter.
+    <Buttons filter={e => e.group == "split" && e.basename == "tabs" } />
+  </p>
 </Project>
 
 <Project name="oyama.pictures"
@@ -46,11 +51,15 @@ import Emoji from "../../../components/Emoji.astro"
 <Project name="freerobux.win" 
   chips={[
     { icon: "launch", href: "https://freerobux.win/" },
-    { icon: "git", href: "https://github.com/nbitzz/oyama.pictures" }
+    { icon: "git", href: "https://github.com/nbitzz/freerobux.win" },
+    { icon: "files", href: "/88x31/freerobux-button.zip", title: "Button source" }
   ]}
   tech={["bun"]}
 >
-  Lazy little quick-and-dirty server thing. Want free robux? `curl freerobux.win` :mahirolog:
+  <p>
+    Lazy little quick-and-dirty server thing. Want free robux? `curl freerobux.win` :mahirolog:
+    <Buttons filter={e => e.group == "freerobux"} />
+  </p>
 </Project>
 
 <h2 class="sectionDenoter">under Etcetera</h2>
@@ -64,3 +73,5 @@ import Emoji from "../../../components/Emoji.astro"
 >
   Discord-based file sharing.
 </Project>
+
+<BtnFx />
