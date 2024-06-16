@@ -4,12 +4,19 @@ import {
     siAstro,
     siBun,
     siNodedotjs,
-    siSvelte
+    siSvelte,
+    siActivitypub
 } from "simple-icons"
 import server from "@fluentui/svg-icons/icons/live_24_filled.svg?raw"
 import website from "@fluentui/svg-icons/icons/window_24_filled.svg?raw"
 import launch from "@fluentui/svg-icons/icons/open_24_filled.svg?raw"
 import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme"
+
+interface Icon {
+    icon: string
+    defaultTitle: string
+}
+
 const availButtons = {
     git: {
         icon: siGit.svg,
@@ -26,8 +33,13 @@ const availButtons = {
     launch: {
         icon: injectTitleIntoSvg(launch, "Launch"),
         defaultTitle: "Go"
+    },
+    fedi: {
+        icon: siActivitypub.svg,
+        defaultTitle: "Fediverse"
     }
-} satisfies Record<string, {icon: string, defaultTitle: string}>
+} satisfies Record<string, Icon>
+
 const availTech = {
     astro: {
         icon: siAstro.svg,
@@ -52,7 +64,7 @@ const availTech = {
 } satisfies Record<string, Tech>
 
 export interface Chip {
-    icon: keyof typeof availButtons,
+    icon: keyof typeof availButtons | Icon,
     href: string,
     title?: string,
     sub?: string
@@ -140,13 +152,15 @@ const resolvedTech = tech.map(e => typeof e == "string" ? availTech[e] : e) as T
     <div class="chips">
         {
             chips.map(
-                chip =>
-                    <a href={chip.href} target="_blank">
+                chip => {
+                    let {icon, defaultTitle} = (typeof chip.icon == "object" ? chip.icon : availButtons[chip.icon])
+                    return <a href={chip.href} target="_blank">
                         <div class="chipIconContainer">
-                            <Fragment set:html={availButtons[chip.icon].icon} />
+                            <Fragment set:html={icon} />
                         </div>
-                        <span>{chip.title || availButtons[chip.icon].defaultTitle}</span>
+                        <span>{chip.title || defaultTitle}</span>
                     </a>
+                }
             )
         }
     </div>
