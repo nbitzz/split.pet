@@ -5,7 +5,9 @@ import {
     siBun,
     siNodedotjs,
     siSvelte,
-    siActivitypub
+    siActivitypub,
+siElectron,
+siVuedotjs
 } from "simple-icons"
 import server from "@fluentui/svg-icons/icons/live_24_filled.svg?raw"
 import website from "@fluentui/svg-icons/icons/window_24_filled.svg?raw"
@@ -70,6 +72,16 @@ const availTech = {
         icon: siSvelte.svg,
         name: "Svelte",
         href: "https://svelte.dev"
+    },
+    electron: {
+        icon: siElectron.svg,
+        name: "Electron",
+        href: "https://electronjs.org"
+    },
+    vue: {
+        icon: siVuedotjs.svg,
+        name: "Vue",
+        href: "https://vuejs.org"
     }
 } satisfies Record<string, Tech>
 
