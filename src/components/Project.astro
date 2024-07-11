@@ -7,7 +7,8 @@ import {
     siSvelte,
     siActivitypub,
 siElectron,
-siVuedotjs
+siVuedotjs,
+siOpenid,
 } from "simple-icons"
 import server from "@fluentui/svg-icons/icons/live_24_filled.svg?raw"
 import website from "@fluentui/svg-icons/icons/window_24_filled.svg?raw"
@@ -72,6 +73,16 @@ const availTech = {
         icon: siSvelte.svg,
         name: "Svelte",
         href: "https://svelte.dev"
+    },
+    sveltekit: {
+        icon: siSvelte.svg,
+        name: "SvelteKit",
+        href: "https://kit.svelte.dev"
+    },
+    oidc: {
+        icon: siOpenid.svg,
+        name: "OIDC",
+        href: "https://openid.net/connect"
     },
     electron: {
         icon: siElectron.svg,
