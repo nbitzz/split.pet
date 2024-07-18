@@ -48,6 +48,16 @@ import BtnFx from "../../../components/buttons/BtnFx.astro"
   Serves pictures of Mahiro and Mihari Oyama. Also, you can `curl mahiro.oyama.pictures` and the other subdomains.
 </Project>
 
+<Project name="xkcd.uk"
+  chips={[
+    { icon: "website", href: "https://about.xkcd.uk/" }
+  ]}
+  tech={["workerd"]}
+>
+  An xkcd link shortener, if you prefer to save... one character.
+  Also uses DuckDuckGo to make comics available by name instead.
+</Project>
+
 <Project name="freerobux.win" 
   chips={[
     { icon: "launch", href: "https://freerobux.win/" },
@@ -57,7 +67,7 @@ import BtnFx from "../../../components/buttons/BtnFx.astro"
   tech={["bun"]}
 >
   <p>
-    Lazy little quick-and-dirty server thing. Want free robux? `curl freerobux.win` :mahirolog:
+    Lazy little quick-and-dirty joke domain. Want free robux? `curl freerobux.win` :mahirolog:
     <Buttons filter={e => e.group == "freerobux"} />
   </p>
 </Project>
@@ -67,7 +77,7 @@ import BtnFx from "../../../components/buttons/BtnFx.astro"
     { icon: "website", href: "https://avatars.split.pet" },
     { icon: "git", href: "https://github.com/nbitzz/freerobux.win" }
   ]}
-  tech={["bun", "node", "sveltekit", "oidc"]}
+  tech={["bun", "node", "sveltekit"]}
 >
   <p>
     Barebones avatar server with OIDC written in SvelteKit. Available in both Bun and Node versions.

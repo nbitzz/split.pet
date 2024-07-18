@@ -9,6 +9,7 @@ import {
 siElectron,
 siVuedotjs,
 siOpenid,
+siCloudflareworkers,
 } from "simple-icons"
 import server from "@fluentui/svg-icons/icons/live_24_filled.svg?raw"
 import website from "@fluentui/svg-icons/icons/window_24_filled.svg?raw"
@@ -93,6 +94,16 @@ const availTech = {
         icon: siVuedotjs.svg,
         name: "Vue",
         href: "https://vuejs.org"
+    },
+    workers: {
+        icon: siCloudflareworkers.svg,
+        name: "Workers",
+        href: "https://workers.cloudflare.com"
+    },
+    workerd: {
+        icon: siCloudflareworkers.svg,
+        name: "workerd",
+        href: "https://github.com/cloudflare/workerd"
     }
 } satisfies Record<string, Tech>
 
