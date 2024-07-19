@@ -29,7 +29,8 @@ import {
     siVuedotjs,
     siReact,
     siC,
-    siCloudflareworkers
+    siCloudflareworkers,
+siSignal
 } from "simple-icons"
 import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
 import Posts from "../components/Posts.astro";
@@ -45,12 +46,11 @@ import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme";
         socials={[
             {url: "https://coolviruses.download/@split", icon: siFirefish.svg, color: "#"+siFirefish.hex},
             {url: "https://discord.com/users/312700896343621633", icon: siDiscord.svg, color: "#"+siDiscord.hex},
+            {url: "https://signal.me/#eu/3jZmbV8BdcR0W7C_OfnV8emDntbmgC7QNkobzwFQ7xIyseTqTFtP37_yS628_LAl", icon: siSignal.svg, color: "#"+siSignal.hex},
             {url: "https://github.com/nbitzz", icon: siGithub.svg},
             {url: "https://git.sucks.win/split", icon: siForgejo.svg, color: "#"+siForgejo.hex},
-            {url: "https://steamcommunity.com/id/haha__yes", icon: siSteam.svg, color: "#"+siSteamdeck.hex},
-            {url: "https://monkeytype.com/profile/split1337", icon: siMonkeytype.svg, color: "#"+siMonkeytype.hex},
-            {url: "https://status.fyle.uk/", icon: siUpptime.svg, color: "#"+siUpptime.hex, title: "hi"},
-            {url: "/docs/split/setup", icon: iconLaptop, color: "#AA88FF", title: "Setup"}
+            {url: "https://steamcommunity.com/id/video0dotmov", icon: siSteam.svg, color: "#"+siSteamdeck.hex},
+            {url: "https://monkeytype.com/profile/split1337", icon: siMonkeytype.svg, color: "#"+siMonkeytype.hex}
         ]}>
         <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" loading="eager" />
     </PersonHeader>
