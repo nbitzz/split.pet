@@ -30,7 +30,10 @@ import {
     siReact,
     siC,
     siCloudflareworkers,
-siSignal
+siSignal,
+siCsharp,
+siLastdotfm,
+siKotlin
 } from "simple-icons"
 import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
 import Posts from "../components/Posts.astro";
@@ -41,8 +44,6 @@ import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme";
 ---
 <Page title="split's website" description="hi this is my shitty website" meta={[{name: "og:image", content: "/pfp/mahiropfp_butwithart.png"}]}>
     <PersonHeader
-        title="hi, i'm split"
-        description="she; terrible developer"
         socials={[
             {url: "https://coolviruses.download/@split", icon: siFirefish.svg, color: "#"+siFirefish.hex},
             {url: "https://discord.com/users/312700896343621633", icon: siDiscord.svg, color: "#"+siDiscord.hex},
@@ -50,9 +51,21 @@ import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme";
             {url: "https://github.com/nbitzz", icon: siGithub.svg},
             {url: "https://git.sucks.win/split", icon: siForgejo.svg, color: "#"+siForgejo.hex},
             {url: "https://steamcommunity.com/id/video0dotmov", icon: siSteam.svg, color: "#"+siSteamdeck.hex},
+            {url: "https://last.fm/user/stringsplit", icon: siLastdotfm.svg, color: "#"+siLastdotfm.hex},
             {url: "https://monkeytype.com/profile/split1337", icon: siMonkeytype.svg, color: "#"+siMonkeytype.hex}
-        ]}>
-        <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" loading="eager" />
+        ]}
+    >
+        <Fragment slot="pfp">
+            <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" loading="eager" />
+        </Fragment>
+
+        <Fragment slot="title">
+            hi, i'm May <span style="color:#aaa; font-weight: normal; font-size: large;">(split)</span>
+        </Fragment>
+
+        <Fragment slot="description">
+            &#x2640; she; terrible developer
+        </Fragment>
     </PersonHeader>
 
     <section class="significant">
@@ -87,6 +100,8 @@ import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme";
             { url: "https://rust-lang.org", icon:siRust.svg },
             { url: "https://ziglang.org", icon:siZig.svg, color: "#"+siZig.hex },
             { url: "https://en.wikipedia.org/wiki/C_(programming_language)", icon:siC.svg, color: "#"+siC.hex },
+            { url: "https://dotnet.microsoft.com/en-us/languages/csharp", icon:siCsharp.svg},
+            { url: "https://kotlinlang.org/", icon:siKotlin.svg, color: "#"+siKotlin.hex },
             { url: "https://markojs.com", icon:siMarko.svg, color: "#"+siMarko.hex },
             { url: "https://react.dev", icon:siReact.svg, color: "#"+siReact.hex },
             { url: "https://vuejs.org", icon:siVuedotjs.svg, color: "#"+siVuedotjs.hex }

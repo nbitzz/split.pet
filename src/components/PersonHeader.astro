@@ -7,19 +7,33 @@ const {
 } = Astro.props
 
 interface Props {
-    title: string,
-    description: string,
+    title?: string,
+    description?: string,
     socials: IconListProps["list"]
 }
 ---
 <header>
     <div class="contain">
         <div id="whoami">
-            <slot /> <!-- Good enough
+            <!-- 
+                2024-08-09:
+                    wow this comment really gives off
+                    the impression of a person who is
+                    mentally well doesnt it 
+            -->
+            <slot name="pfp" /> <!-- Good enough
                           Time to hang myself -->
             <hgroup>
-                <h1>{title}</h1>
-                <h2>{description}</h2>
+                <h1>
+                    <slot name="title">
+                        {title}
+                    </slot>
+                </h1>
+                <h2>
+                    <slot name="description">
+                        {description}
+                    </slot>
+                </h2>
             </hgroup>
         </div>
 
