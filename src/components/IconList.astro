@@ -29,6 +29,9 @@ const {list, forSocials} = Astro.props
             }
             &:hover, &:focus-visible {
                 color: var(--iconColor) !important;
+                @media (prefers-color-scheme: light) {
+                    color: color-mix(in hsl, var(--iconColor), #000000 30%) !important;
+                }
             }
             & > svg {
                 width: 1em;
