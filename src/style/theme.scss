@@ -1,0 +1,18 @@
+:root {
+    --c-background: #222;
+    --c-background-transparent: #222222AA;
+    --c-text: white;
+    --c-subtext0: #ddd;
+    --c-subtext1: #bbb;
+    --c-subtext2: #aaa;
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --c-background: rgb(221, 221, 221);
+        --c-background-transparent: rgba(221,221,211,0.67);
+        --c-text: black;
+        --c-subtext0: #222;
+        --c-subtext1: #444;
+        --c-subtext2: #666;
+    }
+}

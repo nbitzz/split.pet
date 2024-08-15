@@ -1,6 +1,6 @@
+@import "theme.scss";
+
 :root {
-    --backgroundColor: #222;
-    --backgroundColorTransparent: #222222AA;
     font-family: "Inter Variable", InterVariable, Inter, sans-serif;
 }
   
@@ -17,6 +17,12 @@ body {
         width:100%;
         height:100%;
         object-fit:cover;
+        object-position: 70% center;
+        background-color: #BDEEF2;
+        filter: brightness(75%);
+        @media (prefers-color-scheme: light) {
+            filter: unset;
+        }
     }
 }
 
@@ -25,7 +31,7 @@ body {
     left: calc( 100% - 70px );
     transform: translateX(-100%);
     width: 390px;
-    color: white;
+    color: var(--c-text);
     height: 100%;
     transition-duration: 250ms;
 
@@ -35,7 +41,7 @@ body {
     }
 
     & a {
-        color: #ddd;
+        color: var(--c-subtext0);
     }
 
     & > header > .contain > *, & > *:not(header) {
@@ -62,7 +68,7 @@ body {
             top:100%;
             transform: translateY(-100%);
             position: absolute;
-            background: var(--backgroundColor);
+            background: var(--c-background);
             border-radius: 16px 16px 0 0;
             width: 100%;
             padding-bottom: 15px;
@@ -114,7 +120,7 @@ body {
                     height: var(--imgSize);
                     width: var(--imgSize);
                     border-radius: 100%;
-                    border: var(--borderThickness) solid var(--backgroundColor);
+                    border: var(--borderThickness) solid var(--c-background);
                     position: absolute;
                     top: calc( 0px - calc(var(--imgSize) / 2) );
                     background: #444444;
@@ -132,7 +138,7 @@ body {
                     & > h2 {
                         font-size: medium;
                         font-weight: 300;
-                        color: #ddd;
+                        color: var(--c-subtext0);
                     }
                 }
             }
@@ -157,7 +163,7 @@ body {
     & h2.sectionDenoter {
         text-transform: uppercase;
         text-align: center;
-        color: #ddd;
+        color: var(--c-subtext0);
         font-size: medium;
         position: relative;
         margin: 15px 0;
@@ -168,20 +174,20 @@ body {
     }
 
     & > .significant {
-        background: linear-gradient(to bottom, var(--backgroundColor), var(--backgroundColorTransparent));
+        background: linear-gradient(to bottom, var(--c-background), var(--c-background-transparent));
         flex-grow: 1;
         flex-shrink: 0;
     }
 
     & > .insignificant {
-        background: var(--backgroundColorTransparent);
+        background: var(--c-background-transparent);
     }
 
     & > footer {
-        background: var(--backgroundColor);
+        background: var(--c-background);
         border-radius: 0 0 16px 16px;
         margin-bottom: 50px;
-        color: #bbb;
+        color: var(--c-subtext1);
 
         & > h3 {
             margin-bottom: 0;
@@ -191,7 +197,7 @@ body {
                 text-decoration: none;
             }
             & > a.subroute {
-                color: #bbb;
+                color: var(--c-subtext1);
                 font-weight: 400;
                 text-transform: none;
             }
@@ -199,7 +205,7 @@ body {
         & > p {
             margin-top: 0;
             & > a {
-                color: #bbb;
+                color: var(--c-subtext1);
             }
         }
     }
@@ -212,7 +218,7 @@ body {
 }
 
 small {
-    color: #ddd;
+    color: var(--c-subtext0);
 }
 
 @media (prefers-reduced-motion) {
@@ -259,6 +265,12 @@ input[type=checkbox] {
 
     transition-duration: var(--transitionSpeed);
     transition-property: background-color;
+    box-sizing: content-box;
+
+    @media (prefers-color-scheme: light) {
+        border: 2px solid #999;
+    }
+
 /*
     &::before {
         content: "○";
@@ -319,8 +331,8 @@ input[type=checkbox] {
 
 @media (prefers-contrast: more) {
     :root {
-        --backgroundColor: #000;
-        --backgroundColorTransparent: #000;
+        --c-background: #000;
+        --c-background-transparent: #000;
     }
 
     body {
@@ -331,12 +343,12 @@ input[type=checkbox] {
         display: none;
     }
     .insignificant, .significant {
-        background-color: var(--backgroundColor) !important;
+        background-color: var(--c-background) !important;
     }
 }
 
 svg { fill: currentColor }
 
 *:focus-visible {
-    outline: 2px solid #ccc;
+    outline: 2px solid var(--c-subtext0);
 }

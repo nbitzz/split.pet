@@ -22,7 +22,7 @@ const { post } = Astro.props
     }
 
     p, small {
-        color: #bbb;
+        color: var(--c-subtext1);
         font-style: oblique;
     }
 
@@ -34,7 +34,7 @@ const { post } = Astro.props
         --hoverThickness {}
         border-radius: 16px;
         padding: 10px 15px;
-        background-color: var(--backgroundColor);
+        background-color: var(--c-background);
         outline: 1px solid transparent;
 
         overflow: hidden;
@@ -52,7 +52,7 @@ const { post } = Astro.props
             /*height: 100%;
             object-fit:cover;*/
             object-fit:contain;
-            background-color: var(--backgroundColor);
+            background-color: var(--c-background);
             filter: opacity(20%) saturate(25%);
             z-index: 0;
 
@@ -117,7 +117,7 @@ const { post } = Astro.props
     }
 
     a:focus-visible > .post {
-        outline: 3px solid #ccc;
+        outline: 3px solid var(--c-subtext1);
     }
 
     @media (prefers-reduced-motion) {

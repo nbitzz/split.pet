@@ -2,6 +2,7 @@
     code {
         font-family: monospace monospace;
         background-color: #24292E;
+        color: white;
         border-radius: 4px;
         padding: 2px 5px;
     }
@@ -86,8 +87,8 @@
     blockquote {
         margin: 0;
         padding: 1em;
-        border-left: 5px solid #aaa;
-        background-color: var(--backgroundColorTransparent);
+        border-left: 5px solid var(--c-subtext2);
+        background-color: var(--c-background-transparent);
 
         & > *:first-child {
             margin-top: 0;
