@@ -26,12 +26,12 @@ order: 0
 - **RAM**: 32GB
 
 Also operates as a transcode server for my :simple.Jellyfin: Jellyfin over [rffmpeg](https://github.com/joshuaboniface/rffmpeg).
-Host to a Docker container borrowed by [aubrey](https://dmpstr.top) as a build server.
 
-## Phone
+## Other devices
 
-Just an :simple.Apple:&thinsp;iPhone 15 Pro Max.
+A few of my other personal devices:
 
-## Other hardware
+- **Phone**: :simple.Apple:&thinsp;iPhone 15 Pro Max
+- :simple.Steamdeck: **Steam Deck**: LCD 512GB
 
-See [Hosts](/docs/services/hosts) for information about the hosts of the services I run.
+See [Hosts](/docs/services/hosts) for information about the devices running the services that I host.
