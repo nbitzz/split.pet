@@ -56,7 +56,14 @@ import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme";
         ]}
     >
         <Fragment slot="pfp">
-            <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" loading="eager" />
+            <!-- 
+                <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" loading="eager" />
+            -->
+            <picture>
+                <source srcset="https://avatars.split.pet/avatar/split/256?format=webp" type="image/webp">
+                <img id="pfp" src="https://avatars.split.pet/avatar/split/256" loading="lazy" width="256" height="256" alt="split's pfp">
+                <script is:inline>fetch("https://avatars.split.pet/info/split/json").then(d => d.json()).then(({altText}) => document.getElementById("pfp").alt = altText)</script>
+            </picture>
         </Fragment>
 
         <Fragment slot="title">
@@ -115,7 +122,7 @@ import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme";
             I also run, like, <a href="https://coolviruses.download">coolviruses.download</a>,
             and that's about it<br>
             <small>
-                Oh, right, also, my profile picture is sourced from <a href="https://www.pixiv.net/en/artworks/117551007">here</a><br>
+                <a href="https://avatars.split.pet/info/split/source">My profile picture is sourced from here.</a><br>
                 video0.mov if the discord link doesn't work for you<br>
             </small>
         </p>
