@@ -47,6 +47,9 @@ let locators: Record<string, (name: string) => Promise<(string|undefined|void)> 
   },
   simple(name) {
     return `si${name}` in simple ? simple[`si${name}`].svg : undefined
+  },
+  colorful_simple(name) {
+    return `si${name}` in simple ? simple[`si${name}`].svg : undefined
   }
 }
 
