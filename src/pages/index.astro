@@ -41,6 +41,7 @@ import IconList from "../components/IconList.astro";
 import Buttons from "../components/buttons/Buttons.astro";
 import BtnFx from "../components/buttons/BtnFx.astro";
 import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme";
+import OrnamentLayer from "../components/lanyard/OrnamentLayer.astro";
 ---
 <Page title="split's website" description="hi this is my shitty website" meta={[{name: "og:image", content: "/pfp/mahiropfp_butwithart.png"}]}>
     <PersonHeader
@@ -62,7 +63,12 @@ import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme";
             <picture>
                 <source srcset="https://avatars.split.pet/avatar/split/256?format=webp" type="image/webp">
                 <img id="pfp" src="https://avatars.split.pet/avatar/split/256" loading="lazy" width="256" height="256" alt="split's pfp">
-                <script is:inline>fetch("https://avatars.split.pet/info/split/json").then(d => d.json()).then(({altText}) => document.getElementById("pfp").alt = altText)</script>
+                <OrnamentLayer />
+                <script is:inline>
+                    fetch("https://avatars.split.pet/info/split/json")
+                        .then(d => d.json())
+                        .then(({altText}) => document.getElementById("pfp").alt = altText)
+                </script>
             </picture>
         </Fragment>
 

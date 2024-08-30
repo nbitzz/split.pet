@@ -116,14 +116,65 @@ body {
                 height: calc( var(--imgSize) / 2 );
                 padding: 10px 20px;
                 
-                & img {
+                img, .lanyardOverlay {
                     height: var(--imgSize);
                     width: var(--imgSize);
+                    position: absolute;
+                    top: calc(var(--imgSize) / -2);
+                }
+
+                & picture > img {
                     border-radius: 100%;
                     border: var(--borderThickness) solid var(--c-background);
-                    position: absolute;
-                    top: calc( 0px - calc(var(--imgSize) / 2) );
                     background: #444444;
+                }
+
+                & .lanyardOverlay {
+                    left: 20px;
+                    top: calc( var(--imgSize) / -2 );
+                    padding: var(--borderThickness);
+
+                    & .ornament {
+                        /* UNHOLY */
+                        --rad: calc(calc(var(--deg) * pi) / 180);
+                        left: calc( calc( 100% * calc( calc( cos( var(--rad) ) + 1 ) / 2 ) ) );
+                        top: calc( 100% * calc( calc( sin( var(--rad) ) + 1 ) / 2 ) );
+                        transform:translate(-50%,-50%);
+                        transition-duration: 150ms;
+                    }
+                        
+                    & .activity {
+                        height: 25px;
+                        width: 25px;
+                        object-fit: cover;
+                        border-radius: 4px;
+                        box-shadow: #222 0px 0px 3px;
+                        background-color: var(--c-background);
+                        &.sm {
+                            height: 20px;
+                            width: 20px;
+                        }
+                    }
+
+                    & .lanyardDot {
+                        --deg: 45;
+                        border:4px solid var(--c-background);
+                        width:20px;
+                        height:20px;
+                        position:absolute;
+                        border-radius:20px;
+                        &[data-state="online"] { background-color: var(--c-green) };
+                        &[data-state="idle"] { background-color: var(--c-yellow) };
+                        &[data-state="dnd"] { background-color: var(--c-red) };
+                        &[data-state="offline"] { background-color: var(--c-subtext0) };
+
+                        p {
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform:translate(-50%, -50%);
+                        }
+                    }
                 }
 
                 & > hgroup {

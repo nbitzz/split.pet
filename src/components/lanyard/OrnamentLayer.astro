@@ -1,0 +1,100 @@
+<!-- honestly probably some of the worst code i've ever written
+     i'm so sorry to anyone who reads this
+     i swear this is not my usual code quality
+     (...i think...)-->
+<script>
+    import Discord from "discord-api-types/v10"
+    interface LanyardPart {
+        discord_status: "online" | "idle" | "dnd" | "offline",
+        activities: Discord.GatewayActivity[]
+    }
+    type LanyardMessage = { op:1, heartbeat_interval?: number } | { op: 0, d: LanyardPart }
+    let lanyardSocket: WebSocket
+    let heartbeatIntervalId: ReturnType<typeof setTimeout>
+
+    const subscribe_to_id = "312700896343621633"
+    const dfImageUrl = "/dai.svg"
+    const overlay = document.getElementsByClassName("lanyardOverlay")[0]
+    let collector: HTMLElement[] = []
+
+    function update(element: HTMLElement, {a,p,...o}: {a?: Record<string, string>, p?: Record<string, string>, id: string, o?: Partial<Record<keyof HTMLElement, string>>}) {
+        if (a) Object.entries(a).forEach(([k,v]) => element.setAttribute(k,v))
+        if (p) Object.entries(p).forEach(([k,v]) => element.style.setProperty(k,v))
+        Object.entries(o).forEach(([k,v]) => element[k]=v)
+    }
+
+    function makeOrUpdate(tag:string, upd: Parameters<typeof update>[1] & { id: string }, parent: Element) {
+        let element = document.getElementById(upd.id) || (() => {let el = document.createElement(tag); parent.append(el); return el})()
+        update(element, upd)
+        return element
+    }
+
+    function actimg(url?: string, appid?: string) {
+        return url && (url.startsWith("mp:") ? "https://media.discordapp.net/"+url.replace(/^mp:/,"") : `https://cdn.discordapp.com/app-assets/${appid}/${url}.png?size=64`)
+    }
+
+    function makeOrUpdateAll(data: LanyardPart) {
+        // status
+        makeOrUpdate("div", {a: {
+            'data-state': data.discord_status,
+            title: {"online": "Online", "idle": "Idle", "dnd": "Do not disturb", offline: "Offline"}[data.discord_status],
+            class: "lanyardDot ornament"
+        }, id: "discordStatus"}, overlay)
+
+        let newCollector: HTMLElement[] = []
+
+        // mk activities
+        data.activities
+            .filter(e => e.type != 4 /*TODO: custom status*/)
+            .forEach((e,i,a) => {
+                console.log(e)
+                let n = makeOrUpdate("img", {
+                    a: {
+                        src: actimg(e.assets?.small_image || e.assets?.large_image, e.application_id) || dfImageUrl,
+                        alt: e.name,
+                        class: `activity ornament${a.length > 1 ? " sm" : ""}`,
+                        title: 
+                            e.name
+                            + (e.details ? '\n'+e.details : "")
+                            + (e.state ? '\n'+e.state : "")
+                    }, 
+                    p: { "--deg": (225-(14*(a.length-1))+(28*i)).toString() },
+                    id: e.id
+                }, overlay)
+                collector.splice(collector.indexOf(n), 1)
+                newCollector.push(n)
+            })
+        
+        // clear up old things
+        collector.forEach(e => e.remove());
+        collector = newCollector
+    }
+
+    function establishSocket() {
+        if (lanyardSocket && lanyardSocket.readyState == 3 ) {
+            lanyardSocket.close()
+        }
+
+        lanyardSocket = new WebSocket("wss://api.lanyard.rest/socket")
+        lanyardSocket.addEventListener("message", (ev) => {
+            let data = JSON.parse(ev.data)
+            if (data.op == 1) {
+                // send hello packet
+                lanyardSocket.send(JSON.stringify({
+                    op: 2,
+                    d: { subscribe_to_id }
+                }))
+                // start heartbeat
+                heartbeatIntervalId = setInterval(_ => lanyardSocket.send('{"op":3}'), data.heartbeat_interval || 30000)
+            } else makeOrUpdateAll(data.d)
+        })
+        
+        lanyardSocket.addEventListener("close", () => {
+            clearInterval(heartbeatIntervalId);
+            establishSocket()
+        })
+    }
+
+    establishSocket()
+</script>
+<div class="lanyardOverlay"></div>

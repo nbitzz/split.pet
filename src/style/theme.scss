@@ -5,6 +5,10 @@
     --c-subtext0: #ddd;
     --c-subtext1: #bbb;
     --c-subtext2: #aaa;
+
+    --c-green: #a6e3a1;
+    --c-yellow: #f9e2af;
+    --c-red: #f38ba8;
 }
 @media (prefers-color-scheme: light) {
     :root {
@@ -14,5 +18,9 @@
         --c-subtext0: #222;
         --c-subtext1: #444;
         --c-subtext2: #666;
+
+        --c-green: #40a02b;
+        --c-yellow: #df8e1d;
+        --c-red: #d20f39;
     }
 }

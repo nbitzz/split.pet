@@ -23,6 +23,10 @@
     "sass": "^1.75.0",
     "simple-icons": "^12.2.0",
     "svgson": "^5.3.1",
+    "typescript": "^5.5.4",
     "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "discord-api-types": "^0.37.98"
   }
 }
