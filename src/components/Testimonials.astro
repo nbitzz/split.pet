@@ -1,21 +1,21 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 
-const {quotes, noHeader, extraAttributes} = Astro.props
+const {testimonials, noHeader, extraAttributes} = Astro.props
 
-interface Quote {
+interface Testimonial {
     text: string,
     from: string
 }
 
 interface Props {
-    quotes: Quote[],
+    testimonials: Testimonial[],
     noHeader?: boolean,
     extraAttributes?: HTMLAttributes<'section'> // i should kill myself
 }
 ---
 <style lang="scss">
-    .quote {
+    .testimonial {
         text-align: left;
         &.alternate {
             text-align: right;
@@ -41,10 +41,10 @@ interface Props {
 <section id="testimonials" class="insignificant" {...extraAttributes}>
     {!noHeader ? <h2 class="sectionDenoter">Testimonials</h2> : ""}
     {
-        quotes.map((quote, x) => 
-            <div class:list={["quote", {alternate: x % 2 == 1}]}>
-                <p>{quote.text}</p>
-                <address>{quote.from}</address>
+        testimonials.map((testimonial, x) => 
+            <div class:list={["testimonial", {alternate: x % 2 == 1}]}>
+                <p>{testimonial.text}</p>
+                <address>{testimonial.from}</address>
             </div>
         )
     }

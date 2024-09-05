@@ -17,6 +17,7 @@
     "@astrojs/rss": "^4.0.7",
     "@fluentui/svg-icons": "^1.1.236",
     "@fontsource-variable/inter": "^5.0.18",
+    "@fontsource/pinyon-script": "^5.0.22",
     "astro": "^4.15.1",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",

@@ -4,7 +4,7 @@ import "../style/index.scss";
 import PersonHeader from "../components/PersonHeader.astro";
 import { Picture } from "astro:assets";
 import Page from "../layouts/Page.astro";
-import Quotes from "../components/Quotes.astro";
+import Testimonials from "../components/Testimonials.astro";
 import { 
     siFirefish,
     siDiscord,
@@ -154,7 +154,7 @@ import OrnamentLayer from "../components/lanyard/OrnamentLayer.astro";
         <br>
     </section>
 
-    <Quotes quotes={[
+    <Testimonials testimonials={[
         {text: "fucking hehead [sic] split kill that ni[...]", from: "chapel1337"},
         {text: "No I just hate split", from: "WaviestBalloon"},
         {text: "I gotta kill [...] you", from: "StandardizedAnomaly"},
@@ -177,5 +177,5 @@ import OrnamentLayer from "../components/lanyard/OrnamentLayer.astro";
         {text: "I thought I was mentally fucked but compared to you I'm literally squeaky clean fine", from: "filo"},
         {text: "you Will become trans in the future", from: "LegitSi, 2 yrs in advance"},
         {text: "Talking to split has made me more misogynistic", from: "Brandan"}
-    ]} extraAttributes={{id: "quotes"}} />
+    ]} extraAttributes={{id: "testimonials"}} />
 </Page>
