@@ -1,0 +1,12 @@
+<svg viewBox="0 0 512 512" version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <defs id="defs1"></defs>
+  <g id="layer1">
+    <g id="g3">
+      <path style="fill:currentColor;fill-opacity:0;stroke:currentColor;stroke-width:20;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" id="path2" d="M 255.99939,502.00034 A 246.00095,246.00095 0 0 1 28.724153,350.13988 246.00095,246.00095 0 0 1 82.05045,82.050455 246.00095,246.00095 0 0 1 350.13987,28.72415 246.00095,246.00095 0 0 1 502.00034,255.99939"></path>
+      <rect style="fill:currentColor;fill-opacity:1;stroke:#426ea5;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.0196447;paint-order:stroke markers fill" id="rect2" width="256" height="20" x="256" y="492"></rect>
+      <rect style="fill:currentColor;fill-opacity:1;stroke:#426ea5;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.0196447;paint-order:stroke markers fill" id="rect2-2" width="20" height="256" x="492" y="256"></rect>
+    </g>
+    <path style="fill:currentColor;fill-opacity:0;stroke:currentColor;stroke-width:20;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" id="path2-8" d="M 378.99988,502.00035 A 123.00047,123.00047 0 0 1 265.36226,426.07012 123.00047,123.00047 0 0 1 292.02541,292.02541 123.00047,123.00047 0 0 1 426.07012,265.36226 123.00047,123.00047 0 0 1 502.00035,378.99988"></path>
+    <path style="fill:currentColor;fill-opacity:0;stroke:currentColor;stroke-width:20;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" d="M 161.8589,28.72414 256,256 28.725703,161.85855" id="path4"></path>
+  </g>
+</svg>

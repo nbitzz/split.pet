@@ -10,12 +10,6 @@ image:
 
 ## Local
 
-<h3 style="margin-bottom: 0;">Surver</h3>
-<p style="margin-top: 0;"><small>Surface Pro 4 (Core i5, 8GB RAM)</small></p>
-
-Runs :simple.Archlinux: Arch Linux, because I didn't feel like installing something more proper that day.
-Unused for the most part. Host to another Docker container borrowed by [aubrey](https://dmpstr.top) as a build server as well as a Satisfactory server.
-
 <h3 style="margin-bottom: 0;">Sakuya</h3>
 <p style="margin-top: 0;"><small>Raspberry Pi 3B+</small></p>
 
@@ -29,7 +23,7 @@ Runs my :simple.Jellyfin:&nbsp;Jellyfin, shared between a few of my friends.
 <h3 style="margin-bottom: 0;">Mihari</h3>
 <p style="margin-top: 0;"><small>Raspberry Pi 5 4GB</small></p>
 
-Runs my :simple.Authentik: Authentik and :simple.Vaultwarden:&thinsp;Vaultwarden.
+Runs my :simple.Authentik: Authentik, an :ava: ava instance for the Authentik, and a :simple.Vaultwarden:&thinsp;Vaultwarden instance.
 
 <h3 style="margin-bottom: 0;">Kaede</h3>
 <p style="margin-top: 0;"><small>Raspberry Pi 5 4GB</small></p>
