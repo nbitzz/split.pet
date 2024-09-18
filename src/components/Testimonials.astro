@@ -17,7 +17,7 @@ interface Props {
 <style lang="scss">
     .testimonial {
         text-align: left;
-        &.alternate {
+        &:nth-of-type(even) {
             text-align: right;
         }
         & > p {
@@ -41,8 +41,8 @@ interface Props {
 <section id="testimonials" class="insignificant" {...extraAttributes}>
     {!noHeader ? <h2 class="sectionDenoter">Testimonials</h2> : ""}
     {
-        testimonials.map((testimonial, x) => 
-            <div class:list={["testimonial", {alternate: x % 2 == 1}]}>
+        testimonials.map(testimonial => 
+            <div class="testimonial">
                 <p>{testimonial.text}</p>
                 <address>{testimonial.from}</address>
             </div>
