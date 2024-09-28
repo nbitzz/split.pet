@@ -50,11 +50,29 @@ let locators: Record<string, (name: string) => Promise<(string|undefined|void)> 
   },
   colorful_simple(name) {
     return `si${name}` in simple ? simple[`si${name}`].svg : undefined
+  },
+  onimai(name) {
+    const domainMap = {
+      mahiro: "https://mahiro.oyama.pictures",
+      mihari: "https://mihari.oyama.pictures",
+      momiji: "https://momiji.hozuki.pictures",
+      kaede:  "https://kaede.hozuki.pictures",
+      asahi: "https://asahi.pet"
+    }
+
+    const regex = new RegExp(`(${Object.keys(domainMap).join("|")})\\.(.*)`)
+    
+    const matches = name.match(regex)
+    console.log(name, matches)
+    if (!matches)
+      return
+    
+    return `<img src="${new URL(matches[2], domainMap[matches[1]]).toString()}" alt="${matches[1]} ${matches[2]}" class="customEmoji" title=":${name}:">`
   }
 }
 
 export async function getEmoji(emojiName: string) {
-    let [_, locator, name] = emojiName.match(/(?:(.*)\.)?(.*)/)!
+    let [_, locator, name] = emojiName.match(/(?:(.*?)\.)?(.*)/)!
     if (!locator) locator = "default"
     if (!locators[locator]) return
 

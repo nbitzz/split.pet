@@ -16,7 +16,7 @@ export interface Props {
     frontmatter: {
         title: string,
         description: string,
-        publicationDate?: number,
+        pubDate?: number,
         unlisted?: boolean,
         image?: HeadProps["image"],
         readTime: ReturnType<typeof getReadingTime>
@@ -26,8 +26,8 @@ export interface Props {
 
 const notes = [
     ...(
-        frontmatter.publicationDate 
-        ? [`Published ${new Date(frontmatter.publicationDate).toISOString().split("T")[0]} (UTC)`]
+        frontmatter.pubDate 
+        ? [`Published ${new Date(frontmatter.pubDate).toISOString().split("T")[0]} (UTC)`]
         : []
     ),
     ...(
