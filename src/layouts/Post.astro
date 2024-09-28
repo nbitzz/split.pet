@@ -106,19 +106,28 @@ const imgUrl = frontmatter.image ? "url" in frontmatter.image
     title={frontmatter.title}
     description={frontmatter.description}
     meta={
-        frontmatter.image
-        ? [
-            {
-                name: "og:image",
-                content: imgUrl
-            },
+        [
             ...(
-                !frontmatter.image.isTopper
-                ? [{name:"twitter:card", content: "summary_large_image"}]
+                frontmatter.image
+                ? [
+                    {
+                        name: "og:image",
+                        content: imgUrl
+                    },
+                    ...(
+                        !frontmatter.image.isTopper
+                        ? [{name:"twitter:card", content: "summary_large_image"}]
+                        : []
+                    )
+                ]
+                : []
+            ),
+            ...(
+                frontmatter.unlisted
+                ? [{name: "robots", content: "noindex"}]
                 : []
             )
         ]
-        : []
     }
 >
     <GenericHeader text={frontmatter.title} styling={{noBottomPad: true}} image={frontmatter.image}/>
