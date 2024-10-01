@@ -63,7 +63,6 @@ let locators: Record<string, (name: string) => Promise<(string|undefined|void)> 
     const regex = new RegExp(`(${Object.keys(domainMap).join("|")})\\.(.*)`)
     
     const matches = name.match(regex)
-    console.log(name, matches)
     if (!matches)
       return
     

@@ -135,8 +135,11 @@ const imgUrl = frontmatter.image ? "url" in frontmatter.image
         <p>
             <em>{frontmatter.description}</em>
             {notes.length
-            ? <br><small>{notes.join(` — `)}</small>
-            : ""}
+                ? <br><small style="color:var(--c-subtext1);">
+                    {notes.join(` — `)}
+                  </small>
+                : ""
+            }
         </p>
         <div class="postControls">
             <p>{frontmatter.readTime.words} words ({(frontmatter.readTime.text.match(/(.*) read/)||[])[1]})</p>
