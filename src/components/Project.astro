@@ -6,10 +6,11 @@ import {
     siNodedotjs,
     siSvelte,
     siActivitypub,
-siElectron,
-siVuedotjs,
-siOpenid,
-siCloudflareworkers,
+    siElectron,
+    siVuedotjs,
+    siOpenid,
+    siCloudflareworkers,
+    siTypescript,
 } from "simple-icons"
 import server from "@fluentui/svg-icons/icons/live_24_filled.svg?raw"
 import website from "@fluentui/svg-icons/icons/window_24_filled.svg?raw"
@@ -26,95 +27,104 @@ interface Icon {
 const availButtons = {
     git: {
         icon: siGit.svg,
-        defaultTitle: "Source"
+        defaultTitle: "Source",
     },
     instance: {
         icon: injectTitleIntoSvg(server, "Instance"),
-        defaultTitle: "Live instance"
+        defaultTitle: "Live instance",
     },
     website: {
         icon: injectTitleIntoSvg(website, "Website"),
-        defaultTitle: "Site"
+        defaultTitle: "Site",
     },
     launch: {
         icon: injectTitleIntoSvg(launch, "Launch"),
-        defaultTitle: "Go"
+        defaultTitle: "Go",
     },
     download: {
         icon: injectTitleIntoSvg(download, "Download"),
-        defaultTitle: "Releases"
+        defaultTitle: "Releases",
     },
     files: {
         icon: injectTitleIntoSvg(files, "Folder"),
-        defaultTitle: "Source"
+        defaultTitle: "Source",
     },
     fedi: {
         icon: siActivitypub.svg,
-        defaultTitle: "Fediverse"
-    }
+        defaultTitle: "Fediverse",
+    },
 } satisfies Record<string, Icon>
 
 const availTech = {
     astro: {
         icon: siAstro.svg,
         name: "Astro",
-        href: "https://astro.build/"
+        href: "https://astro.build/",
     },
     bun: {
         icon: siBun.svg,
         name: "Bun",
-        href: "https://bun.sh"
+        href: "https://bun.sh",
     },
     node: {
         icon: siNodedotjs.svg,
         name: "Node.js",
-        href: "https://nodejs.org"
+        href: "https://nodejs.org",
     },
     svelte: {
         icon: siSvelte.svg,
         name: "Svelte",
-        href: "https://svelte.dev"
+        href: "https://svelte.dev",
     },
     sveltekit: {
         icon: siSvelte.svg,
         name: "SvelteKit",
-        href: "https://kit.svelte.dev"
+        href: "https://kit.svelte.dev",
     },
     oidc: {
         icon: siOpenid.svg,
         name: "OIDC",
-        href: "https://openid.net/connect"
+        href: "https://openid.net/connect",
     },
     electron: {
         icon: siElectron.svg,
         name: "Electron",
-        href: "https://electronjs.org"
+        href: "https://electronjs.org",
     },
     vue: {
         icon: siVuedotjs.svg,
         name: "Vue",
-        href: "https://vuejs.org"
+        href: "https://vuejs.org",
     },
     workers: {
         icon: siCloudflareworkers.svg,
         name: "Workers",
-        href: "https://workers.cloudflare.com"
+        href: "https://workers.cloudflare.com",
     },
     workerd: {
         icon: siCloudflareworkers.svg,
         name: "workerd",
-        href: "https://github.com/cloudflare/workerd"
-    }
+        href: "https://github.com/cloudflare/workerd",
+    },
+    ts: {
+        icon: siTypescript.svg,
+        name: "TypeScript",
+        href: "https://typescriptlang.org",
+    },
 } satisfies Record<string, Tech>
 
 export interface Chip {
-    icon: keyof typeof availButtons | Icon,
-    href: string,
-    title?: string,
+    icon: keyof typeof availButtons | Icon
+    href: string
+    title?: string
     sub?: string
 }
 
-export interface Tech {icon: string, name: string, href: string}
+export interface Tech {
+    icon: string
+    name: string
+    href: string
+}
 
 export type TechResolvable = keyof typeof availTech
 
@@ -126,47 +136,50 @@ export interface Props {
 
 const { name, chips, tech } = Astro.props
 
-const resolvedTech = tech.map(e => typeof e == "string" ? availTech[e] : e) as Tech[]
+const resolvedTech = tech.map(e =>
+    typeof e == "string" ? availTech[e] : e
+) as Tech[]
 ---
+
 <style lang="scss">
     .project {
-    > .head {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 5px;
-        > hgroup {
-            > * {
-                margin: 0;
-            }
-        }
-        > .chips {
+        > .head {
             display: flex;
-            justify-content: right;
-            flex-grow: 1;
-            flex-wrap: wrap;
             align-items: center;
+            flex-wrap: wrap;
             gap: 5px;
-            > a {
+            > hgroup {
+                > * {
+                    margin: 0;
+                }
+            }
+            > .chips {
                 display: flex;
-                gap: 5px;
-                font-size: medium;
+                justify-content: right;
+                flex-grow: 1;
+                flex-wrap: wrap;
                 align-items: center;
-                padding: 3px 6px;
-                border: 1px solid gray;
-                border-radius: 8px;
-                text-decoration: none;
-                white-space: nowrap;
-                > .chipIconContainer {
+                gap: 5px;
+                > a {
                     display: flex;
-                    aspect-ratio: 1 / 1;
-                    height: 1em;
-                    width: 1em;
+                    gap: 5px;
+                    font-size: medium;
+                    align-items: center;
+                    padding: 3px 6px;
+                    border: 1px solid gray;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    white-space: nowrap;
+                    > .chipIconContainer {
+                        display: flex;
+                        aspect-ratio: 1 / 1;
+                        height: 1em;
+                        width: 1em;
+                    }
                 }
             }
         }
     }
-}
 </style>
 <style is:global>
     .chipIconContainer > svg {
@@ -175,39 +188,50 @@ const resolvedTech = tech.map(e => typeof e == "string" ? availTech[e] : e) as T
     }
 </style>
 <div class="project">
-  <div class="head">
-    <hgroup>
-        <h2>{name}</h2>   
-        <p class="tech">
-            {
-                resolvedTech.map(
-                    technology =>
-                        <a href={technology.href} target="_blank"><Fragment set:html={technology.icon} /></a>
-                ).flatMap((v,i,a) => a.length-1 == i ? v : [ v, <>&thinsp;</> ])
-            }
-            {
-                resolvedTech.map(
-                    technology => 
-                        <a href={technology.href} target="_blank">{technology.name}</a>
-                ).flatMap((v,i,a) => a.length-1 == i ? v : [ v, ", " ])
-            }
-        </p>
-    </hgroup>
-    <div class="chips">
-        {
-            chips.map(
-                chip => {
-                    let {icon, defaultTitle} = (typeof chip.icon == "object" ? chip.icon : availButtons[chip.icon])
-                    return <a href={chip.href} target="_blank">
-                        <div class="chipIconContainer">
-                            <Fragment set:html={icon} />
-                        </div>
-                        <span>{chip.title || defaultTitle}</span>
-                    </a>
+    <div class="head">
+        <hgroup>
+            <h2>{name}</h2>
+            <p class="tech">
+                {
+                    resolvedTech
+                        .map(technology =>
+                            /* prettier-ignore */
+                            <a href={technology.href} target="_blank"><Fragment set:html={technology.icon} /></a>
+                        )
+                        .flatMap((v, i, a) =>
+                            a.length - 1 == i ? v : [v, <>&thinsp;</>]
+                        )
                 }
-            )
-        }
+                {
+                    resolvedTech
+                        .map(technology =>
+                            /* prettier-ignore */
+                            <a href={technology.href} target="_blank">{technology.name}</a>
+                        )
+                        .flatMap((v, i, a) =>
+                            a.length - 1 == i ? v : [v, ", "]
+                        )
+                }
+            </p>
+        </hgroup>
+        <div class="chips">
+            {
+                chips.map(chip => {
+                    let { icon, defaultTitle } =
+                        typeof chip.icon == "object"
+                            ? chip.icon
+                            : availButtons[chip.icon]
+                    return (
+                        <a href={chip.href} target="_blank">
+                            <div class="chipIconContainer">
+                                <Fragment set:html={icon} />
+                            </div>
+                            <span>{chip.title || defaultTitle}</span>
+                        </a>
+                    )
+                })
+            }
+        </div>
     </div>
-  </div>
-  <slot />
+    <slot />
 </div>
