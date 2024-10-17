@@ -3,15 +3,16 @@ title: June 2024 service update
 description: ""
 pubDate: 1718230027000
 image:
-    url: https://mihari.oyama.pictures/Sigh
+    path: "mihari/Sigh.png"
     alt: Sighing Mihari Oyama
     isTopper: true
 ---
+
 Hey there. So a few things have happened recently:
 
 ## monofile beta shutdown
 
-To begin with, the official public :monofile: monofile test instance has been [banned by :simple.Glitch: Glitch](https://github.com/mollersuite/monofile/issues/78). I (or we, I guess) have no current plans to resurrect it anytime soon. 
+To begin with, the official public :monofile: monofile test instance has been [banned by :simple.Glitch: Glitch](https://github.com/mollersuite/monofile/issues/78). I (or we, I guess) have no current plans to resurrect it anytime soon.
 
 The most likely cause is probably a DMCA request. Another potential cause is monofile being essentially DDoS'ed due to the posting of a monofile link on the Fediverse. I've heard of projects getting suspended for reasons like this in the past.
 

@@ -68,7 +68,7 @@ const { post } = Astro.props
 
             &.topper {
                 object-fit: fill;
-                filter: blur(30px) opacity(40%);
+                filter: opacity(40%);
                 transform: translate(-50%, -50%) scale(150%);
                 aspect-ratio: 1 / 1;
                 height: auto;
@@ -100,11 +100,11 @@ const { post } = Astro.props
             filter: opacity(45%) saturate(75%);
             transform: translate(-50%, -50%) scale(125%) rotate(-5deg);
         } /*
-        & > .topper {
+        & .topper {
             transform: scale(110%);
         }*/
-        & > .topper {
-            filter: blur(30px) opacity(60%);
+        & .topper {
+            filter: opacity(60%);
         }
     }
 
@@ -114,8 +114,8 @@ const { post } = Astro.props
             filter: opacity(55%) saturate(100%);
             transform: translate(-50%, -50%) scale(100%) rotate(0deg);
         }
-        & > .topper {
-            filter: blur(30px) opacity(50%);
+        & .topper {
+            filter: opacity(50%);
         }
     }
 
@@ -141,6 +141,8 @@ const { post } = Astro.props
                         alt={post.data.image.alt}
                         class:list={[{ topper: post.data.image.isTopper }]}
                         formats={["avif", "webp"]}
+                        /* pseudo-blur */
+                        {...(post.data.image.isTopper ? {width: 10, height: 3} : {})}
                     />
                 ) : (
                     // need to repeat myself here otherwise astro dies

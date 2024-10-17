@@ -3,9 +3,9 @@ title: Hosts
 description: Stuff that hosts the stuff I host
 order: 2
 image:
-  url: https://mahiro.oyama.pictures/Worldwide
-  alt: Mahiro Oyama in front of the Earth
-  isTopper: true
+    path: "mahiro/Worldwide.png"
+    alt: Mahiro Oyama in front of the Earth
+    isTopper: true
 ---
 
 ## Local
@@ -42,31 +42,31 @@ Runs the split Live Tab Counter at [tabs.split.pet](https://tabs.split.pet).
 
 ### In storage
 
-- **1x** :simple.Raspberrypi: Pi 5 4GB
-- **1x** :simple.Raspberrypi: Pi 5 8GB
+-   **1x** :simple.Raspberrypi: Pi 5 4GB
+-   **1x** :simple.Raspberrypi: Pi 5 8GB
 
 # Cloud
 
 <h3 style="margin-bottom: 0;">Tunnel</h3>
 <p style="margin-top: 0;"><small>Vultr Compute Instance</small></p>
 
-- **vCPUs**: 1
-- **RAM**: 1GiB
+-   **vCPUs**: 1
+-   **RAM**: 1GiB
 
 Tunnels a select few services to the open web.
 
 <h3 style="margin-bottom: 0;">coolviruses.download</h3>
 <p style="margin-top: 0;"><small>Vultr Compute Instance</small></p>
 
-- **vCPUs**: 1
-- **RAM**: 2GiB
+-   **vCPUs**: 1
+-   **RAM**: 2GiB
 
 Cheap VPS that runs [coolviruses.download](https://coolviruses.download).
 
 <h3 style="margin-bottom: 0;">fedi.fnaf.stream</h3>
 <p style="margin-top: 0;"><small>Linode Compute Instance</small></p>
 
-- **vCPUs**: 1
-- **RAM**: 1GiB
+-   **vCPUs**: 1
+-   **RAM**: 1GiB
 
 Cheap VPS that runs [fedi.fnaf.stream](https://fedi.fnaf.stream/).

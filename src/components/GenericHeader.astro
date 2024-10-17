@@ -1,45 +1,58 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
-import { Picture } from 'astro:assets'
-import dynImportImg from '../util/ohgodpleasehelpme'
+import type { HTMLAttributes } from "astro/types"
+import { Picture } from "astro:assets"
+import dynImportImg from "../util/ohgodpleasehelpme"
 
 const { styling, text, image } = Astro.props
 
 type BaseHeadImg = {
-    isTopper?: boolean,
+    isTopper?: boolean
     alt: string
 }
 
 export interface Props {
-    image?: BaseHeadImg & {url:string} | BaseHeadImg & {path:string},
+    image?: (BaseHeadImg & { url: string }) | (BaseHeadImg & { path: string })
     styling?: {
         noBottomPad?: boolean
-    },
+    }
     text: string
 }
 ---
+
 <header class="high">
     <div class="contain">
         {
-        image ? 
-            <>
-                {image.isTopper ? <br> : ""}
-                {
-                    "path" in image
-                    ? <Picture
-                        src={dynImportImg(image.path)}
-                        alt={image.alt}
-                        class:list={[{topper: image.isTopper, thumbnail: !image.isTopper}]}
-                        formats={["avif", "webp"]}
-                    />
-                    : <img
-                        src={image.url}
-                        alt={image.alt}
-                        class:list={[{topper: image.isTopper, thumbnail: !image.isTopper}]}
-                    >
-                }
-            </>
-        : ""
+            image ? (
+                <>
+                    {/*image.isTopper ? <br> : ""*/}
+                    {"path" in image ? (
+                        <Picture
+                            src={dynImportImg(image.path)}
+                            alt={image.alt}
+                            class:list={[
+                                {
+                                    topper: image.isTopper,
+                                    thumbnail: !image.isTopper,
+                                },
+                            ]}
+                            formats={["avif", "webp"]}
+                        />
+                    ) : (
+                        <img
+                            src={image.url}
+                            alt={image.alt}
+                            class:list={[
+                                {
+                                    topper: image.isTopper,
+                                    thumbnail: !image.isTopper,
+                                },
+                            ]}
+                        />
+                    )}
+                </>
+            ) : (
+                ""
+            )
         }
         <div class:list={["headerContent", styling]}>
             <h2>
