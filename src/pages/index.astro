@@ -1,11 +1,11 @@
 ---
 import pfp from "../images/pfp-noborder.png"
-import "../style/index.scss";
-import PersonHeader from "../components/PersonHeader.astro";
-import { Picture } from "astro:assets";
-import Page from "../layouts/Page.astro";
-import Testimonials from "../components/Testimonials.astro";
-import { 
+import "../style/index.scss"
+import PersonHeader from "../components/PersonHeader.astro"
+import { Picture } from "astro:assets"
+import Page from "../layouts/Page.astro"
+import Testimonials from "../components/Testimonials.astro"
+import {
     siFirefish,
     siDiscord,
     siGithub,
@@ -30,31 +30,70 @@ import {
     siReact,
     siC,
     siCloudflareworkers,
-siSignal,
-siCsharp,
-siLastdotfm,
-siKotlin
+    siSignal,
+    siCsharp,
+    siLastdotfm,
+    siKotlin,
+    siBluesky,
 } from "simple-icons"
 import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
-import Posts from "../components/Posts.astro";
-import IconList from "../components/IconList.astro";
-import Buttons from "../components/buttons/Buttons.astro";
-import BtnFx from "../components/buttons/BtnFx.astro";
-import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme";
-import OrnamentLayer from "../components/lanyard/OrnamentLayer.astro";
-import Quotes from "../components/Quotes.astro";
+import Posts from "../components/Posts.astro"
+import IconList from "../components/IconList.astro"
+import Buttons from "../components/buttons/Buttons.astro"
+import BtnFx from "../components/buttons/BtnFx.astro"
+import { injectTitleIntoSvg } from "../util/ohgodpleasehelpme"
+import OrnamentLayer from "../components/lanyard/OrnamentLayer.astro"
+import Quotes from "../components/Quotes.astro"
 ---
-<Page title="split's website" description="hi this is my shitty website" meta={[{name: "og:image", content: "/pfp/mahiropfp_butwithart.png"}]}>
+
+<Page
+    title="split's website"
+    description="hi this is my shitty website"
+    meta={[{ name: "og:image", content: "/pfp/mahiropfp_butwithart.png" }]}
+>
     <PersonHeader
         socials={[
-            {url: "https://coolviruses.download/@split", icon: siFirefish.svg, color: "#"+siFirefish.hex},
-            {url: "https://discord.com/users/312700896343621633", icon: siDiscord.svg, color: "#"+siDiscord.hex},
-            {url: "https://signal.me/#eu/3jZmbV8BdcR0W7C_OfnV8emDntbmgC7QNkobzwFQ7xIyseTqTFtP37_yS628_LAl", icon: siSignal.svg, color: "#"+siSignal.hex},
-            {url: "https://github.com/nbitzz", icon: siGithub.svg},
-            {url: "https://git.sucks.win/split", icon: siForgejo.svg, color: "#"+siForgejo.hex},
-            {url: "https://steamcommunity.com/id/video0dotmov", icon: siSteam.svg, color: "#"+siSteamdeck.hex},
-            {url: "https://last.fm/user/stringsplit", icon: siLastdotfm.svg, color: "#"+siLastdotfm.hex},
-            {url: "https://monkeytype.com/profile/split1337", icon: siMonkeytype.svg, color: "#"+siMonkeytype.hex}
+            {
+                url: "https://coolviruses.download/@split",
+                icon: siFirefish.svg,
+                color: "#" + siFirefish.hex,
+            },
+            {
+                url: "https://coolviruses.download/@split",
+                icon: siBluesky.svg,
+                color: "#" + siBluesky.hex,
+            },
+            {
+                url: "https://discord.com/users/312700896343621633",
+                icon: siDiscord.svg,
+                color: "#" + siDiscord.hex,
+            },
+            {
+                url: "https://signal.me/#eu/3jZmbV8BdcR0W7C_OfnV8emDntbmgC7QNkobzwFQ7xIyseTqTFtP37_yS628_LAl",
+                icon: siSignal.svg,
+                color: "#" + siSignal.hex,
+            },
+            { url: "https://github.com/nbitzz", icon: siGithub.svg },
+            {
+                url: "https://git.sucks.win/split",
+                icon: siForgejo.svg,
+                color: "#" + siForgejo.hex,
+            },
+            {
+                url: "https://steamcommunity.com/id/video0dotmov",
+                icon: siSteam.svg,
+                color: "#" + siSteamdeck.hex,
+            },
+            {
+                url: "https://last.fm/user/stringsplit",
+                icon: siLastdotfm.svg,
+                color: "#" + siLastdotfm.hex,
+            },
+            {
+                url: "https://monkeytype.com/profile/split1337",
+                icon: siMonkeytype.svg,
+                color: "#" + siMonkeytype.hex,
+            },
         ]}
     >
         <Fragment slot="pfp">
@@ -62,19 +101,35 @@ import Quotes from "../components/Quotes.astro";
                 <Picture src={pfp} formats={['avif', 'webp']} alt="Mahiro Oyama" loading="eager" />
             -->
             <picture>
-                <source srcset="https://avatars.split.pet/avatar/split/256?format=webp" type="image/webp">
-                <img id="pfp" src="https://avatars.split.pet/avatar/split/256" loading="lazy" width="256" height="256" alt="split's pfp">
+                <source
+                    srcset="https://avatars.split.pet/avatar/split/256?format=webp"
+                    type="image/webp"
+                />
+                <img
+                    id="pfp"
+                    src="https://avatars.split.pet/avatar/split/256"
+                    loading="lazy"
+                    width="256"
+                    height="256"
+                    alt="split's pfp"
+                />
                 <OrnamentLayer />
                 <script is:inline>
                     fetch("https://avatars.split.pet/info/split/json")
                         .then(d => d.json())
-                        .then(({altText}) => document.getElementById("pfp").alt = altText)
+                        .then(
+                            ({ altText }) =>
+                                (document.getElementById("pfp").alt = altText)
+                        )
                 </script>
             </picture>
         </Fragment>
 
         <Fragment slot="title">
-            hi, i'm May <span style="color:var(--c-subtext2); font-weight: normal; font-size: large;">(split)</span>
+            hi, i'm May <span
+                style="color:var(--c-subtext2); font-weight: normal; font-size: large;"
+                >(split)</span
+            >
         </Fragment>
 
         <Fragment slot="description">
@@ -87,54 +142,133 @@ import Quotes from "../components/Quotes.astro";
         <p>
             <a href="https://jack.cab">Jack</a>,
             <a href="https://aagaming.me">AAGaming</a>,
-            <a href="http://cirroskais.xyz/">cirro</a>, uhh... i don't know i don't have many
+            <a href="http://cirroskais.xyz/">cirro</a>, uhh... i don't know i
+            don't have many
         </p>
         <h2 class="sectionDenoter" id="projects">projects</h2>
-        <p><a href="https://github.com/mollersuite/monofile">monofile</a>, uhh... that's also the only thing I've really made that's notable lol, and even that's a stretch. You can see all of the ones I feel like listing <a href="/docs/split/projects">here</a>, though.</p>
+        <p>
+            <a href="https://github.com/mollersuite/monofile">monofile</a>,
+            uhh... that's also the only thing I've really made that's notable
+            lol, and even that's a stretch. You can see all of the ones I feel
+            like listing <a href="/docs/split/projects">here</a>, though.
+        </p>
         <h2 class="sectionDenoter" id="stuffiknow">stuff i use</h2>
-        <IconList list={[
-            { url: "https://archlinux.org", icon:siArchlinux.svg, color: "#"+siArchlinux.hex },
-            { url: "https://frame.work", icon:siFramework.svg },
-            { url: "https://steamdeck.com", icon:siSteamdeck.svg, color: "#"+siSteamdeck.hex },
-        ]} />
-        <div style="height:10px;" />
-        <IconList list={[
-            { url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", icon:siJavascript.svg, color: "#"+siJavascript.hex },
-            { url: "https://typescriptlang.org", icon:siTypescript.svg, color: "#"+siTypescript.hex },
-            { url: "https://nodejs.org", icon:siNodedotjs.svg, color: "#"+siNodedotjs.hex },
-            { url: "https://bun.sh", icon:siBun.svg },
-            // i'll put this here when i actually use it more
-            /*{ url: "https://workers.cloudflare.com", icon:siCloudflareworkers.svg, color: "#"+siCloudflareworkers.hex },*/
-            { url: "https://svelte.dev", icon:siSvelte.svg, color: "#"+siSvelte.hex },
-            { url: "https://astro.build", icon:siAstro.svg, color: "#"+siAstro.hex }
-        ]} />
-        <div style="height:10px;" />
-        <h2 class="sectionDenoter" id="stuffidontknow">stuff i want to learn<br /><small style="color: var(--c-subtext2); font-weight: 500; text-transform: none;">(or am learning)</small></h2>
-        <IconList list={[
-            { url: "https://rust-lang.org", icon:siRust.svg },
-            { url: "https://ziglang.org", icon:siZig.svg, color: "#"+siZig.hex },
-            { url: "https://en.wikipedia.org/wiki/C_(programming_language)", icon:siC.svg, color: "#"+siC.hex },
-            { url: "https://dotnet.microsoft.com/en-us/languages/csharp", icon:siCsharp.svg},
-            { url: "https://kotlinlang.org/", icon:siKotlin.svg, color: "#"+siKotlin.hex },
-            { url: "https://markojs.com", icon:siMarko.svg, color: "#"+siMarko.hex },
-            { url: "https://react.dev", icon:siReact.svg, color: "#"+siReact.hex },
-            { url: "https://vuejs.org", icon:siVuedotjs.svg, color: "#"+siVuedotjs.hex }
-        ]} />
-        <div style="height:10px;" />
-        <h2 class="sectionDenoter" id="not-notable-stuff">not-so-notable stuff</h2>
+        <IconList
+            list={[
+                {
+                    url: "https://archlinux.org",
+                    icon: siArchlinux.svg,
+                    color: "#" + siArchlinux.hex,
+                },
+                { url: "https://frame.work", icon: siFramework.svg },
+                {
+                    url: "https://steamdeck.com",
+                    icon: siSteamdeck.svg,
+                    color: "#" + siSteamdeck.hex,
+                },
+            ]}
+        />
+        <div style="height:10px;"></div>
+        <IconList
+            list={[
+                {
+                    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+                    icon: siJavascript.svg,
+                    color: "#" + siJavascript.hex,
+                },
+                {
+                    url: "https://typescriptlang.org",
+                    icon: siTypescript.svg,
+                    color: "#" + siTypescript.hex,
+                },
+                {
+                    url: "https://nodejs.org",
+                    icon: siNodedotjs.svg,
+                    color: "#" + siNodedotjs.hex,
+                },
+                { url: "https://bun.sh", icon: siBun.svg },
+                // i'll put this here when i actually use it more
+                /*{ url: "https://workers.cloudflare.com", icon:siCloudflareworkers.svg, color: "#"+siCloudflareworkers.hex },*/
+                {
+                    url: "https://svelte.dev",
+                    icon: siSvelte.svg,
+                    color: "#" + siSvelte.hex,
+                },
+                {
+                    url: "https://astro.build",
+                    icon: siAstro.svg,
+                    color: "#" + siAstro.hex,
+                },
+            ]}
+        />
+        <div style="height:10px;"></div>
+        <h2 class="sectionDenoter" id="stuffidontknow">
+            stuff i want to learn<br /><small
+                style="color: var(--c-subtext2); font-weight: 500; text-transform: none;"
+                >(or am learning)</small
+            >
+        </h2>
+        <IconList
+            list={[
+                { url: "https://rust-lang.org", icon: siRust.svg },
+                {
+                    url: "https://ziglang.org",
+                    icon: siZig.svg,
+                    color: "#" + siZig.hex,
+                },
+                {
+                    url: "https://en.wikipedia.org/wiki/C_(programming_language)",
+                    icon: siC.svg,
+                    color: "#" + siC.hex,
+                },
+                {
+                    url: "https://dotnet.microsoft.com/en-us/languages/csharp",
+                    icon: siCsharp.svg,
+                },
+                {
+                    url: "https://kotlinlang.org/",
+                    icon: siKotlin.svg,
+                    color: "#" + siKotlin.hex,
+                },
+                {
+                    url: "https://markojs.com",
+                    icon: siMarko.svg,
+                    color: "#" + siMarko.hex,
+                },
+                {
+                    url: "https://react.dev",
+                    icon: siReact.svg,
+                    color: "#" + siReact.hex,
+                },
+                {
+                    url: "https://vuejs.org",
+                    icon: siVuedotjs.svg,
+                    color: "#" + siVuedotjs.hex,
+                },
+            ]}
+        />
+        <div style="height:10px;"></div>
+        <h2 class="sectionDenoter" id="not-notable-stuff">
+            not-so-notable stuff
+        </h2>
         <p>
             <a href="https://xkcd.uk">xkcd.uk</a>,
-            <a href="https://github.com/nbitzz/oyama.pictures">oyama.pictures</a>,
-            <a href="https://freerobux.win/">freerobux.win</a> and <a href="/domainlist">family</a>;
-            I also run, like, <a href="https://coolviruses.download">coolviruses.download</a>,
-            and that's about it<br>
+            <a href="https://github.com/nbitzz/oyama.pictures">oyama.pictures</a
+            >,
+            <a href="https://freerobux.win/">freerobux.win</a> and <a
+                href="/domainlist">family</a
+            >; I also run, like, <a href="https://coolviruses.download"
+                >coolviruses.download</a
+            >, and that's about it<br />
             <small>
-                <a href="https://avatars.split.pet/info/split/source">My profile picture is sourced from here.</a><br>
-                video0.mov if the discord link doesn't work for you<br>
+                <a href="https://avatars.split.pet/info/split/source"
+                    >My profile picture is sourced from here.</a
+                ><br />
+                video0.mov if the discord link doesn't work for you<br />
             </small>
         </p>
     </section>
-<!--
+    <!--
     <section class="insignificant">
         <h2 class="sectionDenoter">More about me</h2>
         <Posts display={["postList", ["introduction"]]} />
@@ -147,45 +281,73 @@ import Quotes from "../components/Quotes.astro";
         <p style="text-align: right;"><a href="/blog">See all posts</a></p>
     </section>
 
-    
     <section id="buttons" class="insignificant">
         <h2 class="sectionDenoter">Buttons</h2>
         <Buttons />
         <BtnFx />
-        <br>
+        <br />
     </section>
 
-    <Testimonials testimonials={[
-        {text: "fucking hehead [sic] split kill that ni[...]", from: "chapel1337"},
-        {text: "No I just hate split", from: "WaviestBalloon"},
-        {text: "I gotta kill [...] you", from: "StandardizedAnomaly"},
-        {text: "You are a techsis", from: "Jack"},
-        {text: "how the hell do you have 3786 tabs open", from: "turn"},
-        {text: "WHAT THE FUCK", from: "Aurora"},
-        {text: "Nevermind you really are [stupid]", from: "Xzen"},
-        {text: "Gay", from: "Chloe"},
-        {text: "Come the fuck on man", from: "micro"},
-        {text: "Fuck off", from: "AAGaming"},
-        {text: "Hey f[...]ot are you trans yet", from: "methy"},
-        {text: "[You are] beyond annoying", from: "python"},
-        {text: "you're weird", from: "Raymond"},
-        {text: "split is not a great benchmark for sanity [...]", from: "Jack"},
-        {text: "Kill yourse[lf]", from: "Jade"},
-        {text: "Split can i pay for your autism diagnosis", from: "Chloe"},
-        {text: "yeah youre a meat lover alright", from: "Aurora"},
-        {text: "Level 0 Guatt [sic]. p", from: "Accel"},
-        {text: "you're the boss of mental illnesses", from: "Marco"},
-        {text: "I thought I was mentally fucked but compared to you I'm literally squeaky clean fine", from: "filo"},
-        {text: "you Will become trans in the future", from: "LegitSi, 2 yrs in advance"},
-        {text: "GO TO THERAPY!!!! GO TO PSYCHIATRY!!!! JUST SEEK OUT HELP FROM A PROFESSIONAL!!!! PLEASE I BEG YOU!!!", from: "LegitSi, now"},
-        {text: "Talking to split has made me more misogynistic", from: "Brandan"}
-    ]} extraAttributes={{id: "testimonials"}} />
+    <Testimonials
+        testimonials={[
+            {
+                text: "fucking hehead [sic] split kill that ni[...]",
+                from: "chapel1337",
+            },
+            { text: "No I just hate split", from: "WaviestBalloon" },
+            { text: "I gotta kill [...] you", from: "StandardizedAnomaly" },
+            { text: "You are a techsis", from: "Jack" },
+            { text: "how the hell do you have 3786 tabs open", from: "turn" },
+            { text: "WHAT THE FUCK", from: "Aurora" },
+            { text: "Nevermind you really are [stupid]", from: "Xzen" },
+            { text: "Gay", from: "Chloe" },
+            { text: "Come the fuck on man", from: "micro" },
+            { text: "Fuck off", from: "AAGaming" },
+            { text: "Hey f[...]ot are you trans yet", from: "methy" },
+            { text: "[You are] beyond annoying", from: "python" },
+            { text: "you're weird", from: "Raymond" },
+            {
+                text: "split is not a great benchmark for sanity [...]",
+                from: "Jack",
+            },
+            { text: "Kill yourse[lf]", from: "Jade" },
+            {
+                text: "Split can i pay for your autism diagnosis",
+                from: "Chloe",
+            },
+            { text: "yeah youre a meat lover alright", from: "Aurora" },
+            { text: "Level 0 Guatt [sic]. p", from: "Accel" },
+            { text: "you're the boss of mental illnesses", from: "Marco" },
+            {
+                text: "I thought I was mentally fucked but compared to you I'm literally squeaky clean fine",
+                from: "filo",
+            },
+            {
+                text: "you Will become trans in the future",
+                from: "LegitSi, 2 yrs in advance",
+            },
+            {
+                text: "GO TO THERAPY!!!! GO TO PSYCHIATRY!!!! JUST SEEK OUT HELP FROM A PROFESSIONAL!!!! PLEASE I BEG YOU!!!",
+                from: "LegitSi, now",
+            },
+            {
+                text: "Talking to split has made me more misogynistic",
+                from: "Brandan",
+            },
+        ]}
+        extraAttributes={{ id: "testimonials" }}
+    />
 
-    <Quotes quotes={[
-        {text: "How would I become trans", date: "2022-10-05"},
-        {text: "Fuck you, kill uourself", date: "2022-11-06"},
-        {text: "thats called a fucking app charlie", date: "2023-12-25"},
-        {text: "Laughing my ass off at lethal company twerking mod", date: "2024-01-02"},
-        {text: "I like my spyware american", date: "2024-07-26"},
-    ]} />
+    <Quotes
+        quotes={[
+            { text: "How would I become trans", date: "2022-10-05" },
+            { text: "Fuck you, kill uourself", date: "2022-11-06" },
+            { text: "thats called a fucking app charlie", date: "2023-12-25" },
+            {
+                text: "Laughing my ass off at lethal company twerking mod",
+                date: "2024-01-02",
+            },
+            { text: "I like my spyware american", date: "2024-07-26" },
+        ]}
+    />
 </Page>
