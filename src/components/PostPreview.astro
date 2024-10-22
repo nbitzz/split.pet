@@ -142,7 +142,7 @@ const { post } = Astro.props
                         class:list={[{ topper: post.data.image.isTopper }]}
                         formats={["avif", "webp"]}
                         /* pseudo-blur */
-                        {...(post.data.image.isTopper ? {width: 10, height: 3} : {})}
+                        {...(post.data.image.isTopper ? {width: 10, height: 3} : { width: 500 })}
                     />
                 ) : (
                     // need to repeat myself here otherwise astro dies
