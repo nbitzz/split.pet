@@ -18,7 +18,7 @@ Runs my :simple.Homeassistant: Home Assistant.
 <h3 style="margin-bottom: 0;">Matsuri</h3>
 <p style="margin-top: 0;"><small>Raspberry Pi 4B 8GB</small></p>
 
-Runs my :simple.Jellyfin:&nbsp;Jellyfin, shared between a few of my friends.
+Unused, currently. Might run a Bluesky PDS and/or coolviruses.download in the future.
 
 <h3 style="margin-bottom: 0;">Mihari</h3>
 <p style="margin-top: 0;"><small>Raspberry Pi 5 4GB</small></p>
@@ -28,7 +28,7 @@ Runs my :simple.Authentik: Authentik, an :ava: ava instance for the Authentik, a
 <h3 style="margin-bottom: 0;">Kaede</h3>
 <p style="margin-top: 0;"><small>Raspberry Pi 5 4GB</small></p>
 
-Drives a Samsung external SSD for select stuff to be backed up to. Also runs my :simple.Forgejo: Forgejo.
+Drives a 2TB Samsung external SSD and a 4TB Western Digital external HDD for backups. Later I'll set up S3 uploads. Also runs my :simple.Forgejo: Forgejo, but I'm considering moving it to Chitose.
 
 <h3 style="margin-bottom: 0;">Asahi</h3>
 <p style="margin-top: 0;"><small>Raspberry Pi 5 8GB</small></p>
@@ -39,6 +39,17 @@ Currently unused; will be used for something eventually 🙃
 <p style="margin-top: 0;"><small>Raspberry Pi Zero 2 W</small></p>
 
 Runs the split Live Tab Counter at [tabs.split.pet](https://tabs.split.pet).
+
+<h3 style="margin-bottom: 0;">Chitose</h3>
+<p style="margin-top: 0;"><small>Old desktop</small></p>
+
+-   **OS**: :simple.Debian:&thinsp;Debian
+-   **Mobo**: :simple.Msi:&thinsp;MSI B450 TOMAHAWK
+-   **CPU**: Ryzen 5 3600X
+-   **GPU**: NVIDIA RTX 2070 SUPER
+-   **RAM**: 32GB
+
+Runs my :simple.Jellyfin:&nbsp;Jellyfin, shared between a few of my friends.
 
 ### In storage
 
