@@ -10,11 +10,6 @@ image:
 
 ## Local
 
-<h3 style="margin-bottom: 0;">Sakuya</h3>
-<p style="margin-top: 0;"><small>Raspberry Pi 3B+</small></p>
-
-Runs my :simple.Homeassistant: Home Assistant.
-
 <h3 style="margin-bottom: 0;">Matsuri</h3>
 <p style="margin-top: 0;"><small>Raspberry Pi 4B 8GB</small></p>
 
@@ -54,7 +49,6 @@ Runs my :simple.Jellyfin:&nbsp;Jellyfin, shared between a few of my friends.
 ### In storage
 
 -   **1x** :simple.Raspberrypi: Pi 5 4GB
--   **1x** :simple.Raspberrypi: Pi 5 8GB
 
 # Cloud
 
