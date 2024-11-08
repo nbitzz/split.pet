@@ -1,46 +1,115 @@
 ---
-import "@fontsource-variable/inter";
-import "../style/index.scss";
-import {
-    siAstro,
-    siGithub,
-    siCloudflarepages
-} from "simple-icons"
+import "@fontsource-variable/inter"
+import "../style/index.scss"
+import { siAstro, siGithub, siCloudflarepages } from "simple-icons"
 
 const { title, description, meta } = Astro.props
 
 interface Props {
-    title: string,
-    description: string,
-    meta?: {name: string, content: string}[]
+    title: string
+    description: string
+    meta?: { name: string; content: string }[]
 }
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="/favicon.png">
-        <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="RSS"
+            href="/rss.xml"
+        />
         <title>{title}</title>
 
-        <meta name="title" content={title}>
-        <meta name="description" content={description}>
-        <meta name="theme-color" content="#FB405A">
-        {
-            meta?.map(e => <meta name={e.name} content={e.content}>)
-        }
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+        <meta name="theme-color" content="#FB405A" />
+        {meta?.map(e => <meta name={e.name} content={e.content} />)}
     </head>
     <body>
+        <style lang="scss">
+            #background {
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: #bdeef2;
+                overflow: hidden;
+                @media (prefers-color-scheme: dark) {
+                    filter: brightness(75%);
+                }
 
+                .inner {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    min-width: 100%;
+                    min-height: 100%;
+                    aspect-ratio: 16 / 9;
+                    transform: translate(-50%, -50%);
+                    img {
+                        position: absolute;
+                        left: 0px;
+                        top: 0px;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    video {
+                        position: absolute;
+                        left: calc(100% * calc(820 / 1920));
+                        top: calc(100% * calc(130 / 1080));
+                        width: calc(100% * calc(810 / 1920));
+                        height: calc(100% * calc(830 / 1080));
+                    }
+                }
+            }
+        </style>
         <div id="background" aria-hidden="true">
-            <video aria-hidden="true" autoplay muted loop playsinline disablepictureinpicture="true" src="/laundry.webm" class="hide_when_reduced_motion hide_when_high_contrast" />
+            <div class="inner">
+                <picture>
+                    <source
+                        srcset="/laundry/laundry-stat.avif"
+                        type="image/avif"
+                    />
+                    <source
+                        srcset="/laundry/laundry-stat.webp"
+                        type="image/webp"
+                    />
+                    <img
+                        src="/laundry/laundry-stat.png"
+                        width="1920"
+                        height="1080"
+                    />
+                </picture>
+                <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    disablepictureinpicture="true"
+                    class="hide_when_reduced_motion hide_when_high_contrast"
+                >
+                    <source
+                        type="video/webm;codecs=av01.0.05M.08"
+                        src="/laundry/laundry-crop-av1.webm"
+                    />
+                    <source
+                        type="video/webm;codecs=vp9"
+                        src="/laundry/laundry-crop.webm"
+                    />
+                </video>
+            </div>
         </div>
-        
+
         <div id="all_container">
             <div id="all">
-
                 <slot />
 
                 <footer>
@@ -48,42 +117,57 @@ interface Props {
                         <a href="/">split.pet</a>
                         <a href="/docs" class="subroute">/docs</a>
                         <a href="/blog" class="subroute">/blog</a>
-                        <br>
+                        <br />
                         {title}
                     </h3>
                     <p>
-                        Built with 
-                        <a href="https://astro.build" style={"color:#"+siAstro.hex}>
-                            <Fragment set:html={siAstro.svg} />&thinsp;Astro</a>
+                        Built with
+                        <a
+                            href="https://astro.build"
+                            style={"color:#" + siAstro.hex}
+                        >
+                            <Fragment set:html={siAstro.svg} />&thinsp;Astro</a
+                        >
                         on
                         <a href="https://github.com/nbitzz/split.pet">
-                            <Fragment set:html={siGithub.svg} />&thinsp;GitHub</a>
+                            <Fragment
+                                set:html={siGithub.svg}
+                            />&thinsp;GitHub</a
+                        >
                         and hosted with
-                        <a href="https://pages.cloudflare.com/" style={"color:#"+siCloudflarepages.hex}>
-                            <Fragment set:html={siCloudflarepages.svg} />&thinsp;Cloudflare Pages</a>
+                        <a
+                            href="https://pages.cloudflare.com/"
+                            style={"color:#" + siCloudflarepages.hex}
+                        >
+                            <Fragment
+                                set:html={siCloudflarepages.svg}
+                            />&thinsp;Cloudflare Pages</a
+                        >
                     </p>
                 </footer>
-                
             </div>
         </div>
+
+        <script lang="js">
+            // simple script to keep state persistent
+            // i mean i could probably do something stupid
+            // like a cookie with pages functions or some shit
+            // but not now go fuck yourself
+
+            /**
+             * @type HTMLInputElement
+             */
+            let btn = document.getElementsByClassName("extendPost")[0]
+            if (btn && btn.disabled !== undefined) {
+                btn.checked = localStorage.getItem("pagesExtended") == "yes"
+
+                btn.addEventListener("change", () => {
+                    localStorage.setItem(
+                        "pagesExtended",
+                        btn.checked ? "yes" : "no"
+                    )
+                })
+            }
+        </script>
     </body>
-
-    <script lang="js">
-        // simple script to keep state persistent
-        // i mean i could probably do something stupid
-        // like a cookie with pages functions or some shit
-        // but not now go fuck yourself
-
-        /**
-         * @type HTMLInputElement
-         */
-        let btn = document.getElementsByClassName("extendPost")[0];
-        if (btn && btn.disabled !== undefined) {
-            btn.checked = localStorage.getItem("pagesExtended") == 'yes'
-
-            btn.addEventListener("change", () => {
-                localStorage.setItem("pagesExtended", btn.checked ? "yes" : "no")
-            })
-        }
-    </script>
 </html>
