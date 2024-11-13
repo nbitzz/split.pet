@@ -1,14 +1,16 @@
 <script type="module">
     if (!window.matchMedia("(hover: none)").matches) {
+        // scache holds the head and body for
+        // any urls.
         const scache = {},
             work = new Worker("/background.js"),
             /**
              * @description Fetch using the worker
              */
-            get = url => {
+            get = (url, dom) => {
                 if (scache[url]) return
 
-                work.postMessage(url)
+                work.postMessage({ url, dom })
                 let resolve,
                     value = new Promise(res => (resolve = res))
                 scache[url] = { resolve, value }
@@ -29,9 +31,19 @@
             /**
              * @description Go to a page
              */
-            go = async (url, event) => {
-                event.preventDefault()
-                if (!scache[url]) get(url)
+            go = async (_u, event) => {
+                // base url off current
+                const url = new URL(_u, window.location).toString()
+
+                // prevent default if going back
+                if (event) {
+                    // this event will only ever be included when
+                    // going to a new page, so
+                    event.preventDefault()
+                    history.pushState(url, null, url)
+                }
+
+                if (!scache[url]) get(url) // get prev page if not cached
 
                 // load in new content
                 let v =
@@ -45,7 +57,6 @@
 
                 // update content
                 reps.forEach((e, i) => (e.innerHTML = v[i]))
-                history.pushState(null, null, url)
                 window.scrollTo({ top: 0 })
                 ref()
 
@@ -59,7 +70,10 @@
              */
             ref = _ => {
                 for (let el of document.body.getElementsByTagName("a")) {
-                    if (new URL(el.href).hostname !== window.location.hostname)
+                    if (
+                        new URL(el.href, window.location).hostname !==
+                        window.location.hostname
+                    )
                         continue
                     el.addEventListener("click", e => go(el.href, e))
                     el.addEventListener("mouseenter", _ => get(el.href))
@@ -71,6 +85,12 @@
             scache[url].resolve(d)
             scache[url].value = d
         }
+
+        // fix back button
+        window.addEventListener("popstate", _ => go(window.location))
+
+        // let's cache the current document now
+        get(window.location.toString(), document.documentElement.innerHTML)
 
         ref()
     }
