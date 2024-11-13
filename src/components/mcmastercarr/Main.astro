@@ -16,7 +16,7 @@
             /**
              * @description Reload a script
              */
-            /*scrl = el => {
+            scrl = el => {
                 let n = document.createElement("script")
 
                 for (let { name, value } of el.attributes)
@@ -25,7 +25,7 @@
                 n.text = el.innerHTML
                 // replace child
                 el.parentNode.replaceChild(n, el)
-            },*/
+            },
             /**
              * @description Go to a page
              */
@@ -47,16 +47,12 @@
                 reps.forEach((e, i) => (e.innerHTML = v[i]))
                 history.pushState(null, null, url)
                 window.scrollTo({ top: 0 })
-                location.reload()
-                /*ref()
-                
+                ref()
+
                 // reload all script elements
                 reps.flatMap(e =>
                     Array.from(e.getElementsByTagName("script"))
                 ).forEach(scrl)
-
-                // dispatch to any subscripts to reset
-                document.dispatchEvent(new Event("reset"))*/
             },
             /**
              * @description Rehook on links, etc.
@@ -68,6 +64,7 @@
                     el.addEventListener("click", e => go(el.href, e))
                     el.addEventListener("mouseenter", _ => get(el.href))
                 }
+                document.dispatchEvent(new Event("domready"))
             }
 
         work.onmessage = ({ data: { d, url } }) => {

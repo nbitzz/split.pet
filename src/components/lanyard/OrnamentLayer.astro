@@ -13,10 +13,11 @@
         | { op: 0; d: LanyardPart }
     let lanyardSocket: WebSocket
     let heartbeatIntervalId: ReturnType<typeof setTimeout>
+    let lastRendered: LanyardPart
 
     const subscribe_to_id = "312700896343621633"
     const dfImageUrl = "/dai.svg"
-    const overlay = document.getElementsByClassName("lanyardOverlay")[0]
+    let overlay = document.getElementsByClassName("lanyardOverlay")[0]
     let collector: HTMLElement[] = []
 
     function update(
@@ -65,7 +66,12 @@
         )
     }
 
-    function makeOrUpdateAll(data: LanyardPart) {
+    function makeOrUpdateAll(data?: LanyardPart) {
+        // cache stuff for domready
+        if (data) lastRendered = data
+        else data = lastRendered
+        if (!overlay || !overlay.parentNode) return
+
         // status
         makeOrUpdate(
             "div",
@@ -159,5 +165,19 @@
     }
 
     establishSocket()
+
+    // use a once listener here because this will only be loaded
+    // on index.html
+    document.addEventListener(
+        "domready",
+        () => {
+            document.addEventListener("domready", () => {
+                // on domready, we should reset everything on the dom
+                overlay = document.getElementsByClassName("lanyardOverlay")[0]
+                if (overlay) makeOrUpdateAll()
+            })
+        },
+        { once: true }
+    )
 </script>
 <div class="lanyardOverlay"></div>

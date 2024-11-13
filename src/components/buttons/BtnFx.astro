@@ -1,24 +1,29 @@
 <script>
     // small amount of js to control the
     // tilt effect
-    if (!window.matchMedia('(hover: none)').matches && !window.matchMedia('(prefers-reduced-motion)').matches)
-        Array.from(document
-            .getElementsByClassName("_88x31"))
-            .forEach((e: HTMLElement) => {
-                let startEffect = (ev: MouseEvent) => {
-                    let yP = 1-(ev.offsetY/31*2)
-                    let xP = -1+(ev.offsetX/88*2)
-                    e.style.transform =
-                        "scale(115%)"
-                        + ` rotate3d(${yP.toFixed(2)}, ${xP.toFixed(2)},0,20deg)`
-                        + ` translate(${3*xP}px,${-5*yP}px)`;
-                    e.style.boxShadow = `${(-3*xP).toFixed(2)}px ${(5*yP).toFixed(2)}px 5px #999`
+    document.addEventListener("domready", _ => {
+        if (
+            !window.matchMedia("(hover: none)").matches &&
+            !window.matchMedia("(prefers-reduced-motion)").matches
+        )
+            Array.from(document.getElementsByClassName("_88x31")).forEach(
+                (e: HTMLElement) => {
+                    let startEffect = (ev: MouseEvent) => {
+                        let yP = 1 - (ev.offsetY / 31) * 2
+                        let xP = -1 + (ev.offsetX / 88) * 2
+                        e.style.transform =
+                            "scale(115%)" +
+                            ` rotate3d(${yP.toFixed(2)}, ${xP.toFixed(2)},0,20deg)` +
+                            ` translate(${3 * xP}px,${-5 * yP}px)`
+                        e.style.boxShadow = `${(-3 * xP).toFixed(2)}px ${(5 * yP).toFixed(2)}px 5px #999`
+                    }
+                    e.addEventListener("mouseover", startEffect)
+                    e.addEventListener("mousemove", startEffect)
+                    e.addEventListener("mouseleave", () => {
+                        e.style.transform = ""
+                        e.style.boxShadow = ""
+                    })
                 }
-                e.addEventListener('mouseover', startEffect)
-                e.addEventListener('mousemove', startEffect)
-                e.addEventListener('mouseleave', () => {
-                    e.style.transform = ""
-                    e.style.boxShadow = ""
-                })
-            })
+            )
+    })
 </script>

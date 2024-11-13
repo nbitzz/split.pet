@@ -146,19 +146,21 @@ interface Props {
         </div>
 
         <script>
-            let btn = document.getElementsByClassName(
-                "extendPost"
-            )[0] as HTMLInputElement
-            if (btn && btn.disabled !== undefined) {
-                btn.checked = localStorage.getItem("pagesExtended") == "yes"
+            document.addEventListener("domready", () => {
+                let btn = document.getElementsByClassName(
+                    "extendPost"
+                )[0] as HTMLInputElement
+                if (btn && btn.disabled !== undefined) {
+                    btn.checked = localStorage.getItem("pagesExtended") == "yes"
 
-                btn.addEventListener("change", () => {
-                    localStorage.setItem(
-                        "pagesExtended",
-                        btn.checked ? "yes" : "no"
-                    )
-                })
-            }
+                    btn.addEventListener("change", () => {
+                        localStorage.setItem(
+                            "pagesExtended",
+                            btn.checked ? "yes" : "no"
+                        )
+                    })
+                }
+            })
         </script>
 
         <Preloader />
