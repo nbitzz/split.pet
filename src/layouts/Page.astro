@@ -2,6 +2,7 @@
 import "@fontsource-variable/inter"
 import "../style/index.scss"
 import { siAstro, siGithub, siCloudflarepages } from "simple-icons"
+import Preloader from "../components/mcmastercarr/Main.astro"
 
 const { title, description, meta } = Astro.props
 
@@ -144,16 +145,10 @@ interface Props {
             </div>
         </div>
 
-        <script lang="js">
-            // simple script to keep state persistent
-            // i mean i could probably do something stupid
-            // like a cookie with pages functions or some shit
-            // but not now go fuck yourself
-
-            /**
-             * @type HTMLInputElement
-             */
-            let btn = document.getElementsByClassName("extendPost")[0]
+        <script>
+            let btn = document.getElementsByClassName(
+                "extendPost"
+            )[0] as HTMLInputElement
             if (btn && btn.disabled !== undefined) {
                 btn.checked = localStorage.getItem("pagesExtended") == "yes"
 
@@ -165,5 +160,7 @@ interface Props {
                 })
             }
         </script>
+
+        <Preloader />
     </body>
 </html>

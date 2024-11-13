@@ -1,0 +1,81 @@
+<script type="module">
+    if (!window.matchMedia("(hover: none)").matches) {
+        const scache = {},
+            work = new Worker("/background.js"),
+            /**
+             * @description Fetch using the worker
+             */
+            get = url => {
+                if (scache[url]) return
+
+                work.postMessage(url)
+                let resolve,
+                    value = new Promise(res => (resolve = res))
+                scache[url] = { resolve, value }
+            },
+            /**
+             * @description Reload a script
+             */
+            /*scrl = el => {
+                let n = document.createElement("script")
+
+                for (let { name, value } of el.attributes)
+                    n.setAttribute(name, value)
+
+                n.text = el.innerHTML
+                // replace child
+                el.parentNode.replaceChild(n, el)
+            },*/
+            /**
+             * @description Go to a page
+             */
+            go = async (url, event) => {
+                event.preventDefault()
+                if (!scache[url]) get(url)
+
+                // load in new content
+                let v =
+                    scache[url].value instanceof Promise
+                        ? await scache[url].value
+                        : scache[url].value
+
+                if (!v) return (window.location = url)
+
+                let reps = [document.head, document.getElementById("all")]
+
+                // update content
+                reps.forEach((e, i) => (e.innerHTML = v[i]))
+                history.pushState(null, null, url)
+                window.scrollTo({ top: 0 })
+                location.reload()
+                /*ref()
+                
+                // reload all script elements
+                reps.flatMap(e =>
+                    Array.from(e.getElementsByTagName("script"))
+                ).forEach(scrl)
+
+                // dispatch to any subscripts to reset
+                document.dispatchEvent(new Event("reset"))*/
+            },
+            /**
+             * @description Rehook on links, etc.
+             */
+            ref = _ => {
+                for (let el of document.body.getElementsByTagName("a")) {
+                    if (new URL(el.href).hostname !== window.location.hostname)
+                        continue
+                    el.addEventListener("click", e => go(el.href, e))
+                    el.addEventListener("mouseenter", _ => get(el.href))
+                }
+            }
+
+        work.onmessage = ({ data: { d, url } }) => {
+            console.log(url, d)
+            scache[url].resolve(d)
+            scache[url].value = d
+        }
+
+        ref()
+    }
+</script>
