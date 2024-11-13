@@ -71,7 +71,6 @@
             }
 
         work.onmessage = ({ data: { d, url } }) => {
-            console.log(url, d)
             scache[url].resolve(d)
             scache[url].value = d
         }
