@@ -10,10 +10,10 @@
             get = (url, dom) => {
                 if (scache[url]) return
 
-                work.postMessage({ url, dom })
                 let resolve,
                     value = new Promise(res => (resolve = res))
                 scache[url] = { resolve, value }
+                work.postMessage({ url, dom })
             },
             /**
              * @description Reload a script
