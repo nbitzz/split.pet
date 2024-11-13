@@ -13,6 +13,7 @@
                 let resolve,
                     value = new Promise(res => (resolve = res))
                 scache[url] = { resolve, value }
+
                 work.postMessage({ url, dom })
             },
             /**
@@ -51,7 +52,7 @@
                         ? await scache[url].value
                         : scache[url].value
 
-                if (!v) return (window.location = url)
+                if (!v) return (window.location.href = url)
 
                 let reps = [document.head, document.getElementById("all")]
 
@@ -90,7 +91,7 @@
         window.addEventListener("popstate", _ => go(window.location))
 
         // let's cache the current document now
-        get(window.location.toString(), document.documentElement.innerHTML)
+        get(window.location.href, document.documentElement.innerHTML)
 
         ref()
     }
