@@ -1,10 +1,10 @@
 onmessage = async ({ data: { url = undefined, dom = undefined } }) => {
     if (!dom) {
-        let { abort, signal } = new AbortController(),
-            r = await fetch(url, { signal })
+        let controller = new AbortController(),
+            r = await fetch(url, { signal: controller.signal })
 
         if (!r.headers.get("content-type")?.includes("text/html")) {
-            abort()
+            controller.abort()
             return postMessage({ url, d: false })
         }
 
