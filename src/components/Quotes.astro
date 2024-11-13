@@ -1,27 +1,26 @@
 ---
-import "@fontsource/pinyon-script"
-import type { HTMLAttributes } from 'astro/types'
+import type { HTMLAttributes } from "astro/types"
 
-const {quotes, noHeader, extraAttributes} = Astro.props
+const { quotes, noHeader, extraAttributes } = Astro.props
 
 interface Quote {
-    text: string,
+    text: string
     // dont feel like using Date here
     date: `${number}-${number}-${number}`
 }
 
 interface Props {
-    quotes: Quote[],
-    noHeader?: boolean,
-    extraAttributes?: HTMLAttributes<'section'> // i should kill myself
+    quotes: Quote[]
+    noHeader?: boolean
+    extraAttributes?: HTMLAttributes<"section"> // i should kill myself
 }
 ---
+
 <style lang="scss">
     .quote {
         text-align: center;
         & > p {
             margin: 0;
-            font-size: 15pt;
             &::before {
                 content: "“";
                 color: var(--c-subtext1);
@@ -30,42 +29,24 @@ interface Props {
                 content: "”";
                 color: var(--c-subtext1);
             }
-            font-family: "Pinyon Script", cursive;
+            font-family: "Inter Variable", Inter, sans-serif;
         }
         & > address {
             color: var(--c-subtext1);
-            font-size:small;
+            font-size: small;
         }
         margin: 10px 0;
-    }
-    .readability-switch {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        gap: 0.5em;
-        input {
-            font-size:medium;
-        }
-    }
-    #quotes:has(> .readability-switch > #quote-readability:checked) {
-        & > .quote > p {
-            font-size: unset;
-            font-family: "Inter Variable", Inter, sans-serif;
-        }
     }
 </style>
 <section id="quotes" class="insignificant" {...extraAttributes}>
     {!noHeader ? <h2 class="sectionDenoter">Quotes</h2> : ""}
     {
-        quotes.map((quote, x) => 
-            <div class:list={["quote", {alternate: x % 2 == 1}]}>
+        quotes.map((quote, x) => (
+            <div class:list={["quote", { alternate: x % 2 == 1 }]}>
                 <p>{quote.text}</p>
                 <address>&mdash; May, {quote.date}</address>
             </div>
-        )
+        ))
     }
-    <p class="readability-switch">
-        <input type="checkbox" id="quote-readability">
-        <label for="quote-readability"><small>For the love of god make this readable</small></label>
-    </p>
+    <br />
 </section>
