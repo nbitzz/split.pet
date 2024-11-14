@@ -2,13 +2,14 @@ import { defineConfig } from 'astro/config';
 import { remarkReadingTime } from './src/remark-plugins/readTime';
 import { remarkCustomEmoji } from './src/remark-plugins/customEmoji';
 import mdx from "@astrojs/mdx";
+import expressiveCode from "astro-expressive-code";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://split.pet/',
   markdown: {
     remarkPlugins: [remarkReadingTime, remarkCustomEmoji]
   },
-  integrations: [mdx()],
+  integrations: [expressiveCode(), mdx()],
   redirects: {
     "/blog/setup": {
       status: 301,
