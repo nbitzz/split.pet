@@ -35,6 +35,7 @@ import {
     siLastdotfm,
     siKotlin,
     siBluesky,
+    siSwift,
 } from "simple-icons"
 import iconLaptop from "@fluentui/svg-icons/icons/laptop_24_filled.svg?raw"
 import Posts from "../components/Posts.astro"
@@ -210,6 +211,11 @@ import Quotes from "../components/Quotes.astro"
         <IconList
             list={[
                 { url: "https://rust-lang.org", icon: siRust.svg },
+                {
+                    url: "https://swift.org",
+                    icon: siSwift.svg,
+                    color: "#" + siSwift.hex,
+                },
                 {
                     url: "https://ziglang.org",
                     icon: siZig.svg,
