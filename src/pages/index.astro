@@ -103,19 +103,19 @@ import Quotes from "../components/Quotes.astro"
             -->
             <picture>
                 <source
-                    srcset="https://avatars.split.pet/avatar/split/256?format=webp"
+                    srcset="https://avatars.split.pet/user/split/image/256?format=webp"
                     type="image/webp"
                 />
                 <img
                     id="pfp"
-                    src="https://avatars.split.pet/avatar/split/256"
+                    src="https://avatars.split.pet/user/split/image/256"
                     width="256"
                     height="256"
                     alt="split's pfp"
                 />
                 <OrnamentLayer />
                 <script is:inline>
-                    fetch("https://avatars.split.pet/info/split/json")
+                    fetch("https://avatars.split.pet/user/split/json")
                         .then(d => d.json())
                         .then(
                             ({ altText }) =>
@@ -266,7 +266,7 @@ import Quotes from "../components/Quotes.astro"
                 >coolviruses.download</a
             >, and that's about it<br />
             <small>
-                <a href="https://avatars.split.pet/info/split/source"
+                <a href="https://avatars.split.pet/user/split/source"
                     >My profile picture is sourced from here.</a
                 ><br />
                 video0.mov if the discord link doesn't work for you<br />
