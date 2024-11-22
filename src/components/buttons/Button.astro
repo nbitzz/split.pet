@@ -1,24 +1,37 @@
 ---
-import type { ImportedImage } from './Buttons.astro'
+import type { ImportedImage } from "./Buttons.astro"
 
 export interface Props {
     image: ImportedImage
 }
 
-const {image} = Astro.props
+const { image } = Astro.props
 
 const WrapperElement = image.url ? "a" : "div"
 
+let src =
+    "directUrl" in image
+        ? image.directUrl
+        : // to account for vite scanning
+          (
+              await import(
+                  image.group
+                      ? `./images/${image.group}/${image.basename}.${image.format}?url`
+                      : `./images/${image.basename}.${image.format}?url`
+              )
+          ).default
 ---
+
 <style lang="scss">
     ._88x31 {
         transition-duration: 100ms;
-        margin:0;
+        margin: 0;
         box-shadow: 0 0 0px var(--c-background-transparent);
         transition-property: box-shadow, transform;
     }
 
-    button:hover, a:focus-visible > ._88x31 {
+    button:hover,
+    a:focus-visible > ._88x31 {
         transform: scale(115%);
         background: var(--c-background-transparent);
         box-shadow: 0 0 10px #999;
@@ -30,7 +43,7 @@ const WrapperElement = image.url ? "a" : "div"
     }
 
     img {
-        display:block;
+        display: block;
         // https://88x31.kate.pet
         image-rendering: auto;
         image-rendering: crisp-edges;
@@ -39,16 +52,12 @@ const WrapperElement = image.url ? "a" : "div"
     }
 </style>
 <WrapperElement href={image.url} target="_blank">
-    <img 
+    <img
         class="_88x31"
-        src={
-            ('directUrl' in image 
-            ? image.directUrl 
-            : image.src) 
-            || `/gifBtns/${image.basename}.gif`
-        }
+        src={src}
         alt={image.alt}
-        width="88" height="31"
+        width={"directUrl" in image ? "88" : image.width}
+        height={"directUrl" in image ? "31" : image.height}
         title={image.alt}
-    >
+    />
 </WrapperElement>
