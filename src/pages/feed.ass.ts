@@ -18,6 +18,11 @@ export async function GET(context) {
                                 .split("T")[0]
                         }\t${astroConfig.site}/${e.slug}\t${e.data.title}`
                 )
-                .join("\n")
+                .join("\n"),
+        {
+            headers: {
+                "Content-Type": "text/plain",
+            },
+        }
     )
 }
