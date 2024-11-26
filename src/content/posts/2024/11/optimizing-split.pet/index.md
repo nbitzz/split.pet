@@ -45,7 +45,7 @@ I scrapped together [a basic little script for passing all of the PNGs through f
 
 Fonts are fat as fuck. Use as little as possible. Removing Pinyon Script from my quotes section, though it ruined a bit of the humor, saved me ~50KiB.
 
-If you really want to keep that font, [subset it](https://fonts.google.com/knowledge/glossary/subsetting). Jack does this for the script font on his site with the [`subset-font` package](https://npmjs.com/package/subset-font) and [a build script](https://github.com/Jack5079/Jack5079/blob/master/build.ts). [`subfont`](https://npmjs.com/package/subfont) is a tool which automates font subsetting, which is what Jack uses on [Etcetera's website](https://cetera.uk).
+If you really want to keep that font, [subset it](https://fonts.google.com/knowledge/glossary/subsetting). Jack does this for the script font on his site with the [`subset-font` package](https://npmjs.com/package/subset-font) and [a build script](https://github.com/Jack5079/Jack5079/blob/master/build.ts). [`subfont`](https://npmjs.com/package/subfont) is a tool which automates font subsetting, [which is what Jack uses on Etcetera's website](https://github.com/mollersuite/website/blob/955423a71c910e9a087b60354a34d95ed672eb8a/package.json#L11).
 
 Or if you really want to conserve space, don't download a font at all. Use a web font like `sans-serif` or `system-ui` instead.
 
