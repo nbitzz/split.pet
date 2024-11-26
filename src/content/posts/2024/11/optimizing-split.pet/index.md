@@ -1,7 +1,7 @@
 ---
 title: "Optimizing split.pet"
 description: "What I've done in my attempts to make split.pet as small as possible, and what you can probably do too"
-pubDate: 1732474811000
+pubDate: 1732587081000
 image:
     path: "mahiro/Sweat.png"
     alt: Mahiro Oyama sweating, eating a popsicle
