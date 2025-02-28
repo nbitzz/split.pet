@@ -1,26 +1,23 @@
 ---
-import { getCollection, render } from "astro:content"
+import { getCollection } from "astro:content";
 import PgLayout from "../../layouts/Post.astro"
-import { type ReadTimeResults } from "reading-time"
-import { toString } from "mdast-util-to-string"
+import { type ReadTimeResults } from "reading-time";
+import { toString } from "mdast-util-to-string";
 
 export async function getStaticPaths() {
-    const posts = await getCollection("docs")
+    const posts = await getCollection('docs')
     return posts.map(doc => ({
-        params: { doc: doc.id },
-        props: { doc },
+        params: { doc: doc.slug }, props: { doc }
     }))
 }
 
 const { doc } = Astro.props
-const { Content, remarkPluginFrontmatter } = (await render(doc)) as Omit<
-    Awaited<ReturnType<typeof render>>,
-    "remarkPluginFrontmatter"
-> & {
-    remarkPluginFrontmatter: typeof doc.data & {
-        readTime: ReadTimeResults
+const { Content, remarkPluginFrontmatter } = 
+    await doc.render() as unknown as Omit<Awaited<ReturnType<typeof doc.render>>, "remarkPluginFrontmatter"> & {
+        remarkPluginFrontmatter: typeof doc.data & {
+            readTime: ReadTimeResults
+        }
     }
-}
 ---
 
 <PgLayout frontmatter={remarkPluginFrontmatter} pageType="docs">

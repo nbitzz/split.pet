@@ -16,7 +16,7 @@ export async function GET(context) {
                             new Date(e.data.pubDate!)
                                 .toISOString()
                                 .split("T")[0]
-                        }\t${astroConfig.site}/${e.id}\t${e.data.title}`
+                        }\t${astroConfig.site}/${e.slug}\t${e.data.title}`
                 )
                 .join("\n"),
         {

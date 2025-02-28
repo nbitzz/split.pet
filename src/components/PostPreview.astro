@@ -130,7 +130,7 @@ const { post } = Astro.props
     }
 </style>
 <a
-    href={`/${post.collection == "posts" ? "blog" : post.collection}/${post.id}`}
+    href={`/${post.collection == "posts" ? "blog" : post.collection}/${post.slug}`}
 >
     <div class="post">
         {
