@@ -43,7 +43,7 @@ export const UNCATEGORIZED = "__UNCATEGORIZED__"//Symbol("Uncategorized")
         Object.entries(groupBy(
             display?.[0] != "postList"
                 ? posts.slice(0,display?.[1])
-                : posts.filter(e => display[1].includes(e.slug)),
+                : posts.filter(e => display[1].includes(e.id)),
             // "The callback function should return a string or symbol"
             // but it doesn't work if i use a symbol. OK
             group?.by || (_ => UNCATEGORIZED)

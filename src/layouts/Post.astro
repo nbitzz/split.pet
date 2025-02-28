@@ -1,50 +1,50 @@
 ---
-import GenericHeader, { type Props as HeadProps } from "../components/GenericHeader.astro"
+import GenericHeader, {
+    type Props as HeadProps,
+} from "../components/GenericHeader.astro"
 import Page from "./Page.astro"
 import "../style/markdown.scss"
-import type getReadingTime from 'reading-time';
+import type getReadingTime from "reading-time"
 
-import extend from "@fluentui/svg-icons/icons/table_resize_column_24_filled.svg?raw";
-import home from "@fluentui/svg-icons/icons/home_24_filled.svg?raw";
-import { getImage } from "astro:assets";
-import dynImportImg from "../util/ohgodpleasehelpme";
-import type { collections } from "../content/config";
+import extend from "@fluentui/svg-icons/icons/table_resize_column_24_filled.svg?raw"
+import home from "@fluentui/svg-icons/icons/home_24_filled.svg?raw"
+import { getImage } from "astro:assets"
+import dynImportImg from "../util/ohgodpleasehelpme"
+import type { collections } from "../content.config.ts"
 
 const { frontmatter, pageType } = Astro.props
 
 export interface Props {
     frontmatter: {
-        title: string,
-        description: string,
-        pubDate?: number,
-        unlisted?: boolean,
-        image?: HeadProps["image"],
+        title: string
+        description: string
+        pubDate?: number
+        unlisted?: boolean
+        image?: HeadProps["image"]
         readTime: ReturnType<typeof getReadingTime>
-    },
+    }
     pageType: keyof typeof collections
 }
 
 const notes = [
-    ...(
-        frontmatter.pubDate 
-        ? [`Published ${new Date(frontmatter.pubDate).toISOString().split("T")[0]} (UTC)`]
-        : []
-    ),
-    ...(
-        frontmatter.unlisted
-        ? [`Unlisted`]
-        : []
-    )
+    ...(frontmatter.pubDate
+        ? [
+              `Published ${new Date(frontmatter.pubDate).toISOString().split("T")[0]} (UTC)`,
+          ]
+        : []),
+    ...(frontmatter.unlisted ? [`Unlisted`] : []),
 ]
 
-const imgUrl = frontmatter.image ? "url" in frontmatter.image 
-                    ? frontmatter.image.url 
-                    : (
-                        await getImage({
-                            src: (await dynImportImg(frontmatter.image.path)).default,
-                            format: "webp"
-                        })
-                    ).src : ""
+const imgUrl = frontmatter.image
+    ? "url" in frontmatter.image
+        ? frontmatter.image.url
+        : (
+              await getImage({
+                  src: (await dynImportImg(frontmatter.image.path)).default,
+                  format: "webp",
+              })
+          ).src
+    : ""
 ---
 
 <style lang="scss">
@@ -72,10 +72,11 @@ const imgUrl = frontmatter.image ? "url" in frontmatter.image
                 label {
                     display: none;
                 }
-                >*,>div>* {
+                > *,
+                > div > * {
                     vertical-align: middle;
                 }
-                input[type=checkbox] {
+                input[type="checkbox"] {
                     --size: 1.25em;
                 }
                 a {
@@ -102,57 +103,73 @@ const imgUrl = frontmatter.image ? "url" in frontmatter.image
     }
 </style>
 
-<Page 
+<Page
     title={frontmatter.title}
     description={frontmatter.description}
-    meta={
-        [
-            ...(
-                frontmatter.image
-                ? [
-                    {
-                        name: "og:image",
-                        content: imgUrl
-                    },
-                    ...(
-                        !frontmatter.image.isTopper
-                        ? [{name:"twitter:card", content: "summary_large_image"}]
-                        : []
-                    )
-                ]
-                : []
-            ),
-            ...(
-                frontmatter.unlisted
-                ? [{name: "robots", content: "noindex"}]
-                : []
-            )
-        ]
-    }
+    meta={[
+        ...(frontmatter.image
+            ? [
+                  {
+                      name: "og:image",
+                      content: imgUrl,
+                  },
+                  ...(!frontmatter.image.isTopper
+                      ? [
+                            {
+                                name: "twitter:card",
+                                content: "summary_large_image",
+                            },
+                        ]
+                      : []),
+              ]
+            : []),
+        ...(frontmatter.unlisted
+            ? [{ name: "robots", content: "noindex" }]
+            : []),
+    ]}
 >
-    <GenericHeader text={frontmatter.title} styling={{noBottomPad: true}} image={frontmatter.image}/>
+    <GenericHeader
+        text={frontmatter.title}
+        styling={{ noBottomPad: true }}
+        image={frontmatter.image}
+    />
     <section class="significant" id="frontmatter">
         <p>
             <em>{frontmatter.description}</em>
-            {notes.length
-                ? <br><small style="color:var(--c-subtext1);">
-                    {notes.join(` — `)}
-                  </small>
-                : ""
+            {
+                notes.length ? (
+                    <>
+                        <br />
+                        <small style="color:var(--c-subtext1);">
+                            {notes.join(` — `)}
+                        </small>
+                    </>
+                ) : (
+                    ""
+                )
             }
         </p>
         <div class="postControls">
-            <p>{frontmatter.readTime.words} words ({(frontmatter.readTime.text.match(/(.*) read/)||[])[1]})</p>
+            <p>
+                {frontmatter.readTime.words} words ({
+                    (frontmatter.readTime.text.match(/(.*) read/) || [])[1]
+                })
+            </p>
             <div class="controls">
-                <a {...(
-                    pageType == "posts"
-                    ? {href:"/blog",title:"View posts"}
-                    : {href:"/docs",title:"Go back to docs homepage"}
-                )}><Fragment set:html={home} /></a>
+                <a
+                    {...pageType == "posts"
+                        ? { href: "/blog", title: "View posts" }
+                        : { href: "/docs", title: "Go back to docs homepage" }}
+                    ><Fragment set:html={home} /></a
+                >
                 <div class="postExtend">
                     <span class="divider" aria-hidden>&nbsp;|&nbsp;</span>
                     <label for="extendPost">Extend post</label>
-                    <Fragment set:html={extend} />&thinsp;<input type="checkbox" name="extendPost" class="extendPost">
+                    <Fragment set:html={extend} />&thinsp;<input
+                        type="checkbox"
+                        name="extendPost"
+                        class="extendPost"
+                    />
                 </div>
             </div>
         </div>

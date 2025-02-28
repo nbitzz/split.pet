@@ -1,26 +1,35 @@
 ---
-import { getEntry } from "astro:content";
-import GenericHeader from "../../components/GenericHeader.astro";
-import PostPreview from "../../components/PostPreview.astro";
-import Posts from "../../components/Posts.astro";
-import Page from "../../layouts/Page.astro";
+import { getEntry } from "astro:content"
+import GenericHeader from "../../components/GenericHeader.astro"
+import PostPreview from "../../components/PostPreview.astro"
+import Posts from "../../components/Posts.astro"
+import Page from "../../layouts/Page.astro"
 
 let setupPost = await getEntry("docs", "setup")
 ---
-<Page title="Docs" description="Some more about me and other documentation">
 
-    <GenericHeader text="Docs" image={{isTopper: true, url: "https://mahiro.oyama.pictures/Mari", alt:"Mahiro Oyama w/ glasses"}} />
+<Page title="Docs" description="Some more about me and other documentation">
+    <GenericHeader
+        text="Docs"
+        image={{
+            isTopper: true,
+            url: "https://mahiro.oyama.pictures/Mari",
+            alt: "Mahiro Oyama w/ glasses",
+        }}
+    />
 
     <section id="docs" class="significant">
-        <Posts collection="docs" group={{
-            by: (k, i) => k.slug.split("/").slice(0,-1).join("/"),
-            sort: ["split", "services"]
-        }} />
+        <Posts
+            collection="docs"
+            group={{
+                by: (k, i) => k.id.split("/").slice(0, -1).join("/"),
+                sort: ["split", "services"],
+            }}
+        />
         <!--
         <h2 class="sectionDenoter">Services</h2>
         <Posts collection="docs" display={["postList", ["where-your-data-goes", "setup"]]} />
         -->
-        <br>
+        <br />
     </section>
-    
 </Page>
