@@ -2,3 +2,14 @@
 /blog/hello-world /blog/2024/04/hello-world/ 301
 /domainlist /docs/split/domainlist/ 301
 /blog/setup /docs/split/setup/ 301
+# socials redirects
+/roblox https://www.roblox.com/users/713920679/profile 301
+/github https://github.com/nbitzz 301
+/source https://github.com/nbitzz/split.pet 301
+/monkeytype https://monkeytype.com/profile/losingmymaybles 301
+# bsky
+/bluesky https://bsky.app/profile/helloeverybodymynameismarkiplierandwelcometofivenightsatfreddys.anindiehorrorgamethatyouguyssuggestedenmasseandisawthatyamimash.playeditandhesaidthatitwasreallyreallygoodsoimveryeagertoseewha.tisupandthatisaterrifyinganimatronicbear.fnaf.stream 301
+/bsky https://bsky.app/profile/helloeverybodymynameismarkiplierandwelcometofivenightsatfreddys.anindiehorrorgamethatyouguyssuggestedenmasseandisawthatyamimash.playeditandhesaidthatitwasreallyreallygoodsoimveryeagertoseewha.tisupandthatisaterrifyinganimatronicbear.fnaf.stream 301
+# lfm
+/lastfm https://last.fm/user/stringsplit 301
+/fm https://last.fm/user/stringsplit 301
