@@ -1,11 +1,35 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import { groupBy } from '../util/polyfills'
+import { Image } from 'astro:assets'
 
 const {testimonials, noHeader, extraAttributes} = Astro.props
 
+type SupplementalFlairData = {title?: string}
+type Flair = ImageMetadata & SupplementalFlairData
+
+// TODO: refactor or at least explain this code. its 11pm
+const flairs =
+    Object.fromEntries(
+        (Object.entries(
+            groupBy(
+                (await Promise.all(
+                    Object.entries(import.meta.glob("./flairs/*"))
+                        .map(async ([key, prom]) => [(key.match(/\.\/flairs\/(.*)\..*/)||[])[1], (await prom() as any)?.default])
+                )),
+                ([name]) => (name)
+            )
+        ) as unknown as [string, [[string, (ImageMetadata | SupplementalFlairData)[]]]][]).map(([name, arrs]) => 
+            [ name, arrs&&Object.fromEntries(
+                arrs.flatMap(([_, importedForThisKey]) => Object.entries(importedForThisKey))
+            ) as unknown as Flair ]
+        )
+    ) as unknown as Record<string, Flair>
+
 interface Testimonial {
     text: string,
-    from: string
+    from: string,
+    flairs?: (keyof typeof flairs)[]
 }
 
 interface Props {
@@ -34,6 +58,17 @@ interface Props {
         & > address {
             color: var(--c-subtext1);
             font-size:small;
+            .flairs {
+                vertical-align: middle;
+                align-items: center;
+                height: 1em;
+                padding-left: 0.1em;
+                & img {
+                    object-fit: contain;
+                    height: 1em;
+                    width: auto;
+                }
+            }
         }
         margin: 10px 0;
     }
@@ -44,7 +79,20 @@ interface Props {
         testimonials.map(testimonial => 
             <div class="testimonial">
                 <p>{testimonial.text}</p>
-                <address>{testimonial.from}</address>
+                <address>{testimonial.from}
+                    {
+                        testimonial.flairs
+                        ? <span class="flairs">
+                            {
+                                testimonial.flairs.map((flairName) => {
+                                    const flair = flairs[flairName]
+                                    return <Image height="32" src={flair} alt={flair.title || flairName} title={flair.title || flairName}  />
+                                })
+                            }
+                          </span>
+                        : ""
+                    }
+                </address>
             </div>
         )
     }
