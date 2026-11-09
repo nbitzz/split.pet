@@ -31,7 +31,11 @@ interface Props {
         <meta name="title" content={title} />
         <meta name="description" content={description} />
         <meta name="theme-color" content="#FB405A" />
+        <meta name="og:locale" content="en_US">
         {meta?.map(e => <meta name={e.name} content={e.content} />)}
+
+        <meta name="og:locale" content="zh_CN">
+        <meta name="og:title" content="localization test" />
     </head>
     <body>
         <style lang="scss">
